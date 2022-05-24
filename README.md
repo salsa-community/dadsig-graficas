@@ -6,14 +6,13 @@ npm install
 ```
 
 ### Compiles and hot-reloads for development
-```
-npm run serve
+```bash
+npm install
+npm run docs:serve
+
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+
 
 ### Lints and fixes files
 ```

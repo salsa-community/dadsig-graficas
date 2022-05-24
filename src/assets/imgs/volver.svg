@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 58 58">
+  <defs>
+    <filter id="Rectángulo_1068" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+   
+    </filter>
+  </defs>
+  <g id="Grupo_1086" data-name="Grupo 1086" >
+    <g>
+      <rect id="Rectángulo_1068-2" x="4" y="2" data-name="Rectángulo 1068" filter="url(#Rectángulo_1068)" width="40" height="40" rx="10" fill="#fff"/>
+    </g>
+    <g id="Backward_arrow" data-name="Backward arrow" >
+      <path id="Trazado_10" data-name="Trazado 10" d="M10,0,8.182,1.818,15.065,8.7H0v2.6H15.065L8.182,18.182,10,20,20,10Z" transform="translate(34 32) rotate(180)" stroke="#fff" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

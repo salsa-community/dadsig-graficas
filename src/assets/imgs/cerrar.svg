@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <filter id="Rectángulo_29" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_1088" data-name="Grupo 1088" transform="translate(0 0)">
+    <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Rectángulo_29)">
+      <rect id="Rectángulo_29-2" data-name="Rectángulo 29" width="30" height="30" rx="5" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g id="_1" data-name=" 1" transform="translate(7.5 7.5)">
+      <path id="Unión_3" data-name="Unión 3" d="M7.5,8.864,1.363,15,0,13.636,6.136,7.5,0,1.363,1.363,0,7.5,6.136,13.636,0,15,1.363,8.864,7.5,15,13.636,13.636,15Z"/>
+    </g>
+  </g>
+</svg>
