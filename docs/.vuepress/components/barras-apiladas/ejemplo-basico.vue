@@ -1,6 +1,6 @@
 <template>
     <div>
-
+		
         <DaiBarrasApiladas
             :barras_apiladas_id="'barras_basicas'" 
             :datos="[

@@ -63,7 +63,7 @@
 			},
 			alto_vis: {
 				type: Number,
-				default: function(){return 180}
+				default: function(){return 250}
 			},
 			
 			/*tooltip_activo: {
@@ -100,16 +100,60 @@
 			}
 		},
 		mounted(){
-			
+			this.svg = d3.select(`#${this.barras_apiladas_id} .svg-barras-apiladas`);
+			this.grupo_contenedor = this.svg.select(".grupo-contenedor-de-barras");
+			this.grupo_fondo = this.svg.select(".grupo-fondo");
+			this.grupo_frente = this.svg.select(".grupo-frente");
+
+			this.eje_y = this.grupo_contenedor
+				.append("g")
+				.attr("class","eje-y")
+			this.eje_x = this.grupo_contenedor
+				.append("g")
+				.attr("class","eje-x")
+			this.configurandoDimensionesParaSVG();
+			this.configurandoDimensionesParaBarras();
+				
+
 		},
 		methods:{
 			configurandoDimensionesParaSVG(){
-                 
+                this.ancho_leyenda_y = document.querySelector(`#${this.barras_apiladas_id} .rotation-wrapper-outer .element-to-rotate`)
+				 	.clientHeight;
+
+				this.ancho =  document.querySelector(`#${this.barras_apiladas_id}`).clientWidth - this.margen.derecha - this.margen.izquierda - this.ancho_leyenda_y
+				this.alto = this.alto_vis - this.margen.arriba - this.margen.abajo;
+
+				this.svg
+					.attr("width", this.ancho + this.margen.derecha + this.margen.izquierda)
+					.attr("height", this.alto + this.margen.arriba + this.margen.abajo)
+					.style("left", this.ancho_leyenda_y + "px");
+				
+				this.grupo_contenedor
+					.attr("transform", `translate(${this.margen.izquierda},${this.margen.arriba})`)
+
 			},
 
 			configurandoDimensionesParaBarras(){
-				
-				
+
+				this.data_apilada = d3.stack()
+					.keys(this.variables.map(d => d.id))(this.datos)
+				console.log([...this.data_apilada])
+				for(let i = 0 ; i < this.variables.length; i++) {
+					this.data_apilada[i].forEach(d => {
+						d.data = Object.assign({}, d.data, { "key" : this.data_apilada[i].key})
+					})	
+				}
+
+				console.log(d3.max(this.datos.map(d => d3.sum(
+							this.variables.map( dd=> d[dd.id] )
+							)
+						)))
+				this.escalaY = d3.scaleLinear()
+					.domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map( dd=> d[dd.id] ))))])
+					.range([this.alto, 0]);
+				console.log([this.escalaY(0), this.escalaY(690), this.escalaY(395)])
+				//12 - 2 y 4- 6
 			},
 			creandoBarras(){
 				

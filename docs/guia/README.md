@@ -23,8 +23,8 @@ Probablemente SVG es entorno que más se usa con d3 para hacer gráficos. Estos 
 ```
 <svg width="100" height="40">
     <circle r="10" cx="20" cy="30"/>
-    <rect width="20" height="15" y="20" x="50" style="stroke: red; stroke-width:2px"/>
-    <line x1="10" y1="30" x2="100" y2="0" stroke="#000" stroke-width="3"/>
+    <rect width="20" height="15" y="20" x="50" style="stroke: red; stroke-width: 2px"/>
+    <line x1="10" y1="30" x2="100" y2="0" stroke="#000" stroke-width="3px"/>
 
 </svg> 
 
