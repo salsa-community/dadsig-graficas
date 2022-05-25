@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: conacyt2.png
-tagline: Libreria de vue para construir mapas interactivos
+tagline: Libreria de vue para construir gráficas interactivas
 actionText: Guía de inicio →
 actionLink: /guia/
 #features:
