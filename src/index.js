@@ -1,5 +1,7 @@
 import {
-    DaiBarrasApiladas
+    DaiBarrasApiladas,
+    DaiLineas,
+    DaiBoxPlot
 } from "./components"
 
 
@@ -9,13 +11,18 @@ export default function plugin(Vue){
     }
     plugin.installed = true
     Vue.use(DaiBarrasApiladas)
+    Vue.use(DaiLineas)
+    Vue.use(DaiBoxPlot)
+
 
 }
 
 export {
     plugin as install,
     //componentes
-    DaiBarrasApiladas
+    DaiBarrasApiladas,
+    DaiLineas,
+    DaiBoxPlot
 
 
 }
