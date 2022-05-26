@@ -65,15 +65,15 @@
 				type: Number,
 				default: function(){return 250}
 			},
-			
-			/*tooltip_activo: {
-				type: Boolean,
-				default: function() {return true}
-			},
 			espaciado_barras:{
 				type: Number,
 				default: function() {return .3}
 			},
+			tooltip_activo: {
+				type: Boolean,
+				default: function() {return true}
+			},
+
 			textoTooltip: {
 				type: Function, 
 				default: function(){
@@ -87,10 +87,19 @@
 					return `<p>${this.tooltip_categoria}</p> 
 						${txt.reverse().join(" ")}`
 				}
-			}*/
+			}
 		},
 		watch:{
-
+			variables(){
+				this.configurandoDimensionesParaBarras();
+				this.creandoBarras();
+				this.actualizandoBarras();
+			},
+			datos(){
+				this.configurandoDimensionesParaBarras();
+				this.creandoBarras();
+				this.actualizandoBarras();
+			}
 		},
 		
 		data(){
@@ -111,10 +120,19 @@
 			this.eje_x = this.grupo_contenedor
 				.append("g")
 				.attr("class","eje-x")
+
+			this.tooltip = d3.select(`#${this.barras_apiladas_id} .tooltip`);
 			this.configurandoDimensionesParaSVG();
 			this.configurandoDimensionesParaBarras();
+			this.creandoBarras();
+			this.actualizandoBarras();
+
+			window.addEventListener("resize", this.reescalandoPantalla)
 				
 
+		},
+		destroyed(){
+			window.removeEventListener("resize", this.reescalandoPantalla)
 		},
 		methods:{
 			configurandoDimensionesParaSVG(){
@@ -138,38 +156,115 @@
 
 				this.data_apilada = d3.stack()
 					.keys(this.variables.map(d => d.id))(this.datos)
-				console.log([...this.data_apilada])
 				for(let i = 0 ; i < this.variables.length; i++) {
 					this.data_apilada[i].forEach(d => {
 						d.data = Object.assign({}, d.data, { "key" : this.data_apilada[i].key})
 					})	
 				}
-
-				console.log(d3.max(this.datos.map(d => d3.sum(
-							this.variables.map( dd=> d[dd.id] )
-							)
-						)))
 				this.escalaY = d3.scaleLinear()
 					.domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map( dd=> d[dd.id] ))))])
 					.range([this.alto, 0]);
-				console.log([this.escalaY(0), this.escalaY(690), this.escalaY(395)])
+				this.escalaX = d3.scaleBand()
+					.domain(this.datos.map(d => d[this.nombre_barra]))
+					.range([0, this.ancho])
+					.padding(this.espaciado_barras)
+
+				this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
+				this.eje_y.select("path.domain")
+					.remove()
+				this.eje_y.selectAll("line")
+					.attr("x1",this.ancho)
+					.style("stroke-dasharray", "3 2")
+					.style("stroke", "#707070")
+
+				this.eje_x.call(d3.axisBottom(this.escalaX))
+					.attr("transform", `translate(${0},${this.alto})`)
+				this.eje_x.select("path").remove()
+				this.eje_x.selectAll("line").remove()
+				
 				//12 - 2 y 4- 6
 			},
 			creandoBarras(){
+				this.grupo_contenedor.selectAll(".g-rects").remove();
+				
+				this.barras_apiladas = this.grupo_contenedor
+					.selectAll(".g-rects")
+					.data(this.data_apilada)
+					.enter()
+					.append("g")
+					.attr("class", (d) => `${d.key} g-rects`)
+					.style("fill", (d, i) => this.variables[i].color)
+
+				this.barras_individuales = this.barras_apiladas
+					.selectAll("rect")
+					.data((d) => d)
+					.enter()
+					.append("rect")
+				
+				if(this.tooltip_activo){
+					this.svg
+						.on("mousemove", (evento) => { this.mostrarTooltip(evento)})
+				}
 				
 			},
 			actualizandoBarras(){
-				
+					
+				this.barras_individuales
+					.attr("width", this.escalaX.bandwidth)
+					.attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
+					.attr("x", d=> this.escalaX(d.data[this.nombre_barra]))
+					.attr("y", d=> this.escalaY(d[1]))
+
 			},
 			
 			reescalandoPantalla(){
+				this.configurandoDimensionesParaSVG();
+				this.configurandoDimensionesParaBarras();
+				this.actualizandoBarras();
 
 			},
-			mostrarTooltip(){
+			mostrarTooltip(evento){
+				this.tooltip_bandas = this.escalaX.step();
+				this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda -this.margen.derecha)/this.tooltip_bandas)
+				if(this.tooltip_indice < this.datos.length){
+					this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
+					this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
+					
+					this.tooltip
+						.style("visibility", "visible")
+						.style("left", evento.layerX > .5 * (this.ancho +this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y -20}px` : `${evento.layerX + this.ancho_leyenda_y + 20 }px` )
+						.style("width", this.ancho_tooltip + "px")
+						.style("top", evento.layerY + "px")
+						.style("height", "30px")
+
+					let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+						.style("background","rgba(0, 0, 0,.8)")
+						.style("min-width",this.ancho_tooltip +"px")
+						.style("border-radius","8px")
+						.style("width",this.ancho_tooltip+"px")
+						.attr("height",70 )
+						.style("padding","0 3px 0 10px")
+					
+					contenido_tooltip.select("div.tooltip-cifras")
+						.html(this.textoTooltip())
+					
+					this.barras_individuales
+						.style("fill-opacity", ".2")
+					
+					this.barras_individuales
+						.filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
+						.style("fill-opacity", "1")
+				}
 				
+				//console.log(this.tooltip_data_seleccionada)
+	
 			},
 			cerrarTooltip() {
-				
+				this.tooltip
+					.style("visibility", "hidden");
+				this.barras_individuales
+					.style("fill-opacity", "1")
+					
 			},
 			
 		}
