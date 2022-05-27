@@ -60,9 +60,9 @@
 			linea_id: String,
 			datos: Array,
 			variables_categorias: Array,
-			nombre_clumna_horizontal: String,
 			titulo_eje_y: String,
 			titulo_eje_x: String,
+			nombre_clumna_horizontal: String,
 			conversionTemporal: {
 				type: Function,
 				default: ()=> d3.timeParse("%d-%m-%Y")
@@ -75,7 +75,10 @@
 				type: Boolean,
 				default: false
 			},
-
+			titulo_tooltip: {
+				type: String,
+				default: ""
+			},
 			color_linea: {
 				type: String,
 				default: () => '#000'
@@ -92,10 +95,6 @@
 			tipo_tooltip: {
 				type: String,
 				default: ()=> "general"
-			},
-			tooltip_activo: {
-				type: Boolean,
-				default: function() {return true}
 			},
 			textoTooltip: {
 				type: Function,
@@ -201,7 +200,42 @@
 			window.addEventListener("resize", this.reescalandoPantalla);
 		},
 		methods:{
-			
+			multiFormat(date) {
+				/**
+				 * Método para traducir el formato de fecha
+				 */
+				this.locale = d3.timeFormatLocale({
+					"decimal": ",",
+					"thousands": ".",
+					"grouping": [3],
+					"currency": ["€", ""],
+					"dateTime": "%A, %e %B %Y г. %X",
+					"date": "%d.%m.%Y",
+					"time": "%H:%M:%S",
+					"periods": ["AM", "PM"],
+					"days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+					"shortDays": ["Dom", "Lun", "Mar", "Mi", "Jue", "Vie", "Sab"],
+					"months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+					"shortMonths": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+				});
+				this.formatMillisecond = this.locale.format(".%L");
+				this.formatSecond = this.locale.format(":%S");
+				this.formatMinute = this.locale.format("%I:%M");
+				this.formatHour = this.locale.format("%I %p");
+				this.formatDay = this.locale.format("%a %d");
+				this.formatWeek = this.locale.format("%b %d");
+				this.formatMonth = this.locale.format("%b");
+				this.formatMonthYear = this.locale.format("%b/%Y");
+				this.formatYear = this.locale.format("%Y");
+				// console.log(date)
+				return (d3.timeSecond(date) < date ? this.formatMillisecond
+					: d3.timeMinute(date) < date ? this.formatSecond
+					: d3.timeHour(date) < date ? this.formatMinute
+					: d3.timeDay(date) < date ? this.formatHour
+					: d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? this.formatDay : this.formatWeek)
+					: d3.timeYear(date) < date ? this.formatMonthYear
+					: this.formatMonthYear)(date);
+				},
 			configurandoDimensionesParaSVG() {
 				this.ancho_leyenda_y = document.querySelector("#"+this.linea_id +" .rotation-wrapper-outer .element-to-rotate")
                     .clientHeight
@@ -224,7 +258,6 @@
 			},
 			configurandoDimensionesParaLinea() {
 				this.datos.forEach((d) =>{
-					console.log(this.nombre_clumna_horizontal)
 					d.fech = this.conversionTemporal(d[this.nombre_clumna_horizontal])
 				})
 				this.escalaX = d3.scaleTime()
@@ -298,14 +331,12 @@
 						.attr("class", "puntos")
 						
 				}
-				if(this.tooltip_activo){
-					this.svg
-						.on("mousemove", (evento) => {
-							if(this.tipo_tooltip == "individual")this.mostrarTooltipIndividual(evento);
-							else if (this.tipo_tooltip == "general")this.mostrarTooltipGeneral(evento);
-						})
-						.on("mouseout",this.cerrarTooltip)
-				}
+				this.svg
+					.on("mousemove", (evento) => {
+						if(this.tipo_tooltip == "individual")this.mostrarTooltipIndividual(evento);
+						else if (this.tipo_tooltip == "general")this.mostrarTooltipGeneral(evento);
+					})
+					.on("mouseout",this.cerrarTooltip)
 			},
 			actualizandoLineas() {
 				this.grupos_lineas.attr("d",(dd) => 
@@ -329,10 +360,10 @@
 					.call(
 						d3.axisBottom(this.escalaX)
 							.ticks(5)
-							.tickFormat(d3.timeFormat("%d-%m-%Y"))
+							.tickFormat(this.multiFormat)
 					);
 				this.eje_x.selectAll("text")
-					.style("text-anchor","middle")
+					//.style("text-anchor","middle")
 					.style("dominant-baseline","middle");
 				this.eje_x.selectAll("line")
 					.remove();
@@ -347,6 +378,113 @@
 					.style("stroke-dasharray","3 2 ")
 					.style("stroke","gray");
 			},
+			/*actualizandoLineasChecks(){
+
+				this.grupos_series
+					.style("stroke", d=> (this.checkeados.includes(d.cve)?d.color:"none"))
+				this.grupos_lineas
+					.transition()
+					.duration(500)
+					.attr("d",(dd) => 
+						d3.line()
+							.x((d) => this.escalaX(d.fech) )
+							.y((d) => this.checkeados.length != 0 ? this.escalaY(d.cat) : this.escalaY(0) )(dd)
+					)
+					.style("fill","none")
+				if(this.variables_categorias.length == 1 ){
+					this.grupos_puntos.style("fill",d=> d.color)
+						.style("stroke","#fff")
+						.transition()
+						.duration(500)
+						.attr("r",5)
+						.attr("cx",(d) =>  this.escalaX(d.fech))
+						.attr("cy",(d) =>  this.checkeados.length != 0 ? this.escalaY(d.cat) : this.escalaY(0))
+				}
+				
+				this.eje_x.attr("transform",`translate(${this.margen.izquierda}, ${this.height + this.margen.arriba})`)
+					.transition()
+					.duration(500)
+					.call(
+						d3.axisBottom(this.escalaX)
+							.ticks(5)
+							.tickFormat(d3.timeFormat("%d-%m-%Y"))
+					);
+				this.eje_x.selectAll("text")
+					.style("text-anchor","middle")
+					.style("dominant-baseline","middle");
+				this.eje_x.selectAll("line")
+					.remove();
+				this.eje_x.select("path").style("opacity",0);
+				
+
+				this.eje_y
+					.transition()
+					.duration(500)
+					.call(d3.axisLeft(this.escalaY));
+				this.eje_y.select("path").style("opacity",0);
+				this.eje_y.selectAll("line")
+					.transition().duration(500)
+					.attr("x2", this.width )
+					.style("stroke-dasharray","3 2 ")
+					.style("stroke","gray");
+			},*/
+			/*resetZoom(){
+				this.esta_zoomeado = false;
+				this.escalaX.domain(d3.extent(this.datos.map((d) => d.fech)));
+				this.eje_x.transition().duration(500).call(
+						d3.axisBottom(this.escalaX).ticks(5)
+							.tickFormat(d3.timeFormat("%d-%m-%Y"))
+					)
+					this.grupos_lineas
+						.transition()
+						.duration(500)
+						.attr("d",(dd) => 
+							d3.line()
+								.x((d) =>  this.escalaX(d.fech) )
+								.y((d) =>  this.escalaY(d.cat) )(dd)
+					)
+					if(this.variables_categorias.length == 1 ){
+						this.grupos_puntos
+							.transition()
+							.duration(500)
+							.attr("cx",(d) =>  this.escalaX(d.fech))
+							.attr("cy",(d) =>  this.escalaY(d.cat))
+					}
+			},
+			
+			zoomSeleccion(evento){
+				let extent = evento.selection;
+				if(extent){
+					this.esta_zoomeado = true;
+					if(!extent){
+						if (!this.idleTimeout) return this.idleTimeout = setTimeout(this.idled, 350); // This allows to wait a little bit
+						this.escalaX.domain([ 4,8])
+					}else{
+						this.escalaX.domain([ this.escalaX.invert(extent[0]), this.escalaX.invert(extent[1]) ])
+						//this.svg.select(".brush").call(this.brush.move, null) // This remove the grey brush area as soon as the selection has been done
+					}
+					// Update axis and area position
+					this.eje_x.transition().duration(500).call(
+						d3.axisBottom(this.escalaX).ticks(5)
+							.tickFormat(d3.timeFormat("%d-%m-%Y"))
+					)
+					this.grupos_lineas
+						.transition()
+						.duration(500)
+						.attr("d",(dd) => 
+							d3.line()
+								.x((d) =>  this.escalaX(d.fech) )
+								.y((d) =>  this.escalaY(d.cat) )(dd)
+					)
+					if(this.variables_categorias.length == 1 ){
+						this.grupos_puntos
+							.transition()
+							.duration(500)
+							.attr("cx",(d) =>  this.escalaX(d.fech))
+							.attr("cy",(d) =>  this.escalaY(d.cat))
+					}
+				}
+			},*/
 			reescalandoPantalla() {
 				this.configurandoDimensionesParaSVG();
 				this.configurandoDimensionesParaLinea();
@@ -479,6 +617,7 @@
 	}
 </script>
 <style scoped lang="scss">
+
 	svg.svg-lineas{
         position:absolute;
         top:0;
@@ -522,17 +661,17 @@
         }
         div.tooltip::v-deep 
             div.tooltip-cifras{
-			padding-bottom:5px;
-			p{
-				margin: 3px;
-				span.nomenclatura-tooltip{
-					width: 10px;
-					height: 10px;
-					border-radius: 50%;
-					border: solid 1px rgba(255, 255, 255, .7 );
-					display: inline-block;
-				}
-			}
+                padding-bottom:5px;
+                p{
+                    margin: 3px;
+                    span.nomenclatura-tooltip{
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        border: solid 1px rgba(255, 255, 255, .7 );
+                        display: inline-block;
+                    }
+                }
 
 		}
         div.tooltip div.tooltip-encabezado{
@@ -557,35 +696,7 @@
                 float:right;
             }
         }
-	div.tooltip::v-deep{
-		div.tooltip-cuerpo{
-			font-size: 12px;
-			p{
-				margin: 0;
-			}
-			ul.tooltip-lineas{
-				margin: 0;
-				padding: 5px 0 0 0;
-				li{
-					list-style: none;
-					margin: 0 0 5px 0;
-					font-size: 12px;
-				&::before {
-					background: transparent;
-				}
-				span.span-tooltip-color {
-					transform: translateY(2px);
-					width: 12px;
-					height: 12px;
-					border: solid 1px rgba(255, 255, 255, .7 );
-					display: inline-block;
-					border-radius: 50%;
-					}
-				}
-			}
-		}
-    }
-}
+	}
 	
 
 	
