@@ -149,6 +149,12 @@
 				
 				this.grupo_contenedor
 					.attr("transform", `translate(${this.margen.izquierda},${this.margen.arriba})`)
+				
+				this.grupo_fondo
+					.attr("transform", `translate(${this.margen.izquierda},${this.margen.arriba})`)
+				
+				this.grupo_frente
+					.attr("transform", `translate(${this.margen.izquierda},${this.margen.arriba})`)
 
 			},
 
@@ -204,6 +210,7 @@
 				if(this.tooltip_activo){
 					this.svg
 						.on("mousemove", (evento) => { this.mostrarTooltip(evento)})
+						.on("mouseout", this.cerrarTooltip)
 				}
 				
 			},

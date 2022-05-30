@@ -124,10 +124,7 @@
 			
 		},
 		watch:{
-			checkeados(){
-				this.configurandoDimensionesParaLinea();
-				this.actualizandoLineasChecks();
-			},
+			
 			variables_categorias(){
 
 				this.configurandoDimensionesParaSVG();
@@ -149,12 +146,7 @@
 		},
 		data(){
 			return{
-				notas_open: false,
-				orden_inicial: true,
-				zoom_activo: "hidden",
 				width: 200,
-				idleTimeout: Function,
-				esta_zoomeado: false,
 				ancho_leyenda_y:0,
 				tooltip_data_seleccionada: Object
 				
@@ -164,14 +156,17 @@
 			this.claves  = this.variables_categorias.map(d => d.cve)
 			this.svg = d3.select("div#"+this.linea_id+" svg.svg-lineas");
 			this.grupo_contenedor = this.svg.select("g.gupo-contenedor-de-lineas");
+			
 			this.guia_x = this.grupo_contenedor.select("line.guia-x")
 			this.guia_y = this.grupo_contenedor.select("line.guia-y")
+			
 			this.tooltip = d3.select("div#"+this.linea_id)
 				.select("div.tooltip");
 			this.eje_x=this.svg
 				.select("g.eje-x");
 			this.eje_y=this.svg
 				.select("g.eje-y");
+			
 			this.grupo_frente = this.svg.select("g.grupo-frente")
 			
 			this.configurandoDimensionesParaSVG();
@@ -245,14 +240,7 @@
 					.attr("height", this.height + this.margen.arriba + this.margen.abajo)
 					.style("left", this.ancho_leyenda_y +"px");
 
-				this.svg.select("defs clipPath#clip rect")
-					.attr("x", -5)
-					.attr("y", -5)
-					.attr("width", this.width +10)
-					.attr("height", this.height+ 10);
-
 				this.grupo_contenedor
-					.attr("clip-path", "url(#clip)")
 					.attr("transform",`translate(${this.margen.izquierda},${this.margen.arriba})`);
 				this.grupo_frente.attr("transform",`translate(${this.margen.izquierda},${this.margen.arriba})`);
 			},
@@ -263,6 +251,7 @@
 				this.escalaX = d3.scaleTime()
 					.domain(d3.extent(this.datos.map((d) => d.fech)))
 					.range([0, this.width])
+				
 				this.claves = this.variables_categorias.map(d => d.cve);
 				if(this.escala_logaritmica){
 					this.escalaY = d3.scaleLog()
@@ -287,7 +276,6 @@
 								0,0
 							])
 							.range([this.height, 0])
-						
 					}
 					
 				}
@@ -307,7 +295,7 @@
 				this.grupos_lineas = this.grupos_series
 					.style("fill","none")
 					.style("stroke", d=> d.color)
-					.style("stroke-width", d => d.resaltado ? "2px": "1px")
+					.style("stroke-width","1px")
 					.selectAll("lineas")
 					.data((d ) => {
 						return [this.datos.map((dd) => ({"fech": dd.fech,"cat":dd[d.cve],color:d.color,cve:d.cve, resaltado : d.resaltado}))]
@@ -339,10 +327,24 @@
 					.on("mouseout",this.cerrarTooltip)
 			},
 			actualizandoLineas() {
-				this.grupos_lineas.attr("d",(dd) => 
-						d3.line()
+				this.grupos_lineas
+				.attr("d",(dd) => 
+						{
+	
+						return d3.line()
 							.x((d) =>  this.escalaX(d.fech) )
-							.y((d) =>  this.escalaY(d.cat) )(dd)
+							.y((d) =>  this.escalaY(.2) )(dd)}
+					)
+
+				
+				.attr("d",(dd) => 
+						{
+							console.log(d3.line()
+							.x((d) =>  this.escalaX(d.fech) )
+							.y((d) =>  this.escalaY(d.cat) )(dd))
+						return d3.line()
+							.x((d) =>  this.escalaX(d.fech) )
+							.y((d) =>  this.escalaY(d.cat) )(dd)}
 					)
 				if(this.variables_categorias.length == 1 ){
 					this.grupos_puntos.style("fill",d=> d.color)
@@ -378,117 +380,10 @@
 					.style("stroke-dasharray","3 2 ")
 					.style("stroke","gray");
 			},
-			/*actualizandoLineasChecks(){
-
-				this.grupos_series
-					.style("stroke", d=> (this.checkeados.includes(d.cve)?d.color:"none"))
-				this.grupos_lineas
-					.transition()
-					.duration(500)
-					.attr("d",(dd) => 
-						d3.line()
-							.x((d) => this.escalaX(d.fech) )
-							.y((d) => this.checkeados.length != 0 ? this.escalaY(d.cat) : this.escalaY(0) )(dd)
-					)
-					.style("fill","none")
-				if(this.variables_categorias.length == 1 ){
-					this.grupos_puntos.style("fill",d=> d.color)
-						.style("stroke","#fff")
-						.transition()
-						.duration(500)
-						.attr("r",5)
-						.attr("cx",(d) =>  this.escalaX(d.fech))
-						.attr("cy",(d) =>  this.checkeados.length != 0 ? this.escalaY(d.cat) : this.escalaY(0))
-				}
-				
-				this.eje_x.attr("transform",`translate(${this.margen.izquierda}, ${this.height + this.margen.arriba})`)
-					.transition()
-					.duration(500)
-					.call(
-						d3.axisBottom(this.escalaX)
-							.ticks(5)
-							.tickFormat(d3.timeFormat("%d-%m-%Y"))
-					);
-				this.eje_x.selectAll("text")
-					.style("text-anchor","middle")
-					.style("dominant-baseline","middle");
-				this.eje_x.selectAll("line")
-					.remove();
-				this.eje_x.select("path").style("opacity",0);
-				
-
-				this.eje_y
-					.transition()
-					.duration(500)
-					.call(d3.axisLeft(this.escalaY));
-				this.eje_y.select("path").style("opacity",0);
-				this.eje_y.selectAll("line")
-					.transition().duration(500)
-					.attr("x2", this.width )
-					.style("stroke-dasharray","3 2 ")
-					.style("stroke","gray");
-			},*/
-			/*resetZoom(){
-				this.esta_zoomeado = false;
-				this.escalaX.domain(d3.extent(this.datos.map((d) => d.fech)));
-				this.eje_x.transition().duration(500).call(
-						d3.axisBottom(this.escalaX).ticks(5)
-							.tickFormat(d3.timeFormat("%d-%m-%Y"))
-					)
-					this.grupos_lineas
-						.transition()
-						.duration(500)
-						.attr("d",(dd) => 
-							d3.line()
-								.x((d) =>  this.escalaX(d.fech) )
-								.y((d) =>  this.escalaY(d.cat) )(dd)
-					)
-					if(this.variables_categorias.length == 1 ){
-						this.grupos_puntos
-							.transition()
-							.duration(500)
-							.attr("cx",(d) =>  this.escalaX(d.fech))
-							.attr("cy",(d) =>  this.escalaY(d.cat))
-					}
-			},
 			
-			zoomSeleccion(evento){
-				let extent = evento.selection;
-				if(extent){
-					this.esta_zoomeado = true;
-					if(!extent){
-						if (!this.idleTimeout) return this.idleTimeout = setTimeout(this.idled, 350); // This allows to wait a little bit
-						this.escalaX.domain([ 4,8])
-					}else{
-						this.escalaX.domain([ this.escalaX.invert(extent[0]), this.escalaX.invert(extent[1]) ])
-						//this.svg.select(".brush").call(this.brush.move, null) // This remove the grey brush area as soon as the selection has been done
-					}
-					// Update axis and area position
-					this.eje_x.transition().duration(500).call(
-						d3.axisBottom(this.escalaX).ticks(5)
-							.tickFormat(d3.timeFormat("%d-%m-%Y"))
-					)
-					this.grupos_lineas
-						.transition()
-						.duration(500)
-						.attr("d",(dd) => 
-							d3.line()
-								.x((d) =>  this.escalaX(d.fech) )
-								.y((d) =>  this.escalaY(d.cat) )(dd)
-					)
-					if(this.variables_categorias.length == 1 ){
-						this.grupos_puntos
-							.transition()
-							.duration(500)
-							.attr("cx",(d) =>  this.escalaX(d.fech))
-							.attr("cy",(d) =>  this.escalaY(d.cat))
-					}
-				}
-			},*/
 			reescalandoPantalla() {
 				this.configurandoDimensionesParaSVG();
 				this.configurandoDimensionesParaLinea();
-				this.creandoLineas();
 				this.actualizandoLineas();
 			},
 			

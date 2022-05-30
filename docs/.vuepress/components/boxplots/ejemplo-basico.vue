@@ -2,14 +2,14 @@
   <div id="app">
     <header>
       <h1>DAI Componente Boxplot</h1>
-      <button class="boton-base" @click="cambiaBase">Cambia la base</button>
     </header>    
     <DaiBoxPlot
       :caja_id="'boxplot1'" 
       :datos="datos"
-      :variables="{'grupos':'Clase_social','variable_dist':'CD4_A','color':'#B70BFF'}"
+      :variables="{'grupos':'Clase_social','variable_dist':'CD4_A','color':'#000'}"
       :titulo_eje_y="'Linfocitos por ml\u00B3 de sangre'"
 			:titulo_eje_x="'Clase social'"
+      ref="cajitas_fosfofosfo"
     />
     <footer>
       <p>componente de vue creado por el equipo de desarrollo de la dai. actualmente en desarrollo.</p>
@@ -32,6 +32,10 @@ export default {
   },
   mounted:function(){
     this.datos2=this.datos;
+    this.$refs.cajitas_fosfofosfo.svg
+      
+
+
   },
   methods:{
    

@@ -4,7 +4,6 @@
         <DaiBarrasApiladas
             :barras_apiladas_id="'barras_basicas_1'" 
             :datos="datos"
-
             :variables='variables_ejemplo_basico'
             :nombre_barra="'nombre_rectangulos'"
             :nombre_color="'nombre_colores'"
