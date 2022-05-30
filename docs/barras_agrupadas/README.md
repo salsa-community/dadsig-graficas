@@ -1,1 +1,0 @@
- # Barras agrupadas

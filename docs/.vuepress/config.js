@@ -45,19 +45,15 @@ module.exports = {
         link: '/barras_apiladas/',
       },
       {
-        text: 'Barras agrupadas',
-        link: '/barras_agrupadas/'
-      },
-      {
-        text: 'Donas',
-        link: '/donas/',
+        text: 'Diagrama de cajas',
+        link: '/boxplots/'
       },
       {
         text: 'Series de tiempo',
         link: '/series_tiempo/'
       },
       {
-        text: 'Stream',
+        text: 'Stream graph',
         link: '/stream_graph/',
       }
     ],
@@ -69,6 +65,26 @@ module.exports = {
           children: [
             '',
             'componente',
+            'ejemplos',
+          ]
+        }
+      ],
+      '/series_tiempo/': [
+        {
+          title: 'Series de tiempo',
+          collapsable: false,
+          children: [
+            '',
+            'ejemplos',
+          ]
+        }
+      ],
+      '/boxplots/': [
+        {
+          title: 'Boxplots',
+          collapsable: false,
+          children: [
+            '',
             'ejemplos',
           ]
         }

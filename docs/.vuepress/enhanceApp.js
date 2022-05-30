@@ -12,7 +12,8 @@
 //import  DaiMaps from "../../src/index.js"
 
 
-import "./styles/general.css"
+import { DaiBarrasApiladas, DaiLineas, DaiBoxPlot } from "../../src/index.js"
+import "./styles/index.scss"
 
 /*export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -24,3 +25,15 @@ import "./styles/general.css"
   // ...apply enhancements for the site.
 }
 */
+
+export default ({
+  Vue, // the version of Vue being used in the VuePress app
+  options, // the options for the root Vue instance
+  router, // the router instance for the app
+  siteData // site metadata
+}) => {
+  Vue.use(DaiBarrasApiladas)
+  Vue.use(DaiLineas)
+  Vue.use(DaiBoxPlot)
+  // ...apply enhancements for the site.
+}
