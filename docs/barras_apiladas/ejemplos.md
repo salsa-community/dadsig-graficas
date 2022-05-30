@@ -5,3 +5,6 @@ Se ingresa un Array de datos con tantos diccionarios como barras se deseen visua
 <barras-apiladas-ejemplo-basico/>
 
 <barras-apiladas-ejemplo-basico-1/>
+
+
+<barras-apiladas-ejemplo-fondo/>

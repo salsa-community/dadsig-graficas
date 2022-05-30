@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor-cajas" v-bind:id=caja_id v-bind:class="{'grid-cajas': reticula}">
+  <div class="contenedor-cajas" v-bind:id=caja_id >
     <div class="encabezado">
       <slot name="encabezado"></slot>
     </div>
@@ -59,14 +59,9 @@
 				type: Number,
 				default: function(){return 280}
 			},
-			reticula: {
-				type: Boolean,
-				default: false,
-			},
+
 					
-			
 			// Esto aún no
-			texto_notas: String,
 			tooltip_activo: {
 				type: Boolean,
 				default: function() {return true}
@@ -85,10 +80,7 @@
 					`
 				}
 			},				
-			titulo_tooltip: {
-				type: String,
-				default: ""
-			},
+		
 		},
 		watch:{
             variables(nuevo_valor){
@@ -156,8 +148,9 @@
 				this.escalaY = d3.scaleLinear()
 					.domain(d3.extent(this.datos.map((d) => d[this.variables.variable_dist])))          
 					.range([this.height, 0]);
-				var unicos = this.datos.map((d) => d[this.variables.grupos]);
-				unicos = unicos.filter((elem, pos) => unicos.indexOf(elem) == pos);
+				var unicos = [...new Set(this.datos.map((d) => d[this.variables.grupos]))];
+				
+
 				this.escalaX = d3.scaleBand()
 					.range([0, this.width])
 					.domain(unicos)
@@ -188,14 +181,32 @@
 					},
 					(d) => d[this.variables.grupos]
 				);
-				let dtef = Array.from(this.data_agrupada).map(dd => dd[1])
 
+				this.eje_y.call(d3.axisLeft(this.escalaY));
+				this.eje_x.attr("transform",`translate(0, ${this.height})`)
+					.call(d3.axisBottom(this.escalaX));
+				this.eje_x.selectAll("text")
+					//.attr("transform","rotate(-90)translate(-5,-15)")
+					.style("text-anchor","middle")
+					.style("dominant-baseline","middle");
+				this.eje_x.selectAll("line")
+					.remove();
+				this.eje_x.select("path").style("opacity",0);
+				this.eje_y.select("path").style("opacity",0);
+
+				this.eje_y.selectAll("line")
+					.attr("x2",this.width)
+					.style("stroke-dasharray","3 2 ")
+					.style("stroke","gray");
+				/*let dtef = Array.from(this.data_agrupada).map(dd => dd[1])
+				console.log(dtef)
 				this.escalaY
 					.domain(d3.extent([ 
 						...dtef.map(d => d.min), 
 						...dtef.map(d => d.max), 
 						d3.min(dtef.map(d => d3.min(d.puntos))), 
 						d3.max(dtef.map(d => d3.max(d.puntos))) ]))
+				*/
 
 
 			},
@@ -215,9 +226,7 @@
 					})
 					.style("cursor", "pointer");
 
-				this.cajas = this.grupos_cajas
-					.append("path")
-					.datum((d) => d[1]);	
+			
 				this.cajas_line_vertical = this.grupos_cajas
 					.append("line")
 					.datum((d) => d[1]);
@@ -319,22 +328,7 @@
 					.style("fill-opacity",.25)
 
 					
-				this.eje_y.call(d3.axisLeft(this.escalaY));
-				this.eje_x.attr("transform",`translate(0, ${this.height})`)
-					.call(d3.axisBottom(this.escalaX));
-				this.eje_x.selectAll("text")
-					//.attr("transform","rotate(-90)translate(-5,-15)")
-					.style("text-anchor","middle")
-					.style("dominant-baseline","middle");
-				this.eje_x.selectAll("line")
-					.remove();
-				this.eje_x.select("path").style("opacity",0);
-				this.eje_y.select("path").style("opacity",0);
-
-				this.eje_y.selectAll("line")
-					.attr("x2",this.width)
-					.style("stroke-dasharray","3 2 ")
-					.style("stroke","gray");
+				
 				this.grupos_cajas
 					.attr("transform", (d) => `translate(${this.escalaX(d[0])} ,0)`)
 					//.on("click",(evento, datum ) => this.mostrarTooltip(evento, datum))
@@ -356,9 +350,6 @@
 			// Esto aún no
 			cerrarTooltip() {				
 				this.tooltip.style('visibility', 'hidden')
-			},
-			reestablecerVista(){
-				this.tooltip.style("visibility","hidden");
 			},
 			mostrarTooltip(evento){
 
@@ -394,8 +385,6 @@
 					.style("height",contenido_tooltip.style("height"))
 					.style("width",contenido_tooltip.style("width") )
 					.style("top",evento.layerY+"px")	
-				
-				
 				
 			},
 

@@ -13,6 +13,8 @@
 			:titulo_eje_x="'Titulo eje x'"
       :margen="{arriba: 10, abajo: 20, izquierda: 30, derecha: 30}"
       :tooltip_activo ="false"
+      :tipo_tooltip="'individual'"
+
       
     />
 
@@ -67,14 +69,18 @@ export default {
       {"cve": "000","nombre": "promedio","abr":"promedio"}
     ],
     edos_seleccionados : [
+      
         {"cve":"31", "nombre":"Yucatán", "color":`rgb(${parseInt(Math.random()*255)},${parseInt(Math.random()*255)},${parseInt(Math.random()*255)})`},
+        {"cve":"32", "nombre":"Zacatecas", "color":`rgb(${parseInt(Math.random()*255)},${parseInt(Math.random()*255)},${parseInt(Math.random()*255)})`}
       ],
       checkeados:[],
     }
   },
   mounted:function(){
     this.datos2=this.datos;
-    this.cambiaBaseLineas()
+    //this.cambiaBaseLineas()
+
+
   },
   methods:{
     cambiaBaseLineas(){
