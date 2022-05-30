@@ -333,7 +333,7 @@
 	
 						return d3.line()
 							.x((d) =>  this.escalaX(d.fech) )
-							.y((d) =>  this.escalaY(.2) )(dd)}
+							.y((d) =>  this.escalaY(d.cat) )(dd)}
 					)
 
 				

@@ -63,7 +63,7 @@ module.exports = {
           title: 'Barras apiladas',
           collapsable: false,
           children: [
-            '',
+            
             'componente',
             'ejemplos',
           ]

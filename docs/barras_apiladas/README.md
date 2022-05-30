@@ -1,1 +1,3 @@
 # Barras apiladas
+
+Componente 

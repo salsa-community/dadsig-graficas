@@ -2,6 +2,10 @@
   "name": "dai-graficas",
   "version": "0.1.0",
   "private": true,
+  "files": [
+    "dist/*"
+  ],
+  "main": "./dist/dai-graficas.umd.js",
   "scripts": {
     "docs:serve": "vuepress dev docs",
     "docs:build": "vuepress build docs",
