@@ -87,6 +87,9 @@
 					return `<p>${this.tooltip_categoria}</p> 
 						${txt.reverse().join(" ")}`
 				}
+			},
+			dominio_y: {
+				type:Array,
 			}
 		},
 		watch:{
@@ -168,7 +171,7 @@
 					})	
 				}
 				this.escalaY = d3.scaleLinear()
-					.domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map( dd=> d[dd.id] ))))])
+					.domain(this.dominio_y ? this.dominio_y : [0, d3.max(this.datos.map(d => d3.sum(this.variables.map( dd=> d[dd.id] ))))])
 					.range([this.alto, 0]);
 				this.escalaX = d3.scaleBand()
 					.domain(this.datos.map(d => d[this.nombre_barra]))
