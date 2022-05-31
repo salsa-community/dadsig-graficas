@@ -127,9 +127,7 @@ body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   margin: 20px;
 }
-#app{
-	max-width: 760px;
-  margin: auto;}
+
 .boton-base {
   background-color: var(--color-acento-fondo);
   border: none;
