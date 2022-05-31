@@ -1,3 +1,0 @@
-# Barras apiladas
-
-Componente 

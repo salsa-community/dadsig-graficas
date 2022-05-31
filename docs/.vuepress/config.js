@@ -41,54 +41,42 @@ module.exports = {
         link: '/guia/',
       },
       {
-        text: 'Barras apiladas',
-        link: '/barras_apiladas/',
+        text: 'Componentes',
+        link: '/componentes/',
       },
       {
-        text: 'Diagrama de cajas',
-        link: '/boxplots/'
+        text: 'Ejemplos',
+        link: '/ejemplos/'
       },
       {
-        text: 'Series de tiempo',
-        link: '/series_tiempo/'
+        text: 'Acerca de',
+        link: '/acerca/'
       },
-      {
-        text: 'Stream graph',
-        link: '/stream_graph/',
-      }
     ],
     sidebar: {
-      '/barras_apiladas/': [
+      '/componentes/': [
         {
-          title: 'Barras apiladas',
+          title: 'Componentes',
           collapsable: false,
           children: [
-            
-            'componente',
-            'ejemplos',
+            'barras_apiladas',
+            'diagrama_cajas',
+            'series_tiempo',
           ]
         }
       ],
-      '/series_tiempo/': [
+      '/ejemplos/': [
         {
-          title: 'Series de tiempo',
-          collapsable: false,
+          title: 'Ejemplos',
+          collapsable: true,
           children: [
-            '',
-            'ejemplos',
+            'barras_apiladas_ejemplos',
+            'series_tiempo_ejemplos',
+            'diagrama_cajas_ejemplos'
           ]
         }
       ],
-      '/boxplots/': [
-        {
-          title: 'Boxplots',
-          collapsable: false,
-          children: [
-            '',
-            'ejemplos',
-          ]
-        }
-      ]
+      
     }
   },
 
