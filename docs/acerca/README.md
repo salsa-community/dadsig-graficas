@@ -4,7 +4,7 @@ sidebar: auto
 
 # Acerca de 
 
-En esta sección se encuentra información sobre como se construyó la librería con la finalidad de proveer herramientas para colaboradorxs
+En esta sección se encuentra información de la construcción de la librería con la finalidad de proveer herramientas para colaboradorxs
 
 
 ## D3.js 
