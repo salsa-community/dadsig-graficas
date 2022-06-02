@@ -13,7 +13,7 @@ Para tener una grafica de series de tiempo básica, estos son los parámetros qu
 ```
 [{"01":30,"02":31,"fecha": "01-01-2021"},{"01":35,"02":25,"fecha": "01-02-2021"}]
 ```
-* `nombre_clumna_horizontal`: Es el nombre que lleva la variable que va a usarse en el eje horizontal. Normalmente es temporal y en el ejemplo anterior sería "fecha"
+* `nombre_columna_horizontal`: Es el nombre que lleva la variable que va a usarse en el eje horizontal. Normalmente es temporal y en el ejemplo anterior sería "fecha"
 * `variables_categorias`: Lista de diccionarios que contiene atributos de cada una de las líneas. Las claves obligatorias son `cve` y `nombre`, y se refieren al nombre de la columna o línea en la base de datos y al nombre que queremos que se lea en el tooltip individual
  ```
   [
