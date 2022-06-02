@@ -1,0 +1,38 @@
+[
+    {
+        "nombre_rectangulos": "A",
+        "cantidad_1": 120,
+        "cantidad_2": 40,
+        "cantidad_3": 40
+    },
+    {
+        "nombre_rectangulos": "B",
+        "cantidad_1": 100,
+        "cantidad_2": 30,
+        "cantidad_3": 40
+    },
+    {
+        "nombre_rectangulos": "C",
+        "cantidad_1": 90,
+        "cantidad_2": 60,
+        "cantidad_3": 40
+    },
+    {
+        "nombre_rectangulos": "D",
+        "cantidad_1": 70,
+        "cantidad_2": 60,
+        "cantidad_3": 10
+    },
+    {
+        "nombre_rectangulos": "E",
+        "cantidad_1": 40,
+        "cantidad_2": 30,
+        "cantidad_3": 80
+    },
+    {
+        "nombre_rectangulos": "F",
+        "cantidad_1": 60,
+        "cantidad_2": 50,
+        "cantidad_3": 30
+    }
+]
