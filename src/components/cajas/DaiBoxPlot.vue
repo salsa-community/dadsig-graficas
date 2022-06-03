@@ -59,10 +59,7 @@
 				type: Number,
 				default: function(){return 280}
 			},
-
-					
-			// Esto aún no
-			tooltip_activo: {
+      tooltip_activo: {
 				type: Boolean,
 				default: function() {return true}
 			},
