@@ -6,8 +6,8 @@
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
-        :variables="{'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#000'}"
         :tooltip_activo="false"
+        :variables="{'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#000'}"
     />
   </div>
 </template>

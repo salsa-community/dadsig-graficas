@@ -1,18 +1,18 @@
 
 # DaiBoxPlot
 
-En esta sección se detallan 3 distintos casos de uso del componente. Dado que el diagrama de cajas y bigotes requiere 
+En esta sección se detallan tres distintos casos de uso de este componente. Dado que el diagrama de cajas y bigotes requiere 
 que los datos se encuentren completamente desagregados, se recomienda agregar los mismos por medio de un archivo `.json`
 externo. Lo anterior se hace por medio de un `import` en el apartado `<script/>`. En el siguiente extracto
-de código se agrega el archivo `box_plot_ejemplo.json` que grafica el número de acciones vendidas
+de código se agrega el archivo `box_plot_ejemplo_1.json` que grafica el número de acciones vendidas
 por diversas empresas.
 
 ```HTML
 <script>
-    import boxplotejemplo from "./box_plot_ejemplo.json"
+    import boxplotejemplo from "./box_plot_ejemplo_1.json"
 
     export default {
-        name: 'ejemplo_basico',
+        name: 'box_plot_ejemplo_basico',
         data: function () {
             return {
                 datos: boxplotejemplo,
@@ -22,7 +22,7 @@ por diversas empresas.
 </script>
 ```
 En el caso contrario en el que se quieran agregar los datos directamente como un arreglo en el
-template del componente se deberían de colocar de la siguiente manera (nótese que aquí se
+template del componente, éstos se deberán de colocar de la siguiente manera (nótese que aquí se
 abrevia el conjunto de datos usando "..."),
 
 ```HTML 
@@ -46,8 +46,8 @@ abrevia el conjunto de datos usando "..."),
                     "acciones_vendidas": 120
                 }
              ]
-        :titulo_eje_x="'Número de acciones vendidas'"
-        :titulo_eje_y="'Empresa'"
+        :titulo_eje_x="'Empresa'"
+        :titulo_eje_y="'Acciones vendidas'"
         :variables="{'grupos':'nombre_empresa',
                      'variable_dist':'acciones_vendidas',
                      'color':'#000'}"
@@ -57,7 +57,7 @@ abrevia el conjunto de datos usando "..."),
 
 ## Gráfica estática
 Se ingresa un _Array_ de datos con tantos objetos como datos desagregados se tengan. Cada objeto contendrá el nombre de 
-la variable categórica (a graficar en el eje horizontal) y nombre y valor de su correspondiente métrica (a agruparse o 
+la variable categórica (a graficar en el eje horizontal) y el nombre y valor de su correspondiente métrica (a agruparse o 
 no dentro de los límites de los cuartiles dependiendo del valor de la métrica).
 
 En este ejemplo, el componente se escribe de la siguiente manera
@@ -67,12 +67,12 @@ En este ejemplo, el componente se escribe de la siguiente manera
         ref="cajas_basica"
         :caja_id="'boxplot_basica'"
         :datos="datos"
-        :titulo_eje_x="'Número de acciones vendidas'"
-        :titulo_eje_y="'Empresa'"
+        :titulo_eje_x="'Empresa'"
+        :titulo_eje_y="'Acciones vendidas'"
+        :tooltip_activo="false"
         :variables="{'grupos':'nombre_empresa',
                      'variable_dist':'acciones_vendidas',
                      'color':'#000'}"
-        :tooltip_activo="false"
     />
 ```
 
@@ -83,15 +83,15 @@ ya incluye todo dentro del template y el script. El resultado es el siguiente,
 
 ## Uso de slots y tooltip
 
-El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados y pies de gráficas para poner títulos, notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
+El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados y pies de gráficas para poner títulos, notas, controles, nomenclaturas, etc. dentro del componente.
 
 ```HTML
     <DaiBoxPlot
         ref="cajas_slots"
         :caja_id="'boxplot_slots'"
         :datos="datos"
-        :titulo_eje_x="'Número de acciones vendidas'"
-        :titulo_eje_y="'Empresa'"
+        :titulo_eje_x="'Empresa'"
+        :titulo_eje_y="'Acciones vendidas'"
         :variables="{'grupos':'nombre_empresa',
                      'variable_dist':'acciones_vendidas',
                      'color':'#00f'}"
@@ -127,84 +127,83 @@ por default ya se puede ver un tooltip.
 ## Modificando datos
 
 El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega un poco de estilo y algunos métodos para 
-modificar los datos que se están pintando. Las bases se cargan desde archivos `.json` y se agregó un poco de estilo. 
-El resultado es el siguiente:
-
-<boxplots-ejemplo-cambiando-base/>
-
-
-El `<template>` es el siguiente:
+modificar los datos que se están pintando. Las bases se cargan desde archivos `.json` externos. 
 
 ```HTML
-<DaiBarrasApiladas
-    :barras_apiladas_id="'barras_cambio_base'"
-    :datos="datos"
-    :variables="variables"
-    :nombre_barra="'nombre_rectangulos'"
-    :nombre_color="'nombre_colores'"
-    titulo_eje_y="Eje vertical"
-    titulo_eje_x="Eje horizontal"
-    :margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
->
+    <DaiBoxPlot
+        ref="cajas_cambio_base"
+        :caja_id="'boxplot_cambio_base'"
+        :datos="datos"
+        :titulo_eje_x="titulos_eje_x"
+        :titulo_eje_y="titulos_eje_y"
+        :variables="variables"
+    >
     <template slot="encabezado">
-    <div class="encabezado">
-        <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
-        <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
-    </div>
+        <div class="encabezado">
+            <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
+            <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
+        </div>
     </template>
     <template slot="pie">
-    <div class="pie">
-        <h3>Pie de gráfica</h3>
-        <button @click="alternandoBase">Cambia la data</button>
-    </div>
+        <div class="pie">
+            <h3>Pie de gráfica</h3>
+            <button @click="alternandoBase">Cambia la data</button>
+        </div>
     </template>
-</DaiBarrasApiladas>
+</DaiBoxPlot>
 ```
 
-En el escript se incluyó lo siguiente:
+En el `</script>` se agregan las bases y las funciones necesarias para alternar entre una y otra, mientras que en el 
+apartado de `</sytyle>` se customizan propiedades como el marco de la gráfica, radio del contenedor, etc.
 
 ``` Javascript
-
-import base_dummy_1 from "./base_dummy_1.json";
-import base_dummy_2 from "./base_dummy_2.json";
+<script>
+import boxplotejemplo1 from "./box_plot_ejemplo_1.json"
+import boxplotejemplo2 from "./box_plot_ejemplo_2.json"
 
 export default {
-  name: "BarrasBasico",
+  name: 'box_plot_cambio_base',
+
   data: function () {
     return {
-      algo: true,
-      datos: base_dummy_1,
-      variables: [
-        { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#721817" },
-        { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#2B4162" },
-        { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#0B6E4F" },
-      ],
+      datos: boxplotejemplo1,
+      variables: {'grupos': 'nombre_empresa', 
+                  'variable_dist': 'acciones_vendidas',
+                  'color': '#f00'},
+      titulos_eje_x: 'Empresas',
+      titulos_eje_y: 'Acciones vendidas',
       base_seleccionada: 1,
-    };
+    }
   },
   methods: {
     alternandoBase() {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
-        this.datos = base_dummy_2;
-				this.variables = [
-          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#231123" },
-          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#82204A" },
-          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#558C8C" },
-					{ id: "cantidad_4", nombre_colores: "cantidad 4", color: "#E8DB7D" },
-          { id: "cantidad_5", nombre_colores: "cantidad 5", color: "#DBC2CF" }
-        ];
-				
+        this.datos = boxplotejemplo2;
+        this.variables = {'grupos': 'nombre_categoria',
+                          'variable_dist': 'metrica',
+                          'color': '#800'};
+        this.titulos_eje_x = 'Categorías';
+        this.titulos_eje_y = 'Métrica';
       } else {
         this.base_seleccionada = 1;
-        this.datos = base_dummy_1;
-        this.variables = [
-          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#721817" },
-          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#2B4162" },
-          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#0B6E4F" }
-        ];
+        this.datos = boxplotejemplo1;
+        this.variables = {'grupos': 'nombre_empresa',
+                          'variable_dist': 'acciones_vendidas',
+                          'color': '#800080'};
+        this.titulos_eje_x = 'Empresas';
+        this.titulos_eje_y = 'Acciones vendidas';
       }
     },
   },
 };
+</script>
 ```
+
+El resultado es el siguiente:
+
+<boxplots-ejemplo-cambiando-base/>
+
+
+
+

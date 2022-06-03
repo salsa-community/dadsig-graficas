@@ -33,9 +33,7 @@
            v-html="titulo_eje_x"></p>
       </div>
     </div>
-    <div class="pie">
-      <slot name="pie"></slot>
-    </div>
+    <slot name="pie"></slot>
   </div>
 </template>
 
@@ -135,7 +133,7 @@ export default {
         .select("div.tooltip");
     window.addEventListener("resize", this.reescalandoPantalla);
   },
-  destroyed(){
+  destroyed() {
     window.removeEventListener("resize", this.reescalandoPantalla)
   },
   methods: {
@@ -177,14 +175,10 @@ export default {
             let max = q3 + 1.5 * interQuantileRange
             let puntos = d.map((g) => g[this.variables.variable_dist])
             let promedio = d3.mean(d.map((g) => g[this.variables.variable_dist]))
-            //if(puntos.filter((g) => g > max).length > 0){
             max = puntos.filter((g) => g <= max)
                 .sort(d3.descending)[0]
-            //}
-            //if(puntos.filter((g) => g < min).length > 0){
             min = puntos.filter((g) => g >= min)
                 .sort(d3.ascending)[0]
-            //}
 
             return ({
               q1: q1,
@@ -204,7 +198,6 @@ export default {
       this.eje_x.attr("transform", `translate(0, ${this.height})`)
           .call(d3.axisBottom(this.escalaX));
       this.eje_x.selectAll("text")
-          //.attr("transform","rotate(-90)translate(-5,-15)")
           .style("text-anchor", "middle")
           .style("dominant-baseline", "middle");
       this.eje_x.selectAll("line")
@@ -216,17 +209,6 @@ export default {
           .attr("x2", this.width)
           .style("stroke-dasharray", "3 2 ")
           .style("stroke", "gray");
-      /*let dtef = Array.from(this.data_agrupada).map(dd => dd[1])
-      console.log(dtef)
-      this.escalaY
-        .domain(d3.extent([
-          ...dtef.map(d => d.min),
-          ...dtef.map(d => d.max),
-          d3.min(dtef.map(d => d3.min(d.puntos))),
-          d3.max(dtef.map(d => d3.max(d.puntos))) ]))
-      */
-
-
     },
     creandoCajas() {
       this.grupo_contenedor.selectAll("g.grupo-caja").remove();
@@ -242,9 +224,6 @@ export default {
           .style("stroke", (d) => {
             return this.variables.color
           });
-          // .style("cursor", "pointer");
-
-
       this.cajas_line_vertical = this.grupos_cajas
           .append("line")
           .datum((d) => d[1]);
@@ -275,15 +254,6 @@ export default {
           .enter()
           .append("circle")
           .attr("class", "atipicos")
-
-      // if (this.tooltip_activo) {
-      //   this.svg
-      //       .on("mousemove", (evento) => {
-      //         this.mostrarTooltip(evento)
-      //       })
-      //       .on("mouseout", this.cerrarTooltip)
-      // }
-
     },
     actualizandoCajas() {
       // Estilo a cada elemento de grupo-caja
@@ -356,15 +326,13 @@ export default {
 
       this.grupos_cajas
           .attr("transform", (d) => `translate(${this.escalaX(d[0])} ,0)`)
-      //.on("click",(evento, datum ) => this.mostrarTooltip(evento, datum))
-
       if (this.tooltip_activo) {
         this.svg.on('mousemove', (evento) => {
           this.mostrarTooltip((evento))
         })
-        .on('mouseout', () => {
-          this.cerrarTooltip()
-        });
+            .on('mouseout', () => {
+              this.cerrarTooltip()
+            });
       }
     },
     reescalandoPantalla() {

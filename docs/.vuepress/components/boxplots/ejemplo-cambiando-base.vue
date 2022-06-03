@@ -20,7 +20,7 @@
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-      </DaiBoxPlot>
+    </DaiBoxPlot>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
   data: function () {
     return {
       datos: boxplotejemplo1,
-      variables: {'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#f00'},
+      variables: {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#f00'},
       titulos_eje_x: 'Empresas',
       titulos_eje_y: 'Acciones vendidas',
       base_seleccionada: 1,
@@ -45,13 +45,13 @@ export default {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
         this.datos = boxplotejemplo2;
-        this.variables = {'grupos':'nombre_categoria','variable_dist':'metrica','color':'#800'};
+        this.variables = {'grupos': 'nombre_categoria', 'variable_dist': 'metrica', 'color': '#800'};
         this.titulos_eje_x = 'Categorías';
         this.titulos_eje_y = 'Métrica';
       } else {
         this.base_seleccionada = 1;
         this.datos = boxplotejemplo1;
-        this.variables = {'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#800080'};
+        this.variables = {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#800080'};
         this.titulos_eje_x = 'Empresas';
         this.titulos_eje_y = 'Acciones vendidas';
       }
@@ -60,19 +60,21 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 $border-radius-tarjeta: 8px;
 
-div#barras_cambio_base{
+div#boxplot_cambio_base {
   border: solid 1px #000;
   border-radius: $border-radius-tarjeta;
-  div.encabezado{
+
+  div.encabezado {
 
     .titulo-visualizacion {
       font-size: 16px;
       padding: 10px 10px 0;
       margin: 0;
     }
+
     .fecha-actualizacion {
       font-size: 10px;
       padding: 0 10px;
@@ -80,14 +82,17 @@ div#barras_cambio_base{
     }
 
   }
-  div.pie{
+
+  div.pie {
     padding: 2px 15px;
-    button{
+
+    button {
       border: none;
       font-size: 14px;
       margin: 0px;
       padding: 5px 10px;
-      &:hover  {
+
+      &:hover {
         background: #141414;
         color: #fff;
       }
@@ -95,7 +100,7 @@ div#barras_cambio_base{
 
     border-radius: $border-radius-tarjeta;
     box-shadow: 0px -5px 5px -1px rgb(221, 221, 221);
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 
 }
