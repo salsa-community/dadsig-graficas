@@ -346,9 +346,6 @@
 				
 				.attr("d",(dd) => 
 						{
-							console.log(d3.line()
-							.x((d) =>  this.escalaX(d.fech) )
-							.y((d) =>  this.escalaY(d.cat) )(dd))
 						return d3.line()
 							.x((d) =>  this.escalaX(d.fech) )
 							.y((d) =>  this.escalaY(d.cat) )(dd)}
