@@ -8,8 +8,8 @@
       :variables_categorias="edos_seleccionados"
       :conversionTemporal="conversionTemporal"
       :titulo_eje_y="'Titulo eje y'"
-	  :titulo_eje_x="'Titulo eje x'"
-      :margen="{arriba: 10, abajo: 20, izquierda: 30, derecha: 30}"
+	    :titulo_eje_x="'Titulo eje x'"
+      :margen="{arriba: 10, abajo: 20, izquierda: 50, derecha: 30}"
       :escala_logaritmica="true"
     >
         <template slot="encabezado">
