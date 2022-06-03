@@ -10,9 +10,26 @@ sidebar: auto
 Para usar los componentes en un proyecto de vue, los pasos son los siguientes
 
 ### Instalación
-Instalar en la terminal con `npm`
+Actualmente se puede instalar en la terminal con `npm` siempre y cuando se tenga el repositorio en local mediante la siguiente línea 
 
-`npm install git+https://devtemp-invitado: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@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}`
+```
+npm install ruta_al_repositorio/dai-graficas
+```
+
+cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tener el repositorio en local, de la siguiente forma: 
+
+
+```
+npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}
+```
+
+en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se mantiene privado. 
+
+Cuando se publique en `npm`, la instalación será de la siguiente manera
+
+```
+npm install dai-viz
+```
 
 ### Registrando el componente en Vue
 

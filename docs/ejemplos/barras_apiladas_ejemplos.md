@@ -190,7 +190,7 @@ export default {
           { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#231123" },
           { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#82204A" },
           { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#558C8C" },
-					{ id: "cantidad_4", nombre_colores: "cantidad 4", color: "#E8DB7D" },
+		  { id: "cantidad_4", nombre_colores: "cantidad 4", color: "#E8DB7D" },
           { id: "cantidad_5", nombre_colores: "cantidad 5", color: "#DBC2CF" }
         ];
 				
