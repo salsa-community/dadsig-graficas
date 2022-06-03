@@ -1,3 +1,32 @@
+// typografia
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../../../src/assets/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../../../src/assets/fonts/Montserrat-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../../../src/assets/fonts/Montserrat-SemiBold.ttf");
+}
+
+body{
+    font-family: "Montserrat";
+}
+
 :root{
     --content-width: 1000px;
     --sidebar-width: 0px;
