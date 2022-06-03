@@ -1,28 +1,31 @@
 <template>
-  <div>
-    <p>Ejemplo básico sin interacción</p>
-    <DaiLineas
-      :linea_id="'lineas1'" 
-      ref="lineas1"
+  <DaiLineas
+      :linea_id="'lineas2'" 
+      ref="lineas2"
       :datos="datos"
       :nombre_clumna_horizontal="'fecha'"
       :variables_categorias="edos_seleccionados"
       :conversionTemporal="conversionTemporal"
       :titulo_eje_y="'Titulo eje y'"
-			:titulo_eje_x="'Titulo eje x'"
+	  :titulo_eje_x="'Titulo eje x'"
       :margen="{arriba: 10, abajo: 20, izquierda: 30, derecha: 30}"
-      :tooltip_activo ="false"
-    />
-
-
-  </div>
+    >
+      <template slot="encabezado">
+					<div class="encabezado">
+						
+						<h3 class="titulo-visualizacion">Titulo de visualización de una o dos líneas</h3>
+						<p class="fecha-actualizacion" ><b>Fecha de actualizacion: </b> 00/00/2022</p>
+						<p class="instruccional">Texto instruccional Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
+				</template>
+    </DaiLineas>  
 </template>
 
 <script>
 import * as d3 from "d3";
 import data_edos from "./data_edos.json"
 export default {
-  name: "ejemplo-basico",
+  name: "ejemplo-slots-tooltips",
   
   data:function(){
     return {
@@ -242,7 +245,6 @@ div.nomenclatura{
 		}
 	}
 }
-
 
 footer{
   margin-top: 200px;
