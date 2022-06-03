@@ -1,28 +1,38 @@
 <template>
-  <div>
-    <p>Ejemplo básico sin interacción</p>
     <DaiLineas
-      :linea_id="'lineas1'" 
-      ref="lineas1"
+      :linea_id="'lineas3'" 
+      ref="lineas3"
+      class="contenedor-lineas-elaboradas"
       :datos="datos"
       :nombre_clumna_horizontal="'fecha'"
       :variables_categorias="edos_seleccionados"
       :conversionTemporal="conversionTemporal"
       :titulo_eje_y="'Titulo eje y'"
-			:titulo_eje_x="'Titulo eje x'"
+	  :titulo_eje_x="'Titulo eje x'"
       :margen="{arriba: 10, abajo: 20, izquierda: 30, derecha: 30}"
-      :tooltip_activo ="false"
-    />
-
-
-  </div>
+      :escala_logaritmica="true"
+    >
+        <template slot="encabezado">
+	        <div class="encabezado">
+			    <h3 class="titulo-visualizacion">Titulo de visualización de una o dos líneas</h3>
+			    <p class="fecha-actualizacion" ><b>Fecha de actualizacion: </b> 00/00/2022</p>
+			    <p class="instruccional">Texto instruccional Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    </div>
+	    </template>
+         <template slot="pie">
+            <div class= "pie">
+                <p>Pie de gráfica</p>
+                <button class="boton-base" @click="cambiaBaseLineas">Cambia la base</button>   
+            </div>
+        </template> 
+          
+    </DaiLineas>  
 </template>
-
 <script>
 import * as d3 from "d3";
 import data_edos from "./data_edos.json"
 export default {
-  name: "ejemplo-basico",
+  name: "ejemplo-cambiando-base",
   
   data:function(){
     return {
@@ -217,6 +227,11 @@ div.pie{
 		border-radius: $border-radius-tarjeta;
 		box-shadow: 0px -5px 5px -1px rgb(221, 221, 221);
 		margin-bottom:10px;
+        .boton-base{
+            border: solid 1px black;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
 	}
 
 div.nomenclatura{

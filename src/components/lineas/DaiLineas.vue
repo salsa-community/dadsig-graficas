@@ -5,12 +5,12 @@
 		<div class="contenedor-tooltip-svg">
 			<div class="tooltip"> 
 				<div class="tooltip-contenido">
-					<div class="tooltip-encabezado">
+					<div class="contenedor-boton-cerrar">
 						<button class="boton-cerrar-tooltip" @click="cerrarTooltip">
 							&times;
 						</button>
 					</div>
-					<div class="tooltip-cuerpo"></div>
+					<div class="tooltip-cifras"></div>
 				</div>
 			</div>
 			<div class="rotation-wrapper-outer">
@@ -96,17 +96,21 @@
 				type: String,
 				default: ()=> "general"
 			},
+			tooltip_activo: {
+				type: Boolean,
+				default: function() {return true}
+			},
 			textoTooltip: {
 				type: Function,
 				default:  function(){
 					if(this.tipo_tooltip == "general"){
 						let total_muestras = d3.sum(this.variables_categorias.map((d) => this.tooltip_data_seleccionada[d.cve]));
-						let cifras_variables = this.variables_categorias.map((d) => `<li>
-							<span class="span-tooltip-color" style="background: ${d.color} "></span>
+						let cifras_variables = this.variables_categorias.map((d) => `<p>
+							<span class="nomenclatura-tooltip" style="background: ${d.color} "></span>
 							${d.cve} <b>${(this.tooltip_data_seleccionada[d.cve]).toLocaleString("en")}</b>
 							(${Math.round(100 * this.tooltip_data_seleccionada[d.cve]/total_muestras)}%)
-							</li>`)
-						return `<ul class="tooltip-lineas">${cifras_variables.join("")}</ul>`
+							</p>`)
+						return `${cifras_variables.join("")}`
 					}
 					else if (this.tipo_tooltip == "individual"){
 						let entidad = this.variables_categorias.filter(d=> d.cve == this.tooltip_data_seleccionada.cve)[0]
@@ -319,12 +323,15 @@
 						.attr("class", "puntos")
 						
 				}
-				this.svg
+				if(this.tooltip_activo){
+					this.svg
 					.on("mousemove", (evento) => {
 						if(this.tipo_tooltip == "individual")this.mostrarTooltipIndividual(evento);
 						else if (this.tipo_tooltip == "general")this.mostrarTooltipGeneral(evento);
 					})
 					.on("mouseout",this.cerrarTooltip)
+				}
+				
 			},
 			actualizandoLineas() {
 				this.grupos_lineas
@@ -446,7 +453,7 @@
 						.style("padding","0 3px 0 10px");
 					
 					contenido_tooltip
-						.select("div.tooltip-cuerpo")
+						.select("div.tooltip-cifras")
 						.html(this.textoTooltip())
 						.style("margin","0")
 						.style("padding","0 0 5px 0")
@@ -494,7 +501,7 @@
 
 
 					contenidoTooltip
-						.select('div.tooltip-cuerpo')
+						.select('div.tooltip-cifras')
 						.html(this.textoTooltip())
 						.style('margin', '0')
 						.style('padding', '0');
@@ -550,9 +557,10 @@
 
 		div.tooltip {
             color:#fff;
+            font-size: 12px;
             position: absolute;
-			visibility: hidden;
             z-index: 2;
+			visibility: hidden;
         }
         div.tooltip::v-deep 
             div.tooltip-cifras{
@@ -569,7 +577,7 @@
                 }
 
 		}
-        div.tooltip div.tooltip-encabezado{
+        div.tooltip div.contenedor-boton-cerrar{
             height: auto;
             display: flex;
             width: 100%;
@@ -577,9 +585,13 @@
             font-weight: 600;
         }
         div.tooltip button.boton-cerrar-tooltip{
-            background: none;
+            background: #fff;
             border:none;
-            padding: 0;
+			font-size: 30px;
+			line-height: .9;
+			font-weight: 300;
+            padding: 0 5px;
+			border-radius: 5px;
 			margin: 0 0 0 auto;
             @media (min-width: 768px) {
                 display: none;	
