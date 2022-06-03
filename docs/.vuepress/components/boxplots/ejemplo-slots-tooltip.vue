@@ -4,8 +4,8 @@
         ref="cajas_slots"
         :caja_id="'boxplot_slots'"
         :datos="datos"
-        :titulo_eje_x="'Número de acciones vendidas'"
-        :titulo_eje_y="'Empresa'"
+        :titulo_eje_x="'Empresa'"
+        :titulo_eje_y="'Acciones vendidas'"
         :variables="{'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#00f'}"
     >
       <template slot="encabezado">
