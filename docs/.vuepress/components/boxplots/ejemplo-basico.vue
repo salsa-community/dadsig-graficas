@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import boxplotejemplo from "./box_plot_ejemplo.json"
+import boxplotejemplo from "./box_plot_ejemplo_1.json"
 
 export default {
   name: 'box_plot_ejemplo_basico',

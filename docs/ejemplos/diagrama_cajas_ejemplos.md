@@ -126,9 +126,11 @@ por default ya se puede ver un tooltip.
 
 ## Modificando datos
 
-El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega un poco de estilo y algunos métodos para modificar los datos que se están pintando. Las bases se cargan desde archivos .json y se agregó un poco de estilo. El resultado es el siguiente:
+El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega un poco de estilo y algunos métodos para 
+modificar los datos que se están pintando. Las bases se cargan desde archivos `.json` y se agregó un poco de estilo. 
+El resultado es el siguiente:
 
-<barras-apiladas-ejemplo-cambiando-base/>
+<boxplots-ejemplo-cambiando-base/>
 
 
 El `<template>` es el siguiente:
