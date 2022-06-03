@@ -16,7 +16,7 @@
 import boxplotejemplo from "./box_plot_ejemplo.json"
 
 export default {
-  name: 'ejemplo_basico',
+  name: 'box_plot_ejemplo_basico',
 
   data: function () {
     return {

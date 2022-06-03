@@ -3,7 +3,7 @@
 
 En esta sección se detallan 3 distintos casos de uso del componente.
 
-## Gráfica estática con tooltip
+## Gráfica estática
 Se ingresa un _Array_ de datos con tantos objetos como datos desagregados se tengan. Cada objeto contendrá el nombre de 
 la variable categórica (a graficar en el eje horizontal) y nombre y valor de su correspondiente métrica (a agruparse o 
 no dentro de los límites de los cuartiles dependiendo del valor de la métrica).
@@ -89,83 +89,13 @@ ya incluye todo dentro del template y el script. El resultado es el siguiente,
 El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados y pies de gráficas para poner títulos, notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
 
 ```HTML
-<DaiBarrasApiladas
-    :barras_apiladas_id="'barras_slot'"
-    :datos="[
-        {
-            nombre_rectangulos: 'A',
-            cantidad_1: 120,
-            cantidad_2: 40,
-            cantidad_3: 40,
-        },
-        {
-            nombre_rectangulos: 'B',
-            cantidad_1: 100,
-            cantidad_2: 30,
-            cantidad_3: 40,
-        },
-        {
-            nombre_rectangulos: 'C',
-            cantidad_1: 90,
-            cantidad_2: 60,
-            cantidad_3: 40,
-        },
-        {
-            nombre_rectangulos: 'D',
-            cantidad_1: 70,
-            cantidad_2: 60,
-            cantidad_3: 10,
-        },
-        {
-            nombre_rectangulos: 'E',
-            cantidad_1: 40,
-            cantidad_2: 30,
-            cantidad_3: 80,
-        },
-        {
-            nombre_rectangulos: 'F',
-            cantidad_1: 60,
-            cantidad_2: 50,
-            cantidad_3: 30,
-        },
-    ]"
-    :variables="[
-        { id: 'cantidad_1', nombre_colores: 'cantidad 1', color: '#721817' },
-        { id: 'cantidad_2', nombre_colores: 'cantidad 2', color: '#2B4162' },
-        { id: 'cantidad_3', nombre_colores: 'cantidad 3', color: '#0B6E4F' },
-    ]"
-    :nombre_barra="'nombre_rectangulos'"
-    :nombre_color="'nombre_colores'"
-    titulo_eje_y="Eje vertical"
-    titulo_eje_x="Eje horizontal"
->
-    <template slot="encabezado">
-    <div>
-        <h3>Título slots</h3>
-        <p>
-        Tanto el título que aparece arriba, como este texto, se integran
-        como slot. Se puede estilizar segun las necesidades con un poco de
-        CSS o, en su momento, importando el sistema de diseño
-        </p>
-    </div>
-    </template>
-    <template slot="pie">
-    <div>
-        <h3>Pie de gráfica</h3>
-        <p>
-        Este otro bloque corresponde al slot de pie de gráfica, en donde
-        usualmente se ponen nomenclaturas, notas o controles, y también
-        puede modificarse con CSS según las necesidades.
-        </p>
-    </div>
-    </template>
-</DaiBarrasApiladas>
+
 ```
 
 Y el gráfico resultante es el siguiente, observe que si no se especifica la propiedad de `:tooltip_activo="false"`, por default ya se puede ver un tooltip
 
 
-<barras-apiladas-ejemplo-slots-tooltip/>
+<boxplots-ejemplo-slots-tooltip/>
 
 ## Modificando datos
 

@@ -241,8 +241,8 @@ export default {
           })
           .style("stroke", (d) => {
             return this.variables.color
-          })
-          .style("cursor", "pointer");
+          });
+          // .style("cursor", "pointer");
 
 
       this.cajas_line_vertical = this.grupos_cajas
