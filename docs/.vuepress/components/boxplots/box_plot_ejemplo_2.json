@@ -1,0 +1,802 @@
+[
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 512
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 112
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 420
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 269
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 130
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 138
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 188
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 416
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 298
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 548
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 84
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 289
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 69
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 338
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 208
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 527
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 7
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 365
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 217
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 192
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 107
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 489
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 379
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 213
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 445
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 320
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 124
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 359
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 43
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 495
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 375
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 99
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 507
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 206
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 210
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 520
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 48
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 50
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 338
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 357
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 317
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 29
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 412
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 394
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 399
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 493
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 11
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 142
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 73
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 27
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 432
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 226
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 41
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 78
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 310
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 368
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 404
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 451
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 310
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 308
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 478
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 63
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 255
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 536
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 328
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 342
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 303
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 228
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 464
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 64
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 106
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 310
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 75
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 364
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 139
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 439
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 107
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 333
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 361
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 441
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 482
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 80
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 382
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 520
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 495
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 203
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 154
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 460
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 62
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 177
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 338
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 147
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 326
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 347
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 94
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 384
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 48
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 470
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 356
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 509
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 400
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 494
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 83
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 23
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 325
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 371
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 245
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 348
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 113
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 540
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 271
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 144
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 135
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 215
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 30
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 187
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 469
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 38
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 376
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 163
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 475
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 364
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 32
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 384
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 391
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 474
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 80
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 45
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 524
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 101
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 25
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 496
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 359
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 273
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 302
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 457
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 477
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 44
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 365
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 310
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 495
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 459
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 319
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 322
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 358
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 181
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 214
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 320
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 314
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 500
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 40
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 214
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 273
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 430
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 157
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 211
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 495
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 118
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 181
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 212
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 530
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 322
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 204
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 459
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 155
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 491
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 194
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 545
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 448
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 90
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 60
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 522
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 245
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 490
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 161
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 339
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 146
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 33
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 382
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 204
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 77
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 110
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 464
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 33
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 72
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 220
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 476
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 358
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 136
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 217
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 338
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 262
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 255
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 342
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 543
+  },
+  {
+    "nombre_categoria": "Categor\u00eda A",
+    "metrica": 355
+  },
+  {
+    "nombre_categoria": "Categor\u00eda B",
+    "metrica": 40
+  },
+  {
+    "nombre_categoria": "Categor\u00eda C",
+    "metrica": 246
+  },
+  {
+    "nombre_categoria": "Categor\u00eda D",
+    "metrica": 336
+  },
+  {
+    "nombre_categoria": "Categor\u00eda E",
+    "metrica": 409
+  }
+]
