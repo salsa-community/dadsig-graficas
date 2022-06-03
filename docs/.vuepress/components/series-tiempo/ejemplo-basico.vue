@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Ejemplo básico sin interacción</p>
     <DaiLineas
       :linea_id="'lineas1'" 
       ref="lineas1"
@@ -182,7 +181,7 @@ div.contenedor-lineas-elaboradas {
 		
 	}
 
-div.encabezado{
+/*div.encabezado{
 	.titulo-proyecto {
 		padding: 10px 10px 0px 10px;
 		text-align: right;
@@ -241,7 +240,7 @@ div.nomenclatura{
 			padding-left: 10px;
 		}
 	}
-}
+}*/
 
 
 footer{
