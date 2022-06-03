@@ -1,33 +1,10 @@
 
 # DaiBoxPlot
 
-En esta sección se detallan 3 distintos casos de uso del componente.
-
-## Gráfica estática
-Se ingresa un _Array_ de datos con tantos objetos como datos desagregados se tengan. Cada objeto contendrá el nombre de 
-la variable categórica (a graficar en el eje horizontal) y nombre y valor de su correspondiente métrica (a agruparse o 
-no dentro de los límites de los cuartiles dependiendo del valor de la métrica).
-
-En este ejemplo, el componente se escribe de la siguiente manera
-
-```HTML 
-    <DaiBoxPlot
-        ref="cajas_basica"
-        :caja_id="'boxplot_basica'"
-        :datos="datos"
-        :titulo_eje_x="'Número de acciones vendidas'"
-        :titulo_eje_y="'Empresa'"
-        :variables="{'grupos':'nombre_empresa',
-                     'variable_dist':'acciones_vendidas',
-                     'color':'#000'}"
-        :tooltip_activo="false"
-    />
-```
-
-Dado que el diagrama de cajas y bigotes requiere que los datos se encuentren completamente 
-desagregados, se recomienda agregar los mismos por medio de un archivo `.json` externo. Lo 
-anterior se hace por medio de un `import` en el apartado `<script/>`. En el siguiente extracto 
-de código se agrega el archivo `box_plot_ejemplo.json` que grafica el número de acciones vendidas 
+En esta sección se detallan 3 distintos casos de uso del componente. Dado que el diagrama de cajas y bigotes requiere 
+que los datos se encuentren completamente desagregados, se recomienda agregar los mismos por medio de un archivo `.json`
+externo. Lo anterior se hace por medio de un `import` en el apartado `<script/>`. En el siguiente extracto
+de código se agrega el archivo `box_plot_ejemplo.json` que grafica el número de acciones vendidas
 por diversas empresas.
 
 ```HTML
@@ -44,9 +21,8 @@ por diversas empresas.
     }
 </script>
 ```
-
-En el caso contrario en el que se quieran agregar los datos directamente como un arreglo en el 
-template del componente se deberían de colocar de la siguiente manera (nótese que aquí se 
+En el caso contrario en el que se quieran agregar los datos directamente como un arreglo en el
+template del componente se deberían de colocar de la siguiente manera (nótese que aquí se
 abrevia el conjunto de datos usando "..."),
 
 ```HTML 
@@ -76,6 +52,27 @@ abrevia el conjunto de datos usando "..."),
                      'variable_dist':'acciones_vendidas',
                      'color':'#000'}"
         :tooltip_activo="false"
+/>
+```
+
+## Gráfica estática
+Se ingresa un _Array_ de datos con tantos objetos como datos desagregados se tengan. Cada objeto contendrá el nombre de 
+la variable categórica (a graficar en el eje horizontal) y nombre y valor de su correspondiente métrica (a agruparse o 
+no dentro de los límites de los cuartiles dependiendo del valor de la métrica).
+
+En este ejemplo, el componente se escribe de la siguiente manera
+
+```HTML 
+    <DaiBoxPlot
+        ref="cajas_basica"
+        :caja_id="'boxplot_basica'"
+        :datos="datos"
+        :titulo_eje_x="'Número de acciones vendidas'"
+        :titulo_eje_y="'Empresa'"
+        :variables="{'grupos':'nombre_empresa',
+                     'variable_dist':'acciones_vendidas',
+                     'color':'#000'}"
+        :tooltip_activo="false"
     />
 ```
 
@@ -89,11 +86,41 @@ ya incluye todo dentro del template y el script. El resultado es el siguiente,
 El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados y pies de gráficas para poner títulos, notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
 
 ```HTML
-
+    <DaiBoxPlot
+        ref="cajas_slots"
+        :caja_id="'boxplot_slots'"
+        :datos="datos"
+        :titulo_eje_x="'Número de acciones vendidas'"
+        :titulo_eje_y="'Empresa'"
+        :variables="{'grupos':'nombre_empresa',
+                     'variable_dist':'acciones_vendidas',
+                     'color':'#00f'}"
+    >
+    <template slot="encabezado">
+        <div>
+            <h3>Título slots</h3>
+            <p>
+                Tanto el título que aparece arriba, como este texto, se integran
+                como slot. Se puede estilizar segun las necesidades con un poco de
+                CSS o, en su momento, importando el sistema de diseño
+            </p>
+        </div>
+    </template>
+    <template slot="pie">
+        <div>
+            <h3>Pie de gráfica</h3>
+            <p>
+                Este otro bloque corresponde al slot de pie de gráfica, en donde
+                usualmente se ponen nomenclaturas, notas o controles, y también
+                puede modificarse con CSS según las necesidades.
+            </p>
+        </div>
+    </template>
+    </DaiBoxPlot>
 ```
 
-Y el gráfico resultante es el siguiente, observe que si no se especifica la propiedad de `:tooltip_activo="false"`, por default ya se puede ver un tooltip
-
+Y el gráfico resultante es el siguiente, observe que si no se especifica la propiedad de `:tooltip_activo="false"`, 
+por default ya se puede ver un tooltip.
 
 <boxplots-ejemplo-slots-tooltip/>
 
