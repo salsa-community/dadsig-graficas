@@ -224,13 +224,24 @@ div.pie{
 		display: flex;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
+    flex-direction: column;
 		border-radius: $border-radius-tarjeta;
 		box-shadow: 0px -5px 5px -1px rgb(221, 221, 221);
 		margin-bottom:10px;
+      p{
+        margin-left: 15px;
+        font-weight: 600;
+
+      }
         .boton-base{
             border: solid 1px black;
-            margin-top: 10px;
             margin-left: 10px;
+            width: 145px;
+            height: 50px;
+            &:hover{
+              color: #fff;
+              background-color: black;
+            }
         }
 	}
 

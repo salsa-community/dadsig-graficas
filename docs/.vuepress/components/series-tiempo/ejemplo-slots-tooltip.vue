@@ -18,6 +18,11 @@
 						<p class="instruccional">Texto instruccional Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 					</div>
 				</template>
+        <template slot="pie">
+        <div class= "pie">
+            <p>Pie de gráfica</p>
+        </div>
+    </template>  
     </DaiLineas>  
 </template>
 
