@@ -96,6 +96,10 @@
 				type: String,
 				default: ()=> "general"
 			},
+			tooltip_activo: {
+				type: Boolean,
+				default: function() {return true}
+			},
 			textoTooltip: {
 				type: Function,
 				default:  function(){
@@ -319,12 +323,15 @@
 						.attr("class", "puntos")
 						
 				}
-				this.svg
+				if(this.tooltip_activo){
+					this.svg
 					.on("mousemove", (evento) => {
 						if(this.tipo_tooltip == "individual")this.mostrarTooltipIndividual(evento);
 						else if (this.tipo_tooltip == "general")this.mostrarTooltipGeneral(evento);
 					})
 					.on("mouseout",this.cerrarTooltip)
+				}
+				
 			},
 			actualizandoLineas() {
 				this.grupos_lineas
