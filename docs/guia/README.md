@@ -4,28 +4,34 @@ sidebar: auto
 
 # Guía de inicio
 
-**DAI-VIZ** es una librería de componentes de visualización de datos creados con Vue (v2) y d3.js (v7). Actualmente cuenta con 3 tipos de gráficos que proveen los métodos para construir gráficas interactivas y los atributos necesarios para hacerles modificaciones. 
+**DAI-VIZ** es una biblioteca de componentes de visualización de datos creados con [Vue.js](https://vuejs.org/) en su 
+versión 2.6.11 y con [d3.js](https://d3js.org/) en su versión 7.0.0. Actualmente
+cuenta con 3 tipos de componentes que proveen los métodos para construir gráficas interactivas y los atributos necesarios
+para hacerles modificaciones.
 
 ## Cómo empezar
+
 Para usar los componentes en un proyecto de vue, los pasos son los siguientes
 
 ### Instalación
-Actualmente se puede instalar en la terminal con `npm` siempre y cuando se tenga el repositorio en local mediante la siguiente línea 
+
+Se puede instalar en la terminal con `npm` siempre y cuando se tenga el repositorio clonado en local mediante. Por 
+medio de una terminal ejecutar la siguiente línea de comando
 
 ```
 npm install ruta_al_repositorio/dai-graficas
 ```
 
-cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tener el repositorio en local, de la siguiente forma: 
-
+cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tenerlo clonado y se
+ hará de la siguiente forma:
 
 ```
 npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}
 ```
 
-en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se mantiene privado. 
+en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se mantiene privado.
 
-Cuando se publique en `npm`, la instalación será de la siguiente manera
+Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando
 
 ```
 npm install dai-viz
@@ -33,40 +39,45 @@ npm install dai-viz
 
 ### Registrando el componente en Vue
 
-En el archivo `src/main.js`, importar y registrar el componente que se vaya a utilizar, por ejemplo `DaiBarrasApiladas`
+Para poder utilizar un componente de esta biblioteca, es necesario importar y registrarlo en el archivo `src/main.js` 
+del proyecto a trabajar, por ejemplo en el siguiente script se está registrando e importando el componente de 
+`DaiBarrasApiladas` de esta biblioteca.
 
 ```Javascript
 import Vue from 'vue'
 import App from './App.vue'
 import {DaiBarrasApiladas} from "dai-graficas";
 import 'dai-graficas/dist/dai-graficas.css';
+
 Vue.use(DaiBarrasApiladas)
 
 new Vue({
-  render: h => h(App),
+    render: h => h(App),
 }).$mount('#app')
 ```
 
 ### Uso básico
 
-Habiendo instalado y registrando el componente, ya se puede usar dentro del `<template>` de otros componentes o vistas :
+Una vez instalado y registrando el componente, ya se puede usar dentro del `<template>` de otros componentes o vistas 
+como se muestra a continuación.
 
 ```HTML
+
 <DaiBarrasApiladas
-	:barras_apiladas_id="'barras_basicas_1'" 
-	:datos="[
+        :barras_apiladas_id="'barras_basicas_1'"
+        :datos="[
 		{nombre_rectangulos:'Nombre de variable 1 ', cantidad_1:120,cantidad_2:40,cantidad_3:40 },
 		{nombre_rectangulos:'Nombre de variable 2 ', cantidad_1:100,cantidad_2:30,cantidad_3:40 },
 		{nombre_rectangulos:'Nombre de variable 3 ', cantidad_1:20,cantidad_2:130,cantidad_3:540 },
 		{nombre_rectangulos:'Nombre de variable 4 ', cantidad_1:20,cantidad_2:130,cantidad_3:540 },
 	]"
-	:variables='[
+        :variables='[
 		{"id":"cantidad_1","nombre_colores":"cantidad 1","color":"yellow"},
 		{"id":"cantidad_2","nombre_colores":"cantidad 2","color":"magenta"},
 		{"id":"cantidad_3","nombre_colores":"cantidad 3","color":"blue"},
 	]'
-	:nombre_barra="'nombre_rectangulos'"
-	:nombre_color="'nombre_colores'"
+        :nombre_barra="'nombre_rectangulos'"
+        :nombre_color="'nombre_colores'"
 />
 ```
 
