@@ -22,8 +22,8 @@ especificar el nombre de la barra y los valores de sus subcategorías/colores, p
 incluidos en la base de datos. Por ejemplo: 
 ```
 [
-  {"id": "cantidad_1", "nombre_colores": "cantidad 1", "color": "yellow"},
-  {"id": "cantidad_2", "nombre_colores": "cantidad 2", "color": "magenta"}
+  {id: 'cantidad_1', nombre_colores: 'cantidad 1', color: 'yellow'},
+  {id: 'cantidad_2', nombre_colores: 'cantidad 2', color: 'magenta'}
 ]
 ``` 
 >> Con este parámetro se puede controlar cuantas subcategorías se quieran visualizar. , por ejemplo, si la base de datos tiene valores para `categoria_1`, `categoria_2` y `categoria_3`, pero en variables solo se especifican dos objetos para `categoria_2` y `categoria_3`, entonces la gráfica mostrará sólo estos últimos dos colores. `id` se refiere al nombre del identificador que se está usando en la base de datos, `nombre_colores` es una clave que puede cambiar y se debe especificar el nombre de dicha clave en uno de los parámetros de abajo, pero se refiere al texto que quiere que aparezca para el cliente, ya sea en tooltips o en nomenclatura, por ejemplo, y `color` es el color que se quiere que tenga cada subcategoría.
@@ -42,3 +42,28 @@ A continuación se mencionan otros parámetros que se pueden usar para modificar
 * `alto_vis` : (_Number_) altura del svg, 195 por defecto
 * `tooltip_activo`: (_Boolean_) `true` por default, muestra el tooltip. Si es `false`, entonces no mostrarà tooltip
 * `textoTooltip`: (_Function_) que debe regresar el texto que queremos en el tooltip. Para usar los datos de la barra más cercana al cursor, podemos acceder mediante `this.$refs['barras1'].tooltip_data_seleccionada`suponiendo que agreamos a nuestro componente `ref="barras1"`
+
+## Caso particular: Barras Simples
+
+Cuando los datos introducidos sólo describen una categoría y una métrica, el componente construirá una gráfica de 
+barras simples.
+
+Por ejemplo el arreglo `datos`,
+
+```
+[
+{categoria: 'Variable A', metrica: 120},
+{categoria: 'Variable B ', metrica: 150}
+{categoria: 'Variable C ', metrica: 72}
+]
+```
+
+y el arreglo `variables`,
+
+```
+[
+  {id: 'metrica', nombre_colores: 'metrica', color: 'blue'},
+]
+``` 
+
+<barras-apiladas-ejemplo-simples/>
