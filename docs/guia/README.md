@@ -33,7 +33,7 @@ en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se manti
 Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando
 
 ```
-npm install dai-viz
+npm install dai-graficas
 ```
 
 ### Registrando el componente en Vue

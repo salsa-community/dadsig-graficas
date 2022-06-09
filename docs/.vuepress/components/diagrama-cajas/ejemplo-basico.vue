@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <DaiBoxPlot
+    <DaiDiagramCajas
         ref="cajas_basica"
-        :caja_id="'boxplot_basica'"
+        :caja_id="'diagramacajas_basica'"
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import boxplotejemplo from "./box_plot_ejemplo_1.json"
+import diagramacajasejemplo from "./diagramacajas_ejemplo_1.json"
 
 export default {
   name: 'box_plot_ejemplo_basico',
 
   data: function () {
     return {
-      datos: boxplotejemplo,
+      datos: diagramacajasejemplo,
     }
   },
 }

@@ -71,8 +71,8 @@ module.exports = {
           collapsable: true,
           children: [
             'barras_apiladas_ejemplos',
+            'diagrama_cajas_ejemplos',
             'series_tiempo_ejemplos',
-            'diagrama_cajas_ejemplos'
           ]
         }
       ],
