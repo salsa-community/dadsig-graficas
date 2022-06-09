@@ -41,7 +41,7 @@
 import * as d3 from "d3";
 
 export default {
-  name: 'DaiBoxPlot',
+  name: 'DaiDiagramaCajas',
   props: {
     caja_id: String,
     datos: Array,
@@ -90,7 +90,7 @@ export default {
     variables(nuevo_valor) {
       this.variables = nuevo_valor;
       this.grupos_cajas
-          .style("fill", (d) => this.variables.color)
+          .style("fill", () => this.variables.color)
     },
     datos() {
       this.configurandoDimensionesParaSVG();
@@ -218,10 +218,10 @@ export default {
           .enter()
           .append("g")
           .attr("class", "grupo-caja")
-          .style("fill", (d) => {
+          .style("fill", () => {
             return this.variables.color
           })
-          .style("stroke", (d) => {
+          .style("stroke", () => {
             return this.variables.color
           });
       this.cajas_line_vertical = this.grupos_cajas

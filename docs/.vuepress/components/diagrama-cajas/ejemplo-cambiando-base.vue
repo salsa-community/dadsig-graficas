@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <DaiBoxPlot
+    <DaiDiagramaCajas
         ref="cajas_cambio_base"
         :caja_id="'boxplot_cambio_base'"
         :datos="datos"
@@ -20,20 +20,20 @@
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-    </DaiBoxPlot>
+    </DaiDiagramaCajas>
   </div>
 </template>
 
 <script>
-import boxplotejemplo1 from "./box_plot_ejemplo_1.json"
-import boxplotejemplo2 from "./box_plot_ejemplo_2.json"
+import diagramacajasejemplo1 from "./diagramacajas_ejemplo_1.json"
+import diagramacajasejemplo2 from "./diagramacajas_ejemplo_2.json"
 
 export default {
-  name: 'box_plot_cambio_base',
+  name: 'diagramacajas_cambio_base',
 
   data: function () {
     return {
-      datos: boxplotejemplo1,
+      datos: diagramacajasejemplo1,
       variables: {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#f00'},
       titulos_eje_x: 'Empresas',
       titulos_eje_y: 'Acciones vendidas',
@@ -44,13 +44,13 @@ export default {
     alternandoBase() {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
-        this.datos = boxplotejemplo2;
+        this.datos = diagramacajasejemplo2;
         this.variables = {'grupos': 'nombre_categoria', 'variable_dist': 'metrica', 'color': '#800'};
         this.titulos_eje_x = 'Categorías';
         this.titulos_eje_y = 'Métrica';
       } else {
         this.base_seleccionada = 1;
-        this.datos = boxplotejemplo1;
+        this.datos = diagramacajasejemplo1;
         this.variables = {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#800080'};
         this.titulos_eje_x = 'Empresas';
         this.titulos_eje_y = 'Acciones vendidas';
@@ -63,7 +63,7 @@ export default {
 <style lang="scss">
 $border-radius-tarjeta: 8px;
 
-div#boxplot_cambio_base {
+div#diagramacajas_cambio_base {
   border: solid 1px #000;
   border-radius: $border-radius-tarjeta;
 

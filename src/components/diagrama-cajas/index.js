@@ -1,11 +1,11 @@
-import DaiBoxPlot from './DaiBoxPlot.vue'
+import DaiDiagramaCajas from './DaiDiagramaCajas.vue'
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiBoxPlot.name,DaiBoxPlot);
+    Vue.component(DaiDiagramaCajas.name,DaiDiagramaCajas);
 }
 
 export default plugin;
@@ -13,5 +13,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiBoxPlot
+    DaiDiagramaCajas
 };

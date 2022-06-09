@@ -12,8 +12,6 @@ npm run docs:serve
 
 ```
 
-
-
 ### Lints and fixes files
 ```
 npm run lint

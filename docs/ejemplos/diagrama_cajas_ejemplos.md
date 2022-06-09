@@ -1,21 +1,21 @@
 
-# DaiBoxPlot
+# DaiDiagramaCajas
 
 En esta sección se detallan tres distintos casos de uso de este componente. Dado que el diagrama de cajas y bigotes requiere 
 que los datos se encuentren completamente desagregados, se recomienda agregar los mismos por medio de un archivo `.json`
 externo. Lo anterior se hace por medio de un `import` en el apartado `<script/>`. En el siguiente extracto
-de código se agrega el archivo `box_plot_ejemplo_1.json` que grafica el número de acciones vendidas
+de código se agrega el archivo `diagramacajas_ejemplo_1.json` que grafica el número de acciones vendidas
 por diversas empresas.
 
 ```HTML
 <script>
-    import boxplotejemplo from "./box_plot_ejemplo_1.json"
+    import diagramacajasejemplo from "./diagramacajas_ejemplo_1.json"
 
     export default {
-        name: 'box_plot_ejemplo_basico',
+        name: 'diagramacajas_ejemplo_basico',
         data: function () {
             return {
-                datos: boxplotejemplo,
+                datos: diagramacajasejemplo,
             }
         },
     }
@@ -26,9 +26,9 @@ template del componente, éstos se deberán de colocar de la siguiente manera (n
 abrevia el conjunto de datos usando "..."),
 
 ```HTML 
-<DaiBoxPlot
+<DaiDiagramaCajas
         ref="cajas_basica"
-        :caja_id="'boxplot_basica'"
+        :caja_id="'diagramacajas_basica'"
         :datos=[
                 {
                     "nombre_empresa": "Empresa A",
@@ -63,9 +63,9 @@ no dentro de los límites de los cuartiles dependiendo del valor de la métrica)
 En este ejemplo, el componente se escribe de la siguiente manera
 
 ```HTML 
-    <DaiBoxPlot
+    <DaiDiagramaCajas
         ref="cajas_basica"
-        :caja_id="'boxplot_basica'"
+        :caja_id="'diagramacajas_basica'"
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
@@ -79,16 +79,16 @@ En este ejemplo, el componente se escribe de la siguiente manera
 En este caso, no es necesario agregar elementos en el apartado `<style/>` pues este componente 
 ya incluye todo dentro del template y el script. El resultado es el siguiente,
 
-<boxplots-ejemplo-basico/>
+<diagrama-cajas-ejemplo-basico/>
 
 ## Uso de slots y tooltip
 
 El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados y pies de gráficas para poner títulos, notas, controles, nomenclaturas, etc. dentro del componente.
 
 ```HTML
-    <DaiBoxPlot
+    <DaiDiagramaCajas
         ref="cajas_slots"
-        :caja_id="'boxplot_slots'"
+        :caja_id="'diagramacajas_slots'"
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
@@ -116,13 +116,13 @@ El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados
             </p>
         </div>
     </template>
-    </DaiBoxPlot>
+    </DaiDiagramaCajas>
 ```
 
 Y el gráfico resultante es el siguiente, observe que si no se especifica la propiedad de `:tooltip_activo="false"`, 
 por default ya se puede ver un tooltip.
 
-<boxplots-ejemplo-slots-tooltip/>
+<diagrama-cajas-ejemplo-slots-tooltip/>
 
 ## Modificando datos
 
@@ -130,9 +130,9 @@ El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega un 
 modificar los datos que se están pintando. Las bases se cargan desde archivos `.json` externos. 
 
 ```HTML
-    <DaiBoxPlot
+    <DaiDiagramaCajas
         ref="cajas_cambio_base"
-        :caja_id="'boxplot_cambio_base'"
+        :caja_id="'diagramacajas_cambio_base'"
         :datos="datos"
         :titulo_eje_x="titulos_eje_x"
         :titulo_eje_y="titulos_eje_y"
@@ -150,7 +150,7 @@ modificar los datos que se están pintando. Las bases se cargan desde archivos `
             <button @click="alternandoBase">Cambia la data</button>
         </div>
     </template>
-</DaiBoxPlot>
+</DaiDiagramaCajas>
 ```
 
 En el `</script>` se agregan las bases y las funciones necesarias para alternar entre una y otra, mientras que en el 
@@ -158,15 +158,15 @@ apartado de `</sytyle>` se customizan propiedades como el marco de la gráfica, 
 
 ``` Javascript
 <script>
-import boxplotejemplo1 from "./box_plot_ejemplo_1.json"
-import boxplotejemplo2 from "./box_plot_ejemplo_2.json"
+import diagramacajas_ejemplo1 from "./diagramacajas_ejemplo_1.json"
+import diagramacajas_ejemplo2 from "./diagramacajas_ejemplo_2.json"
 
 export default {
-  name: 'box_plot_cambio_base',
+  name: 'diagramacajas_cambio_base',
 
   data: function () {
     return {
-      datos: boxplotejemplo1,
+      datos: diagramacajasejemplo1,
       variables: {'grupos': 'nombre_empresa', 
                   'variable_dist': 'acciones_vendidas',
                   'color': '#f00'},
@@ -179,7 +179,7 @@ export default {
     alternandoBase() {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
-        this.datos = boxplotejemplo2;
+        this.datos = diagramacajasejemplo2;
         this.variables = {'grupos': 'nombre_categoria',
                           'variable_dist': 'metrica',
                           'color': '#800'};
@@ -187,7 +187,7 @@ export default {
         this.titulos_eje_y = 'Métrica';
       } else {
         this.base_seleccionada = 1;
-        this.datos = boxplotejemplo1;
+        this.datos = diagramacajasejemplo1;
         this.variables = {'grupos': 'nombre_empresa',
                           'variable_dist': 'acciones_vendidas',
                           'color': '#800080'};
@@ -202,7 +202,7 @@ export default {
 
 El resultado es el siguiente:
 
-<boxplots-ejemplo-cambiando-base/>
+<diagrama-cajas-ejemplo-cambiando-base/>
 
 
 

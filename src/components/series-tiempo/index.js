@@ -1,11 +1,11 @@
-import DaiLineas from './DaiLineas.vue'
+import DaiSeriesTiempo from './DaiSeriesTiempo.vue'
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiLineas.name,DaiLineas);
+    Vue.component(DaiSeriesTiempo.name,DaiSeriesTiempo);
 }
 
 export default plugin;
@@ -13,5 +13,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiLineas
+    DaiSeriesTiempo
 };

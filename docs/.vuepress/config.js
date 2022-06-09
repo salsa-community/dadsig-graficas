@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'DAI-VIS',
+  title: 'DAI-GRAFICAS',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -21,7 +21,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
 
-  base: "/dai-vis/",
+  base: "/dai-graficas/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -71,8 +71,8 @@ module.exports = {
           collapsable: true,
           children: [
             'barras_apiladas_ejemplos',
+            'diagrama_cajas_ejemplos',
             'series_tiempo_ejemplos',
-            'diagrama_cajas_ejemplos'
           ]
         }
       ],
