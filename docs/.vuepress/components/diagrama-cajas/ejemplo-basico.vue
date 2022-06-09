@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <DaiDiagramCajas
+    <DaiDiagramaCajas
         ref="cajas_basica"
         :caja_id="'diagramacajas_basica'"
         :datos="datos"
