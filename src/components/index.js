@@ -1,10 +1,10 @@
 
 import * as DaiBarrasApiladas from "./barras-apiladas"
-import * as DaiLineas from "./lineas"
-import * as DaiBoxPlot from "./cajas"
+import * as DaiSeriesTiempo from "./series-tiempo"
+import * as DaiDiagramaCajas from "./diagrama-cajas"
 
 export {
   DaiBarrasApiladas,
-  DaiLineas,
-  DaiBoxPlot
+  DaiSeriesTiempo,
+  DaiDiagramaCajas
 }
