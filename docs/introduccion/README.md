@@ -4,25 +4,39 @@ sidebar: auto
 
 # Introducción
 
-**DAI-GRAFICAS** es una biblioteca de componentes de visualización de datos creados con [Vue.js](https://vuejs.org/) en
-su versión 2.6.11 y con [d3.js](https://d3js.org/) en su versión 7.0.0. Actualmente cuenta con 3 tipos de componentes
-que proveen los métodos para construir gráficas interactivas y los atributos necesarios para hacerles modificaciones.
+**DAI-GRAFICAS** es una biblioteca de componentes de [Vue.js](https://vuejs.org/) para la visualización de datos. Es 
+creada con la versión 2.6.11 [Vue.js](https://vuejs.org/) y con la versión 7.0.0 de [D3.js](https://D3js.org/).
 
 ## Cómo empezar
 
-Para usar los componentes en un proyecto de vue, los pasos son los siguientes
+### Requerimientos previos
+
+Es recomendable que la persona usuaria de esta biblioteca tenga conocimientos previos de 
+[Javascript](https://www.javascript.com/), así como de la creación de componentes en
+[Vue.js](https://vuejs.org/).
+
+Es necesario tener instalado el manejador de paquetes 
+[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) y el entorno de ejecución de javascript 
+[Node.js](https://nodejs.org/en/).
 
 ### Instalación
 
-Se puede instalar en la terminal con `npm` siempre y cuando se tenga el repositorio clonado en local mediante. Por medio
-de una terminal ejecutar la siguiente línea de comando
+#### Opción A
+
+Ir al [repositorio de github](https://github.com/conacyt-dai/dai-graficas) y clonarlo. Si no se sabe como
+[aquí](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) hay una guía de 
+como realizarlo. 
+
+Una vez clonado el repositorio, se puede instalar en la terminal con `npm` ejecutando la siguiente línea de comando,
 
 ```
 npm install ruta_al_repositorio/dai-graficas
 ```
 
-cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tenerlo clonado y se hará
-de la siguiente forma:
+#### Opción B 
+
+Cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tenerlo clonado y se hará
+también por medio de `npm` y ejecutando lo siguiente en la línea de comando,
 
 ```
 npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}
@@ -30,13 +44,37 @@ npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$the
 
 en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se mantiene privado.
 
-Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando
+#### Opción C
+
+Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando,
 
 ```
 npm install dai-graficas
 ```
 
-### Registrando el componente en Vue
+## Uso de componentes de visualización
+
+Las visualizaciones de esta biblioteca se importan como componentes a un proyecto existente de Vue. Se listan a 
+continuación las visualizaciones de datos que se pueden construir usando los componentes de esta biblioteca.
+
+| Componente | Visualización |
+|--|:-------------|
+| `<DaiBarrasApiladas/>` |Barras verticales simples|
+| `<DaiBarrasApiladas/>` |Barras verticales apiladas|
+| `<DaiBarrasApiladas/>` |Barras horizontales simples|
+| `<DaiBarrasApiladas/>` |Barras horizontales apiladas|
+| `<DaiDonas/>` |Donas  |
+| `<DaiDiagramaCajas/>` |Diagrama de cajas o Boxplot|
+| `<DaiSeriesTiempo/>` |Líneas con eje temporal (Serie de tiempo)|
+
+Se puede notar que distintos tipos de barras (sencillas, horizontales, verticales, etc.) se construyen usando el 
+mismo componente de visualización. Esto es porque por medio de parámetros se puede customizar un mismo gráfico de barras.
+Lo anterior y ejemplos de uso de todos los componentes de visualización se puede encontrar en el apartado 
+[Visualizaciones](http://localhost:8080/dai-graficas/visualizaciones/) de esta documentación.
+
+Los componentes disponibles en esta biblioteca se pueden encontrar en la carpeta `src/components/`.
+
+### Registrando el componente en un proyecto de Vue
 
 Para poder utilizar un componente de esta biblioteca, es necesario importar y registrarlo en el archivo `src/main.js`
 del proyecto a trabajar, por ejemplo en el siguiente script se está registrando e importando el componente de
@@ -57,7 +95,7 @@ new Vue({
 
 ### Uso básico
 
-Una vez instalado y registrando el componente, ya se puede usar dentro del `<template>` de otros componentes o vistas
+Una vez instalado y registrado el componente, ya se puede usar dentro de un `<template>` de otros componentes o vistas
 como se muestra a continuación.
 
 ```HTML
@@ -80,20 +118,35 @@ como se muestra a continuación.
 />
 ```
 
-## Acerca de
+En este script se especifican los parámetros del componente `DaiBarrasApiladas` como puden ser el id, los datos que se 
+usarán para construir las barras, etc.
 
-En esta sección se encuentra información de la construcción de la librería con la finalidad de proveer herramientas para colaboradorxs
+## Construyendo visualizaciones con Vue y D3
 
+A continuación se explica la lógica y estructura de los componentes de visualización de datos que se construyeron en 
+esta biblioteca. 
 
-## D3.js
+### D3.js
 
-[d3](https://d3js.org/) es una librería de javascript para crear documentos basados por datos.
+[D3](https://D3js.org/) es una biblioteca de javascript para crear documentos basados en datos. Permite crear y ligar 
+elementos de HTML a una base de datos, así como sus atributos y estilos. De esta forma se logran hacer representaciones
+visuales de los datos. Además, D3 contiene una extensa cantidad de funciones que permiten operar y manipular los datos, 
+desde encontrar promedios, máximos, mínimos, hasta agrupar bases de datos y transformarlas en estructuras más complejas.
 
-Permite crear y ligar elementos de HTML a una base de datos, así como sus atributos y estilos. De esta forma se logra hacer representaciones visuales de los datos.
+El formato de Gráficos Vectoriales Escalables ó [SVG](https://www.w3.org/Graphics/SVG/), es probablemente SVG el entorno
+más usado con D3 para hacer gráficos. Como su nombre lo índica este formato es vectorial y tiene una sintaxis muy 
+similar a la de HTML, es decir, existe una etiqueta `<svg></svg>` a la que se le pueden ir agregando elementos como 
+círculos, rectángulos, polígonos, lineas, y otro tipo de figuras más elaboradas como son los 
+[`path's`](https://www.w3schools.com/graphics/svg_path.asp). 
 
-Además, D3 contiene una extensa cantidad de funciones que nos permiten operar y manipular los datos, desde encontrar promedios, máximos y mínimos, hasta agrupar las bases  y transformarlas a estructuras más complejas.
+Es importante tomar en cuenta que en SVG **no hay [z-index](https://developer.mozilla.org/es/docs/Web/CSS/z-index)**, 
+por lo cual los elementos mostrarán uno sobre otro preservando el orden de escritura en el script.
 
-Probablemente SVG es entorno que más se usa con d3 para hacer gráficos. Estos son vectoriales y tiene una sintaxis muy similar a la de HTML, es decir, hay una etiqueta `<svg></svg>` y adentro se le pueden ir agregando elementos como círculos, rectángulos, polígonos, lineas, y otro tipo de figuras más elaboradas como son los `path`s. Es importante tomar en cuenta que en SVG **no hay z-index**, por lo cual los elementos mostrarán uno sobre otro preservando el orden de "escritura".
+En el siguiente ejemplo se dibuja dentro del entorno `svg` un círculo de radio de 10 pixeles especificándole una 
+posición `cx` y `cy`. Posteriormente se dibuja un rectángulo de ancho (`width`) de 20 pixeles y de altura (`height`) de 
+15 pixeles, donde también se determina un trazo (`stroke`) externo de color rojo (`red`) y de grosor de 2 pixeles. 
+Por último se dibuja una línea con un trazo negro y se marca su inicio (que coicide con el círculo) y su final por 
+medio de las propiedades `x1`, `y1`, `x2`, `y2`.
 
 ```html
 <svg width="100" height="40">
@@ -106,15 +159,20 @@ Probablemente SVG es entorno que más se usa con d3 para hacer gráficos. Estos 
     <circle r="10" cx="20" cy="30"/>
     <rect width="20" height="15" y="20" x="50" style="stroke: red; stroke-width: 2px"/>
     <line x1="10" y1="30" x2="100" y2="0" stroke="#000" stroke-width="3px"/>
+</svg>
 
-</svg> 
 
-## Pa' graficar con Vue.
+### Componentes de visualización
 
-Acá recopilo algunas experiencias que he tenido combinando d3 con Vue para crear los componentes
+En la sección anterior ya se ejemplificó como se usa D3 para dibujar trazos en un entorno SVG. Esto se puede 
+combinar con Vue para producir [componentes](https://es.vuejs.org/v2/guide/components.html) que construyan 
+distintos tipos de visualizaciones (Barras, Líneas, etc.).
 
-### Sobre el template
-Los componentes de vue incluyen una plantilla `<template><template/>`, lo ideal será dejar adentro de esta etiqueta los elementos de HTML y SVG que sí o sí deben ir. La estructura deve ser algo así como
+Un componente de visualización de vue de esta biblioteca incluye una plantilla `<template></template>`, que es donde se 
+construyen los elementos HTML y SVG obligatorios para la construcción de la visualización. Es decir, si la 
+visualización incluye un encabezado, un tooltip, ejes horizontales y verticales, un entorno svg para la gráfica y un 
+pie de gráfica, entonces el componente se podría estructurar de la siguiente manera,
+
 ```html
 <template>
 	<div class="contenedor-grafica" :id="id">
@@ -123,9 +181,9 @@ Los componentes de vue incluyen una plantilla `<template><template/>`, lo ideal 
 		
         <div class="contenedor-tooltip-ejes-svg">
 			<div class="tooltip"></div>
-            <div class="eje-y"></div>
+            <div class="eje-vertical"></div>
 			<svg class="svg-grafico"></svg>
-            <div class="eje-x"></div>
+            <div class="eje-horizontal"></div>
 		</div>
         
         <slot name="pie"></slot>
@@ -134,155 +192,113 @@ Los componentes de vue incluyen una plantilla `<template><template/>`, lo ideal 
 </template>
 ```
 
+Cabe mencionar que en el ejemplo anterior se agregaron encabezado y pie de gráfica por medio del uso de 
+[`slots`](https://vuejs.org/guide/components/slots.html) de Vue. De la misma manera la estructura real del template 
+será mucho más elaborada, pues habrá que agregar elementos extras de acuerdo a la complejidad de la visualización 
+que la persona usuaria tenga en mente. Por ejemplo, adentro del tooltip puede que sea necesario agregar un botón para 
+cerrar el mismo, o bien elementos para rotar el eje horizontal o grupos `<g></g>` dentro del entorno `<svg>` para 
+separar tipos de elementos.
 
-En la vida real, la estructura del template será un poquito más elaborada porque hay que agreagar elementos extras, por ejemplo adentro del tooltip el botón de cerrar, elementos  para rotar el eje-y o grupos `<g></g>` adentro del `<svg>` para separar tipos de elementos, pero en escencia esta es la estructura general.
+### Estructura de las visualizaciones
 
-### Sobre el script
+Una vez determinados los elementos HTML y SVG del componente es necesario establecer los parámetros obligatorios y 
+opcionales del componente así como las funciones de Javascript que determinarán su comportamiento. Esto como en todos 
+los componentes de Vue se especifica dentro del `<script></script>`.
 
-Esta es la parte más laboriosa para hacer el componente, pero mantener la siguiente estructura nos va facilitar las cosas y mantener un flujo común.
+Para empezar es necesario escribir el nombre del componente `name` para después especificar los parámetros del mismo 
+por medio de `props`; aquí se escriben que tipo de dato es cada parámetro del componente, por ejemplo el parámetro 
+`datos`, que se refiere a la base de datos que se utilizará para construir la visualización, se pide que sea un `Array`
+es decir un arreglo de javascript. En este apartado se puede especificar un valor _default_ para un parámetro, por 
+ejemplo si se requiere que el tooltip de una visualización esté siempre cerrado se puede especificar un parámetro 
+de tipo booleano cuyo default sea `false`.
+
+Dentro de `watch` se mandarán a llamar las funciones que se inicializarán si alguno de los parámetros en `props` cambia. 
+En el código de ejemplo se disparan algunas funciones que actualizan una gráfica de barras.
+
+En `mounted` se declara al entorno svg y se mandarán a llamar a las funciones declaradas en `methods`. Estas últimas son 
+funciones de javascript que construyen la visualización, por ejemplo `creandoBarras()` será una función que usa 
+elementos de D3 para construir gráficas de barras.
 
 ```javascript
-	import * as d3 from "d3";
+<script>
+import * as D3 from "D3";
 
-	export default {
-		name: 'NombreComponente',
-		props: {
-			// Todas las cosas que se pueden especificar desde afuera del componente
-            // que se necesitan para tener una gráfica. Puede haber propiedades 
-            // opcionales, para las cuales se especificará un default
-            id: String,
-            datos: Array,
-            variables: {
-                type: Array,
-                default: function(){return []}
-            },
-            titulo_eje_x: String,
-            titulo_eje_y: String
-		},
-		watch:{
-            // Cuando el componente watché que alguna de las props esta cambiando, 
-            // entonces va a disparar algunas funciones para actualizar la gráfica
-			datos(new_val,old_val){
-				this.configurandoDimensionesParaBarras();
-                
-                // Re-creamos barras
+export default {
+    name: 'NombreComponente',
+    props: {
+        // Los parámetros que construyen el componente puede ser obligatorios u 
+        // opcionales (se especificará como default su valor)
+        id: String,
+        datos: Array,
+        variables: {
+            type: Array,
+            default: function () {
+                return []
+            }
+        },
+        titulo_eje_x: String,
+        titulo_eje_y: String
+    },
+    watch: {
+        // Se inicializan las siguientes funciones si props cambia, 
+        // y así se actualizará la gráfica 
+        datos(new_val, old_val) {
+            this.configurandoDimensionesParaBarras();
+            
+            // Re-creamos barras
+            this.creandoBarras();
 
-				this.creandoBarras();
+            // Ajustes
+            this.actualizandoBarras();
+        },
+    },
+    data() {
+        return {
+            ...
+        }
+    },
+    mounted() {
+        // nombramos - declaramos al svg y los demás elementos que se 
+        // llamarán en los distintos métodos
+        this.svg = D3.select("div#" + this.id + " svg.contenedor-tooltip-ejes-svg")
 
-				// Ajustes
-				this.actualizandoBarras();
-			},
-		},
-		
-		data(){
-			return{
-				...
-			}
-		},
-		mounted(){
-			// nombramos - declaramos al svg y los demás elementos que se 
-            // llamarán en los distintos métodos
-			this.svg = d3.select("div#"+this.id+" svg.contenedor-tooltip-ejes-svg")
+        this.configurandoDimensionesParaSVG();
+        this.configurandoDimensionesParaBarras();
+        this.creandoBarras();
+        this.actualizandoBarras();
 
-			this.configurandoDimensionesParaSVG();
-			this.configurandoDimensionesParaBarras();
-			this.creandoBarras();
-			this.actualizandoBarras();
-
-			this.tooltip = d3.select("div#"+this.barras_apiladas_id)
-				.select("div.tooltip");
-			window.addEventListener("resize", this.reescalandoPantalla);
-		},
-		methods:{
-			configurandoDimensionesParaSVG(){
-                // damos el ancho y alto del SVG, así como la posición del grupo que 
-                // contendrá a los elementos visuales
-                 
-			},
-
-			configurandoDimensionesParaBarras(){
-                // Formatea datos para crar elementos visuales y creamos las escalas
-                // y de paso los ejes 
-			},
-			creandoBarras(){
-                // Crea los elementos visuales
-			},
-			actualizandoBarras(){
-                // Da estilos y atributos a elementos visuales
-			},
-			
-			reescalandoPantalla(){
-				this.configurandoDimensionesParaSVG()
-				this.configurandoDimensionesParaBarras();
-				this.actualizandoBarras()
-			},
-			mostrarTooltip(){},
-			cerrarTooltip() {},
-			
-		}
-	}
-
+        this.tooltip = D3.select("div#" + this.barras_apiladas_id)
+            .select("div.tooltip");
+        window.addEventListener("resize", this.reescalandoPantalla);
+    },
+    methods: {
+        configurandoDimensionesParaSVG() {
+            // Se da el ancho y alto del SVG, así como la posición del grupo que 
+            // contendrá a los elementos visuales
+        },
+        configurandoDimensionesParaBarras() {
+            // Formatea datos para crar elementos visuales y 
+            // se crean las escalas y de paso los ejes de la gráfica 
+        },
+        creandoBarras() {
+            // Crea los elementos visuales
+        },
+        actualizandoBarras() {
+            // Da estilos y atributos a elementos visuales
+        },
+        reescalandoPantalla() {
+            this.configurandoDimensionesParaSVG()
+            this.configurandoDimensionesParaBarras();
+            this.actualizandoBarras()
+        },
+        mostrarTooltip() {
+        },
+        cerrarTooltip() {
+        },
+    }
+}
+</script>
 ```
-
-## Documentación
-
-Para generar la documentación de nuestros componentes utilizamos VuePress, que es un generador de sitios estáticos basado en Vue, con un template por default optimizado para escribir documentación técnica. Cada página generada por VuePress contiene un HTML estático prerenderizado, lo que nos permite tener una velocidad de carga óptima.
-### ¿Cómo utilizar VuePress en este proyecto?
-
-Supongamos que necesitamos crear la documentación de un nuevo componente llamado **"Donas"**:
-
-1. Crear la carpeta contenedora de la documentación de este componente dentro de la carpeta `docs`:
-  ```bash
-	mkdir docs/donas
-  ``` 
-2. Dentro de esta carpeta, vamos a crear los archivos que van a contener la documentación de este componente:
-* `README.md`: página inicial de la documentación de tu componente.
-* `ejemplos.md`: aquí puedes agregar los ejemplos varios de usos del componente.
-* Si tu componente requiere alguna otra documentación en especial, puedes agregar ese archivo con la terminación `.md`.
-
-3. Ahora vamos a agregar este componente a nuestro menú principal. Necesitas modificar el archivo `docs/.vuepress/config.js`. Para esto, agregamos un nuevo elemento al arreglo `nav`:
-  ```javascript
-	
-	module.exports = {
-		//...
-		themeConfig: {
-			//...
-			nav:[
-				//...
-				{
-        			text: 'Donas',
-        			link: '/donas/',
-				},
-			]
-		}
-	}
- ```
-4. Ya tenemos nuestro componente en la navegación principal, ahora agregaremos la documentación del componente en la barra lateral. Es muy importante que agregues **todos los enlaces** de documentación que ya creamos en el paso 2.
-
-```javascript
-	
-	module.exports = {
-		//...
-		themeConfig: {
-			//...
-			sidebar:{
-				//...
-				 '/donas/': [ // debe ser igual al valor de la propiedad `link` del paso anterior
-					{
-						title: 'Donas',
-						collapsable: false,
-						children: [
-							'', // esto es equivalente al archivo README de la carpeta de tu componente
-							'ejemplos',
-							'componente', //equivale a `docs/donas/componente.md`
-						]
-					}
-				],
-			}
-		}
-	}
- ```
-5. ¡Listo! Con estos pasos completados, ya puedes visualizar la documentación de tu nuevo componente.  
 
 
 

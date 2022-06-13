@@ -48,10 +48,10 @@ module.exports = {
         text: 'Ejemplos',
         link: '/ejemplos/'
       },
-      // {
-      //   text: 'Acerca de',
-      //   link: '/acerca/'
-      // },
+      {
+        text: 'Contribuciones',
+        link: '/contribuciones/'
+      },
     ],
     sidebar: {
       '/visualizaciones/': [
