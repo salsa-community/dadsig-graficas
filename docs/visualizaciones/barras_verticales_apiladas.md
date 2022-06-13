@@ -224,29 +224,35 @@ desde archivos `.json`.
 El `<template>` es el siguiente:
 
 ```HTML
-<DaiBarras
-    :barras_id="'verticales_apiladas_cambiando_base'"
-    :datos="datos"
-    :variables="variables"
-    :nombre_barra="'nombre_rectangulos'"
-    :nombre_color="'nombre_colores'"
-    titulo_eje_y="Eje vertical (numérico)"
-    titulo_eje_x="Eje horizontal (categórico)"
-    :margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
->
-    <template slot="encabezado">
-    <div class="encabezado">
-        <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
-        <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
-    </div>
-    </template>
-    <template slot="pie">
-    <div class="pie">
-        <h4>Pie de gráfica</h4>
-        <button @click="alternandoBase">Cambia la data</button>
-    </div>
-    </template>
-</DaiBarras>
+<template>
+  <div>
+    <DaiBarras
+            :barras_id="'verticales_apiladas_cambiando_base'"
+            :datos="datos"
+            :margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
+            :nombre_barra="'nombre_rectangulos'"
+            :nombre_color="'nombre_colores'"
+            :variables="variables"
+            titulo_eje_x="Eje horizontal (categórico)"
+            titulo_eje_y="Eje vertical (numérico)"
+    >
+      <template slot="encabezado">
+        <div class="encabezado">
+          <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
+          <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
+        </div>
+      </template>
+      <template slot="pie">
+        <div class="pie">
+          <h3 class="titulo-visualizacion">Pie de gráfica</h3>
+          <p>Aliquam erat volutpat. In cursus ipsum purus. Quisque a pellentesque justo. Donec nec justo sodales,
+            dignissim leo consectetur, pulvinar leo. Aenean sodales a lacus eget porta.</p>
+          <button @click="alternandoBase">Cambia la data</button>
+        </div>
+      </template>
+    </DaiBarras>
+  </div>
+</template>
 ```
 
 En el escript se incluyó lo siguiente:

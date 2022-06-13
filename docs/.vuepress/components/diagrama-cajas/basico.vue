@@ -7,7 +7,7 @@
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
         :tooltip_activo="false"
-        :variables="{'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#000'}"
+        :variables="{'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#2c7fb8'}"
     />
   </div>
 </template>
@@ -16,7 +16,7 @@
 import diagramacajasejemplo from "./diagramacajas_ejemplo_1.json"
 
 export default {
-  name: 'box_plot_ejemplo_basico',
+  name: 'diagrama-cajas-basico',
 
   data: function () {
     return {

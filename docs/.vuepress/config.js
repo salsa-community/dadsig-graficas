@@ -44,10 +44,6 @@ module.exports = {
         text: 'Visualizaciones',
         link: '/visualizaciones/',
       },
-      // {
-      //   text: 'Ejemplos',
-      //   link: '/ejemplos/'
-      // },
       {
         text: 'Contribuciones',
         link: '/contribuciones/'
@@ -69,17 +65,6 @@ module.exports = {
           ]
         }
       ],
-      // '/ejemplos/': [
-      //   {
-      //     title: 'Ejemplos',
-      //     collapsable: true,
-      //     children: [
-      //       'barras_apiladas_ejemplos',
-      //       'diagrama_cajas_ejemplos',
-      //       'series_tiempo_ejemplos',
-      //     ]
-      //   }
-      // ],
     }
   },
 
