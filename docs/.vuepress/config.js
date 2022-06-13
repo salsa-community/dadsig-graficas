@@ -41,22 +41,22 @@ module.exports = {
         link: '/introduccion/',
       },
       {
-        text: 'Componentes',
-        link: '/componentes/',
+        text: 'Visualizaciones',
+        link: '/visualizaciones/',
       },
       {
         text: 'Ejemplos',
         link: '/ejemplos/'
       },
-      {
-        text: 'Acerca de',
-        link: '/acerca/'
-      },
+      // {
+      //   text: 'Acerca de',
+      //   link: '/acerca/'
+      // },
     ],
     sidebar: {
-      '/componentes/': [
+      '/visualizaciones/': [
         {
-          title: 'Componentes',
+          title: 'Visualizaciones',
           collapsable: false,
           children: [
             'barras_apiladas',
