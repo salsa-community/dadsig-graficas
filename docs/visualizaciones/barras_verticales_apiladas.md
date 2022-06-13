@@ -59,14 +59,15 @@ sólo incluye una métrica, entonces la visualización será una de [barras vert
 * `nombre_barra`: (_String_) Debe tomar el valor que se está usando como clave para referirnos a los nombres de las
   barras o categorías generales en la base de datos. En este ejemplo, tendría que ser igual a `'nombre_entidad'`.
 
+* `titulo_eje_x`: (_String_) Titulo para el eje horizontal, en esta visualización será para la variable categórica.
+* `titulo_eje_y`: (_String_) Titulo para el eje vertical, en esta visualización será para las variables numéricas
+  o métricas.
+
 ### Opcionales
 
 Estos parámetros cuentan con un valor _default_ al importar el componente, por lo tanto la persona usuaria tendrá más
 libertad de customizar el componente al modificarlos.
 
-* `titulo_eje_x`: (_String_) Titulo para el eje horizontal, en esta visualización será para la variable categórica.
-* `titulo_eje_y`: (_String_) Titulo para el eje vertical, en esta visualización será para las variables numéricas 
-  o métricas.
 * `ancho_tooltip`: (_Number_) Ancho de tooltip, por defecto usa 165.
 * `margen` : (_Object_) Objeto que contiene los márgenes a la derecha, izquierda, arriba y abajo. Por defecto
   es ` {arriba: 20, abajo: 50, izquierda: 60, derecha: 20}`.
@@ -75,6 +76,9 @@ libertad de customizar el componente al modificarlos.
 * `textoTooltip`: (_Function_) que debe regresar el texto que queremos en el tooltip. Para usar los datos de la barra
   más cercana al cursor, podemos acceder mediante `this.$refs['barras1'].tooltip_data_seleccionada` suponiendo que
   se agrega al componente `ref="barras1"`.
+* `dominio_y`: (_Array_) Este es un parámetro que se construye a partir de los datos ingresados por la persona 
+  usuaria. Indica el rango numérico del eje vertical y por lo tanto la persona usuaria lo puede especificar, sin 
+  embargo no tiene un valor default.
 
 ## Ejemplos de uso
 
