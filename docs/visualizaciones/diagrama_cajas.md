@@ -1,15 +1,11 @@
 # Diagrama de cajas
 
-<diagrama-cajas-ejemplo-basico/>
-
-Esta sección contiene la descripción del componente reutilizable de vue para hacer una gráfica de cajas 
-y bigotes (box plot).
-
-A continuación se especifica la lista de propiedades que admite el componente.
+A continuación se describe la utilización del componente de visualización `<DaiDiagramaCajas/>` para construir un 
+gráfico de cajas y bigotes o también conocido como _Boxplot_.
 
 ## Parámetros
 
-La siguiente es una lista de propiedades que admite el componente.
+La siguiente es una lista de propiedades que admite el componente y que se tienen que especificar al importar el mismo.
 
 ### Obligatorios
 
@@ -69,3 +65,12 @@ Los siguiente parámetros se pueden usar para modificar la visualización.
 * `alto_vis` : (_Number_) Altura del svg, 200 por defecto.
 * `tooltip_activo`: (_Boolean_) `true` por default, muestra el tooltip. Si es `false`, entonces no mostrará tooltip.
 * `textoTooltip`: (_Function_) Función que debe regresar el texto que queremos en el tooltip.
+
+
+## Ejemplos de uso
+
+### Cajas y bigotes sin interacción
+
+### Uso de slots y tooltip
+
+### Modificando datos

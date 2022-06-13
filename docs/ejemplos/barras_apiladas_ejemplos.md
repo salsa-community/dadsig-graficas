@@ -40,7 +40,6 @@ En este ejemplo, el componente se escribe de la siguiente manera
 
 En este caso, toda la información que se necesita para hacer la gráfica está en el `<template/>`, por  lo cual no es necesario escribir las etiquetas de `<script/>` o de `<style/>`. El resultado es el siguiente
 
-<barras-apiladas-ejemplo-basico/>
 
 ## Uso de slots y tooltip
 
@@ -48,7 +47,7 @@ El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados
 
 ```HTML
 <DaiBarrasApiladas
-    :barras_apiladas_id="'barras_slot'"
+    :barras_id="'barras_slot'"
     :datos="[
         {
             nombre_rectangulos: 'A',
@@ -123,19 +122,18 @@ El siguiente ejemplo muestra la manera en la cual se pueden insertar encabezados
 Y el gráfico resultante es el siguiente, observe que si no se especifica la propiedad de `:tooltip_activo="false"`, por default ya se puede ver un tooltip
 
 
-<barras-apiladas-ejemplo-slots-tooltip/>
 
 ## Modificando datos
 
-El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega un poco de estilo y algunos métodos para modificar los datos que se están pintando. Las bases se cargan desde archivos .json y se agregó un poco de estilo. El resultado es el siguiente:
+El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega estilo en el scss para customizar la 
+gráfica y ciertos métodos para modificar los datos que se grafican. Las bases se cargan desde archivos `.json`.
 
-<barras-apiladas-ejemplo-cambiando-base/>
 
 
 El `<template>` es el siguiente:
 
 ```HTML
-<DaiBarrasApiladas
+<DaiBarras
     :barras_apiladas_id="'barras_cambio_base'"
     :datos="datos"
     :variables="variables"
@@ -157,7 +155,7 @@ El `<template>` es el siguiente:
         <button @click="alternandoBase">Cambia la data</button>
     </div>
     </template>
-</DaiBarrasApiladas>
+</DaiBarras>
 ```
 
 En el escript se incluyó lo siguiente: 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <DaiBarrasApiladas
-      :barras_apiladas_id="'barras_slot'"
+    <DaiBarras
+      :barras_id="'verticales_apiladas_slots_tooltip'"
       :datos="[
         {
           nombre_rectangulos: 'A',
@@ -41,18 +41,18 @@
         },
       ]"
       :variables="[
-        { id: 'cantidad_1', nombre_colores: 'cantidad 1', color: '#721817' },
-        { id: 'cantidad_2', nombre_colores: 'cantidad 2', color: '#2B4162' },
-        { id: 'cantidad_3', nombre_colores: 'cantidad 3', color: '#0B6E4F' },
+        { id: 'cantidad_1', nombre_colores: 'cantidad 1', color: '#ffffcc' },
+        { id: 'cantidad_2', nombre_colores: 'cantidad 2', color: '#c7e9b4' },
+        { id: 'cantidad_3', nombre_colores: 'cantidad 3', color: '#7fcdbb' },
       ]"
       :nombre_barra="'nombre_rectangulos'"
       :nombre_color="'nombre_colores'"
-      titulo_eje_y="Eje vertical"
-      titulo_eje_x="Eje horizontal"
+      titulo_eje_y="Eje vertical (numérico)"
+      titulo_eje_x="Eje horizontal (categórico)"
     >
       <template slot="encabezado">
-        <div>
-          <h3>Título slots</h3>
+        <div class="slot-encabezado">
+          <h4>Título slots</h4>
           <p>
             Tanto el título que aparece arriba, como este texto, se integran
             como slot. Se puede estilizar segun las necesidades con un poco de
@@ -61,8 +61,8 @@
         </div>
       </template>
       <template slot="pie">
-        <div>
-          <h3>Pie de gráfica</h3>
+        <div class="slot-pie">
+          <h4>Pie de gráfica</h4>
           <p>
             Este otro bloque corresponde al slot de pie de gráfica, en donde
             usualmente se ponen nomenclaturas, notas o controles, y también
@@ -70,14 +70,14 @@
           </p>
         </div>
       </template>
-    </DaiBarrasApiladas>
+    </DaiBarras>
   </div>
 </template>
 <script>
 import * as d3 from "d3";
 
 export default {
-  name: "BarrasBasico",
+  name: "verticales-apiladas-slots-tooltip",
   data: function () {
     return {
       algo: true,
@@ -290,4 +290,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+.slot-encabezado, .slot-pie {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+</style>
 

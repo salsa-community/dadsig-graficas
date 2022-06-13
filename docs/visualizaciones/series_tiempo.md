@@ -1,12 +1,11 @@
 # Series de tiempo
 
-<series-tiempo-ejemplo-basico/>
-
-Esta sección contiene la descripción del componente reutilizable de vue para hacer una gráfica de series de tiempo.
+A continuación se describe la utilización del componente de visualización `<DaiSeriesTiempo/>` para construir un
+gráfico de líneas cuyo eje horizontal es temporal, es decir una serie de tiempo.
 
 ## Parámetros
 
-La siguiente es una lista de propiedades que admite el componente.
+La siguiente es una lista de propiedades que admite el componente y que se tienen que especificar al importar el mismo.
 
 ### Obligatorios
 
@@ -72,3 +71,12 @@ muestra todos los datos.
 * `conversionTemporal`: (_Function_) Función que por default es `d3.timeParse("%d-%m-%Y")` sirve para especificar el
   formato de la variable temporal.
 * `textoTooltip`: (_Function_)Esta función se usa para modificar el texto que aparece en los tooltips.
+
+
+## Ejemplos de uso
+
+### Series de tiempo sin interacción
+
+### Uso de slots y tooltip
+
+### Modificando datos

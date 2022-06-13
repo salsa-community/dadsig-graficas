@@ -37,46 +37,49 @@ module.exports = {
     lastUpdated: true,
     nav: [
       {
-        text: 'Guía de inicio',
-        link: '/guia/',
+        text: 'Introducción',
+        link: '/introduccion/',
       },
       {
-        text: 'Componentes',
-        link: '/componentes/',
+        text: 'Visualizaciones',
+        link: '/visualizaciones/',
       },
+      // {
+      //   text: 'Ejemplos',
+      //   link: '/ejemplos/'
+      // },
       {
-        text: 'Ejemplos',
-        link: '/ejemplos/'
-      },
-      {
-        text: 'Acerca de',
-        link: '/acerca/'
+        text: 'Contribuciones',
+        link: '/contribuciones/'
       },
     ],
     sidebar: {
-      '/componentes/': [
+      '/visualizaciones/': [
         {
-          title: 'Componentes',
+          title: 'Visualizaciones',
           collapsable: false,
           children: [
-            'barras_apiladas',
+            'barras_horizontales',
+            'barras_horizontales_apiladas',
+            'barras_verticales',
+            'barras_verticales_apiladas',
             'diagrama_cajas',
+            'donas',
             'series_tiempo',
           ]
         }
       ],
-      '/ejemplos/': [
-        {
-          title: 'Ejemplos',
-          collapsable: true,
-          children: [
-            'barras_apiladas_ejemplos',
-            'diagrama_cajas_ejemplos',
-            'series_tiempo_ejemplos',
-          ]
-        }
-      ],
-      
+      // '/ejemplos/': [
+      //   {
+      //     title: 'Ejemplos',
+      //     collapsable: true,
+      //     children: [
+      //       'barras_apiladas_ejemplos',
+      //       'diagrama_cajas_ejemplos',
+      //       'series_tiempo_ejemplos',
+      //     ]
+      //   }
+      // ],
     }
   },
 
