@@ -1,1 +1,1 @@
-# Barras Horizontales
+# Barras horizontales

@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:id=barras_apiladas_id class="contenedor-barras-apiladas">
+  <div v-bind:id=barras_id class="contenedor-barras">
     <slot name="encabezado"></slot>
     <div class="contenedor-tooltip-svg">
       <div class="tooltip">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <svg class="svg-barras-apiladas">
+      <svg class="svg-barras">
         <defs></defs>
         <g class="grupo-fondo"></g>
         <g class="grupo-contenedor-de-barras"></g>
@@ -40,9 +40,9 @@
 import * as d3 from "d3";
 
 export default {
-  name: 'DaiBarrasApiladas',
+  name: 'DaiBarras',
   props: {
-    barras_apiladas_id: String,
+    barras_id: String,
     datos: Array,
     variables: {
       type: Array,
@@ -121,7 +121,7 @@ export default {
     }
   },
   mounted() {
-    this.svg = d3.select(`#${this.barras_apiladas_id} .svg-barras-apiladas`);
+    this.svg = d3.select(`#${this.barras_id} .svg-barras`);
     this.grupo_contenedor = this.svg.select(".grupo-contenedor-de-barras");
     this.grupo_fondo = this.svg.select(".grupo-fondo");
     this.grupo_frente = this.svg.select(".grupo-frente");
@@ -133,7 +133,7 @@ export default {
         .append("g")
         .attr("class", "eje-x")
 
-    this.tooltip = d3.select(`#${this.barras_apiladas_id} .tooltip`);
+    this.tooltip = d3.select(`#${this.barras_id} .tooltip`);
     this.configurandoDimensionesParaSVG();
     this.configurandoDimensionesParaBarras();
     this.creandoBarras();
@@ -148,10 +148,10 @@ export default {
   },
   methods: {
     configurandoDimensionesParaSVG() {
-      this.ancho_leyenda_y = document.querySelector(`#${this.barras_apiladas_id} .rotation-wrapper-outer .element-to-rotate`)
+      this.ancho_leyenda_y = document.querySelector(`#${this.barras_id} .rotation-wrapper-outer .element-to-rotate`)
           .clientHeight;
 
-      this.ancho = document.querySelector(`#${this.barras_apiladas_id}`).clientWidth - this.margen.derecha - this.margen.izquierda - this.ancho_leyenda_y
+      this.ancho = document.querySelector(`#${this.barras_id}`).clientWidth - this.margen.derecha - this.margen.izquierda - this.ancho_leyenda_y
       this.alto = this.alto_vis - this.margen.arriba - this.margen.abajo;
 
       this.svg
@@ -199,8 +199,6 @@ export default {
           .attr("transform", `translate(${0},${this.alto})`)
       this.eje_x.select("path").remove()
       this.eje_x.selectAll("line").remove()
-
-      //12 - 2 y 4- 6
     },
     creandoBarras() {
       this.grupo_contenedor.selectAll(".g-rects").remove();
@@ -276,9 +274,6 @@ export default {
             .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
             .style("fill-opacity", "1")
       }
-
-      //console.log(this.tooltip_data_seleccionada)
-
     },
     cerrarTooltip() {
       this.tooltip
@@ -292,16 +287,14 @@ export default {
 }
 </script>
 
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 $border-radius-tarjeta: 10px;
-svg.svg-barras-apiladas {
+svg.svg-barras {
   position: absolute;
   top: 0;
 }
 
-svg.svg-barras-apiladas::v-deep text {
+svg.svg-barras::v-deep text {
   font-family: "Montserrat";
 
 }

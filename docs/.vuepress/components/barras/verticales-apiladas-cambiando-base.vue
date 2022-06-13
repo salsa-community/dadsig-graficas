@@ -1,13 +1,13 @@
 <template>
   <div>
-    <DaiBarrasApiladas
-      :barras_apiladas_id="'barras_cambio_base'"
+    <DaiBarras
+      :barras_id="'verticales_apiladas_cambiando_base'"
       :datos="datos"
       :variables="variables"
       :nombre_barra="'nombre_rectangulos'"
       :nombre_color="'nombre_colores'"
-      titulo_eje_y="Eje vertical"
-      titulo_eje_x="Eje horizontal"
+      titulo_eje_y="Eje vertical (numérico)"
+      titulo_eje_x="Eje horizontal (categórico)"
 			:margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
     >
       <template slot="encabezado">
@@ -18,27 +18,28 @@
       </template>
       <template slot="pie">
         <div class="pie">
-          <h3>Pie de gráfica</h3>
+          <h4>Pie de gráfica</h4>
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-    </DaiBarrasApiladas>
+    </DaiBarras>
   </div>
 </template>
+
 <script>
 import base_dummy_1 from "./base_dummy_1.json";
 import base_dummy_2 from "./base_dummy_2.json";
 
 export default {
-  name: "BarrasBasico",
+  name: "verticales-apiladas-cambiando-base",
   data: function () {
     return {
       algo: true,
       datos: base_dummy_1,
       variables: [
-        { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#721817" },
-        { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#2B4162" },
-        { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#0B6E4F" },
+        { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#ffffcc" },
+        { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#c7e9b4" },
+        { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#7fcdbb" },
       ],
       base_seleccionada: 1,
     };
@@ -49,20 +50,20 @@ export default {
         this.base_seleccionada = 2;
         this.datos = base_dummy_2;
 				this.variables = [
-          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#231123" },
-          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#82204A" },
-          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#558C8C" },
-          { id: "cantidad_4", nombre_colores: "cantidad 4", color: "#E8DB7D" },
-          { id: "cantidad_5", nombre_colores: "cantidad 5", color: "#DBC2CF" }
+          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#dadaeb" },
+          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#bcbddc" },
+          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#9e9ac8" },
+          { id: "cantidad_4", nombre_colores: "cantidad 4", color: "#756bb1" },
+          { id: "cantidad_5", nombre_colores: "cantidad 5", color: "#54278f" }
         ];
 				
       } else {
         this.base_seleccionada = 1;
         this.datos = base_dummy_1;
         this.variables = [
-          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#721817" },
-          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#2B4162" },
-          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#0B6E4F" }
+          { id: "cantidad_1", nombre_colores: "cantidad 1", color: "#ffffcc" },
+          { id: "cantidad_2", nombre_colores: "cantidad 2", color: "#c7e9b4" },
+          { id: "cantidad_3", nombre_colores: "cantidad 3", color: "#7fcdbb" }
         ];
       }
     },
@@ -109,5 +110,4 @@ div.pie{
 	}
 
 }
-
 </style>
