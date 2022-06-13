@@ -1,26 +1,57 @@
 # Barras verticales
 
-Esta gráfica es un caso particular del componente de barras apiladas. Cuando los datos introducidos sólo describen una
-categoría y una métrica, el componente construirá una gráfica de barras simples.
+A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de
+barras verticales.
 
-Por ejemplo el arreglo `datos`,
+## Parámetros
+
+Se puede considerar este un caso particular de la visualización  de barras verticales apiladas, por 
+lo tanto los parámetros obligatorios y opcionales descritos en la sección _Barras verticales apiladas_ serán los mismos 
+que se deben de especificar para esta visualización y por lo tanto ya no se repetirán aquí.
+
+## Ejemplo de uso
+
+Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),
+el componente de visualizacion `<DaiBarras/>` construirá una gráfica de barras simples.
+
+Por ejemplo, teniendo el siguientee arreglo para `datos`,
 
 ```
 [
-{categoria: 'Variable A', metrica: 120},
-{categoria: 'Variable B ', metrica: 150}
-{categoria: 'Variable C ', metrica: 72}
+{categoria: 'Variable A', cantidad: 120},
+{categoria: 'Variable B ', cantidad: 150}
+{categoria: 'Variable C ', cantidad: 72}
 ]
 ```
 
-y el arreglo `variables`,
+y el arreglo `variables` como sigue,
 
 ```
 [
-  {id: 'metrica', nombre_colores: 'metrica', color: 'blue'},
+  {id: 'cantidad', nombre_colores: 'cantidad', color: '#7fcdbb'},
 ]
 ``` 
 
-ingresados de la manera anterior, produciran en siguiente gráfico de barras simples,
+Entonces se usa el componente `<DaiBarras/>` de la siguiente manera.
+
+```HTML
+<template>
+  <div>
+    <DaiBarras
+        :barras_id="'verticales_simples'"
+        :datos="[{categoria: 'Variable A', cantidad: 120},
+                 {categoria: 'Variable B', cantidad: 150},
+                 {categoria: 'Variable C', cantidad: 72}]"
+        :nombre_barra="'categoria'"
+        :nombre_color="'nombre_colores'"
+        titulo_eje_x="Eje horizontal (categórico)"
+        titulo_eje_y="Eje vertical (numérico)"
+        :tooltip_activo="true"
+        :variables="[{id:'cantidad', nombre_colores:'cantidad', color: '#7fcdbb'}]"/>
+  </div>
+</template>
+```
+
+Lo que producirá el siguiente gráfico de barras simples,
 
 <barras-verticales-simples/>
