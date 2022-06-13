@@ -1,5 +1,5 @@
 <template>
-
+  <div>Aqui van las donas básicas</div>
 </template>
 
 <script>

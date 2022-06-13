@@ -3,6 +3,8 @@
 A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de
 barras horizontales.
 
+## Parámetros
+
 ## Ejemplo de uso
 
 Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),

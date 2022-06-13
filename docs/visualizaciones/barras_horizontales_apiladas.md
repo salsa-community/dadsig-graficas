@@ -11,8 +11,14 @@ barras horizontales apiladas.
 
 ## Ejemplos de uso
 
-### Barras sin interacción
+### Barras horizontales apiladas sin interacción
+
+<barras-horizontales-apiladas-basico/>
 
 ### Uso de slots y tooltip
 
+<barras-horizontales-apiladas-slots-tooltip/>
+
 ### Modificando datos
+
+<barras-horizontales-apiladas-cambiando-base/>

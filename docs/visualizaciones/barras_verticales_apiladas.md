@@ -78,7 +78,7 @@ libertad de customizar el componente al modificarlos.
 
 ## Ejemplos de uso
 
-### Barras apiladas sin interacción
+### Barras verticales apiladas sin interacción
 
 Se ingresa un arreglo de datos con tantos diccionarios como barras se deseen visualizar. Cada diccionario debe tener 
 el nombre de la barra y las cantidades de cada una de las categorías y colores.
