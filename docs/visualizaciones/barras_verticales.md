@@ -12,7 +12,7 @@ que se deben de especificar para esta visualización y por lo tanto ya no se rep
 ## Ejemplo de uso
 
 Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),
-el componente de visualizacion `<DaiBarras/>` construirá una gráfica de barras simples.
+el componente de visualizacion `<DaiBarras/>` construirá una gráfica de barras verticales simples.
 
 Por ejemplo, teniendo el siguientee arreglo para `datos`,
 
@@ -52,6 +52,6 @@ Entonces se usa el componente `<DaiBarras/>` de la siguiente manera.
 </template>
 ```
 
-Lo que producirá el siguiente gráfico de barras simples,
+Lo que producirá el siguiente gráfico de barras verticales simples,
 
 <barras-verticales-simples/>
