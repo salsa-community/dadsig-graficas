@@ -1,4 +1,4 @@
-# Barras apiladas
+# Barras verticales apiladas
 
 <barras-apiladas-ejemplo-basico/>
 

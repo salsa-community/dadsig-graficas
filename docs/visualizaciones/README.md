@@ -1,4 +1,6 @@
-# Componentes 
+# Componentes
+
+## Guía de visualización
 
 En la versión actual de esta biblioteca se cuentan con tres componentes a utilizar.
 
