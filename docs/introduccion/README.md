@@ -59,10 +59,10 @@ continuación las visualizaciones de datos que se pueden construir usando los co
 
 | Componente | Visualización |
 |--|:-------------|
-| `<DaiBarrasApiladas/>` |Barras verticales simples|
-| `<DaiBarrasApiladas/>` |Barras verticales apiladas|
-| `<DaiBarrasApiladas/>` |Barras horizontales simples|
-| `<DaiBarrasApiladas/>` |Barras horizontales apiladas|
+| `<DaiBarras/>` |Barras verticales simples|
+| `<DaiBarras/>` |Barras verticales apiladas|
+| `<DaiBarras/>` |Barras horizontales simples|
+| `<DaiBarras/>` |Barras horizontales apiladas|
 | `<DaiDonas/>` |Donas  |
 | `<DaiDiagramaCajas/>` |Diagrama de cajas o Boxplot|
 | `<DaiSeriesTiempo/>` |Líneas con eje temporal (Serie de tiempo)|
