@@ -59,10 +59,10 @@ export default {
   props: {
     linea_id: String,
     datos: Array,
-    variables_categorias: Array,
+    variables: Array,
     titulo_eje_y: String,
     titulo_eje_x: String,
-    nombre_clumna_horizontal: String,
+    nombre_columna_horizontal: String,
     conversionTemporal: {
       type: Function,
       default: () => d3.timeParse("%d-%m-%Y")
@@ -85,7 +85,6 @@ export default {
       type: String,
       default: () => '#000'
     },
-
     ancho_tooltip: {
       type: Number,
       default: 180
@@ -108,15 +107,15 @@ export default {
       type: Function,
       default: function () {
         if (this.tipo_tooltip == "general") {
-          let total_muestras = d3.sum(this.variables_categorias.map((d) => this.tooltip_data_seleccionada[d.cve]));
-          let cifras_variables = this.variables_categorias.map((d) => `<p>
+          let total_muestras = d3.sum(this.variables.map((d) => this.tooltip_data_seleccionada[d.cve]));
+          let cifras_variables = this.variables.map((d) => `<p>
 							<span class="nomenclatura-tooltip" style="background: ${d.color} "></span>
 							${d.cve} <b>${(this.tooltip_data_seleccionada[d.cve]).toLocaleString("en")}</b>
 							(${Math.round(100 * this.tooltip_data_seleccionada[d.cve] / total_muestras)}%)
 							</p>`)
           return `${cifras_variables.join("")}`
         } else if (this.tipo_tooltip == "individual") {
-          let entidad = this.variables_categorias.filter(d => d.cve == this.tooltip_data_seleccionada.cve)[0]
+          let entidad = this.variables.filter(d => d.cve == this.tooltip_data_seleccionada.cve)[0]
           return `
 							<p>${entidad.nombre}</p>
 							${this.tooltip_data_seleccionada.fech.toLocaleDateString('en-GB').replaceAll("/", "-")}<br/>
@@ -130,7 +129,7 @@ export default {
   computed: {},
   watch: {
 
-    variables_categorias() {
+    variables() {
 
       this.configurandoDimensionesParaSVG();
       this.configurandoDimensionesParaLinea();
@@ -158,7 +157,7 @@ export default {
     }
   },
   mounted() {
-    this.claves = this.variables_categorias.map(d => d.cve)
+    this.claves = this.variables.map(d => d.cve)
     this.svg = d3.select("div#" + this.linea_id + " svg.svg-lineas");
     this.grupo_contenedor = this.svg.select("g.gupo-contenedor-de-lineas");
 
@@ -251,13 +250,13 @@ export default {
     },
     configurandoDimensionesParaLinea() {
       this.datos.forEach((d) => {
-        d.fech = this.conversionTemporal(d[this.nombre_clumna_horizontal])
+        d.fech = this.conversionTemporal(d[this.nombre_columna_horizontal])
       })
       this.escalaX = d3.scaleTime()
           .domain(d3.extent(this.datos.map((d) => d.fech)))
           .range([0, this.width])
 
-      this.claves = this.variables_categorias.map(d => d.cve);
+      this.claves = this.variables.map(d => d.cve);
       if (this.escala_logaritmica) {
         this.escalaY = d3.scaleLog()
             .domain([
@@ -289,7 +288,7 @@ export default {
       this.grupo_contenedor.selectAll("g.grupos-lineas-puntos").remove()
       this.grupos_series = this.grupo_contenedor
           .selectAll("grupos-lineas-puntos")
-          .data(this.variables_categorias)
+          .data(this.variables)
           .enter()
           .append("g")
           .attr("class", "grupos-lineas-puntos")
@@ -314,7 +313,7 @@ export default {
           .attr("class", "lineas")
 
 
-      if (this.variables_categorias.length == 1) {
+      if (this.variables.length == 1) {
         this.grupos_puntos = this.grupos_series
             .selectAll("puntos")
             .data((d) => {
@@ -361,7 +360,7 @@ export default {
                     .y((d) => this.escalaY(d.cat))(dd)
               }
           )
-      if (this.variables_categorias.length == 1) {
+      if (this.variables.length == 1) {
         this.grupos_puntos.style("fill", d => d.color)
             .style("stroke", "#fff")
             .attr("r", 5)
@@ -423,7 +422,7 @@ export default {
           fech: datum.fech,
           cve: datos_y[indiceY][0],
           cat: datum[datos_y[indiceY][0]],
-          ...this.variables_categorias.filter(d => d.cve == datos_y[indiceY][0])[0]
+          ...this.variables.filter(d => d.cve == datos_y[indiceY][0])[0]
         }
         this.guia_y
             .transition()
