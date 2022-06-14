@@ -2,7 +2,11 @@
 
 ## Guía de visualización
 
-## Componentes
+## Componentes de visualización
+
+
+
+
 
 ## Slots
 
