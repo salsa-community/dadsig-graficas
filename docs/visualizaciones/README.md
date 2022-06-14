@@ -3,9 +3,11 @@
 ## Guía de visualización
 
 Para elegir la visualización adecuada para representar datos y por consiguiente elegir el componente adecuado de esta 
-biblioteca, es primordial preguntarse _¿qué se quiere representar?_. De manera general la representación de datos se 
-puede dividir en seis categorías: _Cambios temporales_, _Distribución de los datos_, _Comparaciones_, 
-_Composiciones o parte de un todo_, _Relaciones entre variables_ y _Datos geográficos_. 
+biblioteca, es primordial preguntarse _¿qué se quiere representar?_ De manera general la representación de datos se 
+puede dividir en seis categorías: 
+
+**Cambios temporales**, **Distribución de los datos**, **Comparaciones**, 
+**Composiciones o parte de un todo**, **Relaciones entre variables** y **Datos geográficos**. 
 
 De esta manera se puede elegir la visualización adecuada. Cabe mencionar que distintos tipos de representaciones pueden 
 funcionar para distintas visualizaciones y viceversa.
@@ -74,7 +76,8 @@ thead {
 
 Los componentes de visualización se pueden hallar en la carpeta `src/components/` de esta biblioteca.
 
-Para mayor información acerca de como representar los datos se pueden consultar las siguientes fuentes:
+Para conocer más acerca de como elegir la mejor visualización para representar datos se pueden consultar las 
+siguientes fuentes:
 
 * [How to Choose the Right Data Visualization](https://chartio.com/learn/charts/how-to-choose-data-visualization/)
 * [Chart Chooser](https://www.storytellingwithdata.com/blog/2013/04/chart-chooser)
