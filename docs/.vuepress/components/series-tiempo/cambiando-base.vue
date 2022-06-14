@@ -6,28 +6,30 @@
       :escala_logaritmica="true"
       :linea_id="'lineas3'"
       :margen="{arriba: 10, abajo: 20, izquierda: 50, derecha: 30}"
-      :nombre_clumna_horizontal="'fecha'"
-      :titulo_eje_x="'Titulo eje x'"
-      :titulo_eje_y="'Titulo eje y'"
-      :variables_categorias="edos_seleccionados"
+      :nombre_columna_horizontal="'fecha'"
+      :tipo_tooltip="'individual'"
+      :titulo_eje_x="'Eje horizontal (temporal)'"
+      :titulo_eje_y="'Eje vertical (numérico)'"
+      :variables="edos_seleccionados"
       class="contenedor-lineas-elaboradas"
   >
     <template slot="encabezado">
       <div class="encabezado">
-        <h3 class="titulo-visualizacion">Titulo de visualización de una o dos líneas</h3>
-        <p class="fecha-actualizacion"><b>Fecha de actualizacion: </b> 00/00/2022</p>
-        <p class="instruccional">Texto instruccional Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3 class="titulo-visualizacion">Titulo de gráfica con cambio de datos</h3>
+        <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
       </div>
     </template>
     <template slot="pie">
       <div class="pie">
-        <p>Pie de gráfica</p>
-        <button class="boton-base" @click="cambiaBaseLineas">Cambia la base</button>
+        <h3 class="titulo-visualizacion">Pie de gráfica</h3>
+        <p>Aliquam erat volutpat. In cursus ipsum purus. Quisque a pellentesque justo. Donec nec justo sodales,
+          dignissim leo consectetur, pulvinar leo. Aenean sodales a lacus eget porta.</p>
+        <button @click="alternandoBase">Cambia la data</button>
       </div>
     </template>
-
   </DaiLineas>
 </template>
+
 <script>
 import * as d3 from "d3";
 import data_edos from "./data_edos.json"
@@ -39,7 +41,6 @@ export default {
     return {
       datos: data_edos,
       conversionTemporal: d3.timeParse('%d-%m-%Y'),
-
       edos: [
         {"cve": "01", "nombre": "Aguascalientes", "abr": "AGS"},
         {"cve": "02", "nombre": "Baja California", "abr": "BC"},
@@ -76,16 +77,15 @@ export default {
         {"cve": "000", "nombre": "promedio", "abr": "promedio"}
       ],
       edos_seleccionados: [
-
         {
           "cve": "31",
           "nombre": "Yucatán",
-          "color": `rgb(${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)})`
+          "color": '#2c7fb8'
         },
         {
           "cve": "32",
           "nombre": "Zacatecas",
-          "color": `rgb(${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)})`
+          "color": '#253494'
         }
       ],
       checkeados: [],
@@ -93,12 +93,10 @@ export default {
   },
   mounted: function () {
     this.datos2 = this.datos;
-    this.cambiaBaseLineas()
-
-
+    this.alternandoBase()
   },
   methods: {
-    cambiaBaseLineas() {
+    alternandoBase() {
       this.edos_seleccionados = this.edos.map((d) => ({
             "cve": d.cve,
             "nombre": d.nombre,
@@ -142,63 +140,6 @@ body {
   margin: 20px;
 }
 
-.boton-base {
-  background-color: var(--color-acento-fondo);
-  border: none;
-  border-radius: 3px;
-  color: var(--color-acento-texto);
-  cursor: pointer;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  transition: background-color .33s ease-in-out, color .3s ease-in-out;
-
-  &:hover,
-  &:focus {
-    background-color: var(--color-acento-fondo-hover);
-    color: var(--color-acento-texto-hover);
-  }
-}
-
-div#lineas2 {
-  div.contenedor-tooltip-svg {
-
-    div.tooltip::v-deep {
-      div.tooltip-cuerpo {
-        font-size: 12px;
-
-        p {
-          margin: 0;
-        }
-
-        ul.tooltip-lineas {
-          margin: 0;
-          padding: 5px 0 0 0;
-
-          li {
-            list-style: none;
-            margin: 0 0 5px 0;
-            font-size: 12px;
-
-            &::before {
-              background: transparent;
-            }
-
-            span.span-tooltip-color {
-              transform: translateY(2px);
-              width: 12px;
-              height: 12px;
-              border: solid 1px rgba(255, 255, 255, .7);
-              display: inline-block;
-              border-radius: 50%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 div.contenedor-lineas-elaboradas {
   width: 100%;
   border: solid black 1px;
@@ -208,93 +149,42 @@ div.contenedor-lineas-elaboradas {
 }
 
 div.encabezado {
-  .titulo-proyecto {
-    padding: 10px 10px 0px 10px;
-    text-align: right;
-    font-size: 12px;
-    display: inherit;
-
-  }
 
   .titulo-visualizacion {
-    font-size: 16px;
+    //font-size: 16px;
     padding: 10px 10px 0;
     margin: 0;
   }
 
   .fecha-actualizacion {
-    font-size: 10px;
-    padding: 0 10px;
-    margin: 5px 0;
-  }
-
-  p.instruccional {
     font-size: 12px;
     padding: 0 10px;
     margin: 5px 0;
   }
+
 }
 
 div.pie {
+  padding: 2px 15px;
 
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  flex-direction: column;
+  p {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    font-family: Montserrat;
+    margin: 0px;
+    padding: 5px 10px;
+
+    &:hover {
+      background: #141414;
+      color: #fff;
+    }
+  }
+
   border-radius: $border-radius-tarjeta;
   box-shadow: 0px -5px 5px -1px rgb(221, 221, 221);
   margin-bottom: 10px;
-
-  p {
-    margin-left: 15px;
-    font-weight: 600;
-
-  }
-
-  .boton-base {
-    border: solid 1px black;
-    margin-left: 10px;
-    width: 145px;
-    height: 50px;
-
-    &:hover {
-      color: #fff;
-      background-color: black;
-    }
-  }
-}
-
-div.nomenclatura {
-  margin-top: 15px;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-
-  div.checkbox {
-    margin: 0;
-    padding: 5px 10px;
-    display: flex;
-
-    .color {
-      border-radius: 50%;
-      width: 20px;
-      min-width: 20px;
-      height: 20px;
-    }
-
-    .nombre {
-      font-size: 12px;
-      line-height: 1.6;
-      padding-left: 10px;
-    }
-  }
-}
-
-
-footer {
-  margin-top: 200px;
 }
 </style>

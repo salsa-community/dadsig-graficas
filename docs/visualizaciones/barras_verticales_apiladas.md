@@ -255,7 +255,7 @@ El `<template>` es el siguiente:
 </template>
 ```
 
-En el escript se incluyó lo siguiente:
+En el script se incluyó lo siguiente:
 
 ``` Javascript
 

@@ -166,3 +166,45 @@ hacer énfasis en su adición a la visualización.
 <series-tiempo-slots-tooltip/>
 
 ### Modificando datos
+
+El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega estilo en el scss para customizar la
+gráfica y ciertos métodos para modificar los datos que se grafican por medio de un botón. Las bases se cargan
+desde archivos `.json`. Dentro del slot `<pie>` se agrega una etiqueta `<button>`con el evento para hacer el 
+cambio de base de datos. También para darle estilos al botón, dependerá del SCSS o de la importación del 
+sistema de diseño.
+
+Se tiene entonces como resultado el siguiente `HTML`:
+ ```HTML
+<template>
+  <DaiLineas
+          ref="lineas3"
+          :conversionTemporal="conversionTemporal"
+          :datos="datos"
+          :escala_logaritmica="true"
+          :linea_id="'lineas3'"
+          :margen="{arriba: 10, abajo: 20, izquierda: 50, derecha: 30}"
+          :nombre_columna_horizontal="'fecha'"
+          :tipo_tooltip="'individual'"
+          :titulo_eje_x="'Eje horizontal (temporal)'"
+          :titulo_eje_y="'Eje vertical (numérico)'"
+          :variables="edos_seleccionados"
+          class="contenedor-lineas-elaboradas"
+  >
+    <template slot="encabezado">
+      <div class="encabezado">
+        <h3 class="titulo-visualizacion">Titulo de gráfica con cambio de datos</h3>
+        <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
+      </div>
+    </template>
+    <template slot="pie">
+      <div class="pie">
+        <h3 class="titulo-visualizacion">Pie de gráfica</h3>
+        <p>Aliquam erat volutpat. In cursus ipsum purus. Quisque a pellentesque justo. Donec nec justo sodales,
+          dignissim leo consectetur, pulvinar leo. Aenean sodales a lacus eget porta.</p>
+        <button @click="alternandoBase">Cambia la data</button>
+      </div>
+    </template>
+  </DaiLineas>
+</template>
+```
+<series-tiempo-cambiando-base/>
