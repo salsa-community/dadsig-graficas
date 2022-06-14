@@ -34,8 +34,6 @@
           <line class="guia-y"></line>
         </g>
         <g class="grupo-frente"></g>
-
-
       </svg>
       <div class="eje-x">
         <p :style="{
@@ -51,7 +49,6 @@
 
 <script>
 import * as d3 from "d3";
-
 
 export default {
   name: 'DaiLineas',
@@ -380,9 +377,10 @@ export default {
           .style("dominant-baseline", "middle");
       this.eje_x.selectAll("line")
           .remove();
-      this.eje_x.select("path").attr("d", () => {
-        return this.eje_x.select("path").attr("d").replace("M0,6", "M0,0").replace("V6", "V0")
-      })
+      this.eje_x.select("path").remove()
+      // this.eje_x.select("path").attr("d", () => {
+      //   return this.eje_x.select("path").attr("d").replace("M0,6", "M0,0").replace("V6", "V0")
+      // })
       this.eje_y.attr("transform", `translate(${this.margen.izquierda}, ${this.margen.arriba})`)
           .call(d3.axisLeft(this.escalaY).ticks(5));
       this.eje_y.select("path").style("opacity", 0);
