@@ -97,9 +97,9 @@ export default {
 						${txt.reverse().join(" ")}`
       }
     },
-    dominio_y: {
-      type: Array,
-    }
+    // dominio_y: {
+    //   type: Array,
+    // }
   },
   watch: {
     variables() {
@@ -180,7 +180,8 @@ export default {
         })
       }
       this.escalaY = d3.scaleLinear()
-          .domain(this.dominio_y ? this.dominio_y : [0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+          // .domain(this.dominio_y ? this.dominio_y : [0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
           .range([this.alto, 0]);
       this.escalaX = d3.scaleBand()
           .domain(this.datos.map(d => d[this.nombre_barra]))
