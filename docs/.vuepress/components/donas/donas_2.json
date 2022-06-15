@@ -1,0 +1,6 @@
+[
+  {"nombre": "Categoría A", "cantidad":210, "color":"#54278f"},
+  {"nombre": "Categoría B", "cantidad":120, "color":"#756bb1"},
+  {"nombre": "Categoría C", "cantidad":85, "color":"#9e9ac8"},
+  {"nombre": "Categoría D", "cantidad":52, "color":"#dadaeb"}
+]
