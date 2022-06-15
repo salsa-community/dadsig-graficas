@@ -29,6 +29,7 @@ export default {
   props: {
     dona_id: String,
     datos: Array,
+    variables: Object,
     colores: {
       type: Array,
       default: function () {
@@ -56,6 +57,150 @@ export default {
       default: function () {
         return true
       }
+    },
+    radio_interno: {
+      type: Number,
+      default: 0.18
+    },
+    radio_externo: {
+      type: Number,
+      default: 0.32,
+    },
+    radio_texto: {
+      type: Number,
+      default: 0.33
+    }
+  },
+
+  watch: {
+    variables() {
+      this.configurandoDimensionesParaDona();
+      this.actualizandoDona();
+    },
+    datos() {
+      this.configurandoDimensionesParaSVG();
+      this.configurandoDimensionesParaDona();
+      this.actualizandoDona();
+    },
+    margen() {
+      setTimeout(() => this.reescalandoPantalla(), 200)
+    }
+
+  },
+  // data() {
+  //   return {
+  //
+  //   }
+  // },
+
+  mounted: function () {
+    this.svg = d3.select("#" + this.dona_id + "svg.svg-dona");
+    this.grupo_contenedor = this.svg.select("g.grupo-contenedor-dona");
+
+    this.configurandoDimensionesParaSVG();
+
+    this.pie = d3.pie().sort(null);
+    this.arc = d3.arc();
+    this.arc_texto = d3.arc();
+
+    this.configurandoDimensionesParaDona();
+    this.creandoDona();
+    this.actualizandoDona();
+
+    this.tooltip = d3.select("div#" + this.dona_id)
+        .select("div.tooltip");
+    window.addEventListener("resize", this.reescalandoPantalla)
+  },
+
+  destroyed() {
+    window.removeEventListener("resize", this.reescalandoPantalla)
+  },
+
+  methods: {
+    configurandoDimensionesParaSVG() {
+      this.ancho = document.querySelector("#" + this.dona_id + " .contenedor-tooltip-svg").clientWidth - this.margen.izquierda - this.margen.derecha;
+      this.alto = this.alto_vis - this.margen.arriba - this.margen.abajo;
+      this.svg.attr("width", this.ancho + this.margen.izquierda + this.margen.derecha)
+          .attr("height", this.alto + this.margen.arriba + this.margen.abajo)
+          .style("left")
+
+      this.grupo_contenedor.attr("transform", `translate(${this.margen.izquierda}, ${this.margen.arriba}`);
+    },
+
+    configurandoDimensionesParaDona() {
+      this.pie.value((d) => d.variables.variable_numerica);
+      this.datos_donas = this.pie(this.datos);
+      this.arc.innerRadius(this.ancho * this.radio_interno).outerRadius(this.ancho * this.radio_externo);
+      this.arc_texto.innerRadius(this.ancho * this.radio_texto).outerRadius(this.ancho * this.radio_texto);
+
+    },
+
+    creandoDona() {
+      this.segmentos = this.grupo_contenedor
+          .selectAll("paths")
+          .data(this.datos_donas)
+          .enter()
+          .append('path')
+          .style("cursor", "pointer");
+
+      this.textos_porcentajes = this.grupo_contenedor
+          .selectAll('allLabels')
+          .data(this.datos_donas)
+          .enter()
+          .append("text");
+
+      if (this.tooltip_activo) {
+        this.svg
+            .on("mousemove", (evento) => {
+              this.mostrarTooltip(evento)
+            })
+            .on("mouseout", this.cerrarTooltip())
+      }
+    },
+
+    actualizandoDona() {
+      this.segmentos
+          .attr('d', this.arc)
+          .attr('fill', (d) => d.colores)
+          .attr("class", (d, i) => "rebanada-" + i)
+          .attr("stroke-opacity", 0)
+
+      this.textos_porcentajes
+          .text((d) => (Math.round(1000 * d.data.variable_numerica / d3.sum(this.datos.map(d => d.data.variable_numerica))) / 10) + "%")
+          .attr("class", (d, i) => "texto-" + i)
+          .style("font-size", "20px")
+          .style("fill", d => d.colores)
+          .style("font-weight", "700")
+          .attr('transform', (d) => {
+            var pos = this.arc_texto.centroid(d);
+            return 'translate(' + pos + ')';
+          })
+          .style("fill-opacity", 1)
+
+          // Alinear el texto según el ángulo en el que se encuentre
+
+          .style('text-anchor', (d) => {
+            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            return (midangle < Math.PI ? 'start' : 'end');
+          })
+          .style('dominant-baseline', (d) => {
+            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            return (midangle < .5 * Math.PI || midangle > 1.5 * Math.PI ? 'auto' : 'hanging');
+          });
+    },
+
+    reescalandoPantalla() {
+      this.configurandoDimensionesParaSVG();
+      this.configurandoDimensionesParaDona();
+      this.creandoDona();
+      this.actualizandoDona();
+    },
+    cerrarTooltip() {
+      this.tooltip.style('visibility', 'hidden')
+    },
+    mostrarTooltip(evento) {
+
+
     }
   }
 }

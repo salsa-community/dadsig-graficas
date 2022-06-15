@@ -1,20 +1,29 @@
 <template>
   <div id="app">
-    <DaiDonas/>
+    <DaiDonas
+        ref="donas_basica"
+        :dona_id="'donas_basica'"
+        :datos="datos"
+        :tooltip_activo="false"
+        :variables="{'variable_categorica':'nombre','variable_numerica':'cantidad'}"/>
   </div>
 </template>
 
 <script>
 
 import donas1 from "./donas_1.json"
-import donas2 from "./donas_2.json"
-import donas3 from "./donas_3.json"
 
 export default {
-  name: "basico"
+  name: "donas-basico",
+
+  data: function () {
+    return {
+      datos:donas1,
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>
