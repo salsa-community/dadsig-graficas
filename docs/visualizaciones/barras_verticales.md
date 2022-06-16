@@ -16,25 +16,25 @@ el componente de visualizacion `<DadsigBarras/>` construirá una gráfica de bar
 
 Por ejemplo, teniendo el siguientee arreglo para `datos`,
 
-```
+```json
 [
-{categoria: 'Variable A', cantidad: 120},
-{categoria: 'Variable B ', cantidad: 150}
-{categoria: 'Variable C ', cantidad: 72}
+{"categoria": "Variable A", "cantidad": 120},
+{"categoria": "Variable B ", "cantidad": 150},
+{"categoria": "Variable C ", "cantidad": 72}
 ]
 ```
 
 y el arreglo `variables` como sigue,
 
-```
+```json
 [
-  {id: 'cantidad', nombre_colores: 'cantidad', color: '#7fcdbb'},
+  {"id": "cantidad", "nombre_colores": "cantidad", "color": "#7fcdbb"}
 ]
 ``` 
 
 Entonces se usa el componente `<DadsigBarras/>` de la siguiente manera.
 
-```HTML
+```html
 <template>
   <div>
     <DadsigBarras

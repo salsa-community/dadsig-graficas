@@ -95,7 +95,7 @@ diversas empresas.
 En el caso contrario en el que se quieran agregar los datos directamente como un arreglo en el template del componente,
 éstos se deberán de colocar de la siguiente manera (nótese que aquí se abrevia el conjunto de datos usando "..."),
 
-```HTML 
+```html 
 <DadsigCajasBigotes
         ref="cajas_bigotes_basica"
         :caja_id="'cajas_bigotes_basica'"
@@ -133,7 +133,7 @@ o no dentro de los límites de los cuartiles dependiendo del valor de la métric
 
 En este ejemplo, el componente se escribe de la siguiente manera
 
-```HTML 
+```html
     <DadsigCajasBigotes
         ref="cajas_bigotes_basica"
         :caja_id="'cajas_bigotes_basica'"

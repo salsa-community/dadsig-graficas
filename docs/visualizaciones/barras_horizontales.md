@@ -10,7 +10,7 @@ barras horizontales.
 Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),
 el componente de visualizacion `<DadsigBarras/>` construirá una gráfica de barras horizontales simples.
 
-```HTML
+```html
 <template>
   <div>
     <DadsigBarras/>
