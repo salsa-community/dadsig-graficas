@@ -52,7 +52,7 @@ export default {
     },
     orientacion: {
       type: String,
-      default: 'h'
+      default: 'vertical'
     },
     nombre_barra: String,
     nombre_color: String,
@@ -261,9 +261,9 @@ export default {
       } 
       else {
         this.barras_individuales
-            .attr("width", d => this.escalaX(d[1])) // TODO: aqui no se como va esto
+            .attr("width", d => this.escalaX(d[1]) - this.escalaX(d[0])) 
             .attr("height", this.escalaY.bandwidth)
-            .attr("x", d => this.escalaX(d[0])) // TODO: aqui no se como va esto
+            .attr("x", d => this.escalaX(d[0]))
             .attr("y", d => this.escalaY(d.data[this.nombre_barra]))
       }
     },
@@ -275,7 +275,6 @@ export default {
 
     },
     mostrarTooltip(evento) {
-      // TODO: volter esto layerX y this.escalaX.step();
       this.tooltip_bandas = this.escalaX.step();
       this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
       if (this.tooltip_indice < this.datos.length) {
