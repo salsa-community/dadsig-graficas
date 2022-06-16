@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <DaiDiagramaCajas
-        ref="cajas_basica"
-        :caja_id="'diagramacajas_basica'"
+    <DadsigCajasBigotes
+        ref="cajas_bigotes_basica"
+        :caja_id="'cajas_bigotes_basica'"
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import diagramacajasejemplo from "./diagramacajas_ejemplo_1.json"
+import cajasbigotesejemplos from "./cajas_bigotes_ejemplo_1.json"
 
 export default {
-  name: 'diagrama-cajas-basico',
+  name: 'cajas-bigotes-basico',
 
   data: function () {
     return {
-      datos: diagramacajasejemplo,
+      datos: cajasbigotesejemplos,
     }
   },
 }

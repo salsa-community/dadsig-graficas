@@ -2,7 +2,7 @@ import {
     DadsigBarras,
     DadsigDonas,
     DadsigSeriesTiempo,
-    DadsigDiagramaCajas
+    DadsigCajasBigotes
 } from "./components"
 
 
@@ -14,7 +14,7 @@ export default function plugin(Vue) {
     Vue.use(DadsigBarras)
     Vue.use(DadsigDonas)
     Vue.use(DadsigSeriesTiempo)
-    Vue.use(DadsigDiagramaCajas)
+    Vue.use(DadsigCajasBigotes)
 
 
 }
@@ -24,5 +24,5 @@ export {
     DadsigBarras,
     DadsigDonas,
     DadsigSeriesTiempo,
-    DadsigDiagramaCajas
+    DadsigCajasBigotes
 }

@@ -150,7 +150,7 @@ En este ejemplo, el componente se escribe de la siguiente manera
 En este caso, no es necesario agregar elementos en el apartado `<style/>` pues este componente ya incluye todo dentro
 del template y el script. El resultado es el siguiente,
 
-<diagrama-cajas-basico/>
+<cajas-bigotes-basico/>
 
 ### Uso de slots y tooltip
 
@@ -198,7 +198,7 @@ El gráfico resultante es el siguiente, en el cual se empleo una tipografía dis
 su adición a la visualización. Observe también que si no se especifica la propiedad de
 `:tooltip_activo="false"`, por defecto ya se puede ver un tooltip,
 
-<diagrama-cajas-slots-tooltip/>
+<cajas-bigotes-slots-tooltip/>
 
 ### Modificando datos
 
@@ -287,4 +287,4 @@ export default {
 
 El resultado es el siguiente:
 
-<diagrama-cajas-cambiando-base/>
+<cajas-bigotes-cambiando-base/>
