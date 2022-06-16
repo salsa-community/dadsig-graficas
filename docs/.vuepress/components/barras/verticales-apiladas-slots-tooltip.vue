@@ -294,7 +294,7 @@ export default {
 <style lang="scss" scoped>
 
 .slot-encabezado, .slot-pie {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Montserrat;
 }
 
 .slot-parrafo {

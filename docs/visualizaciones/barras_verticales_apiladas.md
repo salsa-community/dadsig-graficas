@@ -173,6 +173,7 @@ notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el sigui
             cantidad_3: 30,
         },
     ]"
+    orientacion="horizontal"
     :variables="[
         { id: 'cantidad_1', nombre_colores: 'cantidad 1', color: '#ffffcc' },
         { id: 'cantidad_2', nombre_colores: 'cantidad 2', color: '#c7e9b4' },

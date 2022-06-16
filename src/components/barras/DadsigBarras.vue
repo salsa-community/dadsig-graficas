@@ -52,7 +52,7 @@ export default {
     },
     orientacion: {
       type: String,
-      default: 'h'
+      default: 'vertical'
     },
     nombre_barra: String,
     nombre_color: String,
