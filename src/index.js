@@ -1,8 +1,8 @@
 import {
-    DaiBarras,
-    DaiDonas,
-    DaiSeriesTiempo,
-    DaiDiagramaCajas
+    DadsigBarras,
+    DadsigDonas,
+    DadsigSeriesTiempo,
+    DadsigDiagramaCajas
 } from "./components"
 
 
@@ -11,18 +11,18 @@ export default function plugin(Vue) {
         return
     }
     plugin.installed = true
-    Vue.use(DaiBarras)
-    Vue.use(DaiDonas)
-    Vue.use(DaiSeriesTiempo)
-    Vue.use(DaiDiagramaCajas)
+    Vue.use(DadsigBarras)
+    Vue.use(DadsigDonas)
+    Vue.use(DadsigSeriesTiempo)
+    Vue.use(DadsigDiagramaCajas)
 
 
 }
 
 export {
     plugin as install,
-    DaiBarras,
-    DaiDonas,
-    DaiSeriesTiempo,
-    DaiDiagramaCajas
+    DadsigBarras,
+    DadsigDonas,
+    DadsigSeriesTiempo,
+    DadsigDiagramaCajas
 }
