@@ -261,9 +261,9 @@ export default {
       } 
       else {
         this.barras_individuales
-            .attr("width", d => this.escalaX(d[1])) // TODO: aqui no se como va esto
+            .attr("width", d => this.escalaX(d[1]) - this.escalaX(d[0]))
             .attr("height", this.escalaY.bandwidth)
-            .attr("x", d => this.escalaX(d[0])) // TODO: aqui no se como va esto
+            .attr("x", d => this.escalaX(d[0]))
             .attr("y", d => this.escalaY(d.data[this.nombre_barra]))
       }
     },
@@ -276,36 +276,73 @@ export default {
     },
     mostrarTooltip(evento) {
       // TODO: volter esto layerX y this.escalaX.step();
-      this.tooltip_bandas = this.escalaX.step();
-      this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
-      if (this.tooltip_indice < this.datos.length) {
-        this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
-        this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
+      if(this.orientacion === 'vertical') {
+        this.tooltip_bandas = this.escalaX.step();
+        this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
+        
+        if (this.tooltip_indice < this.datos.length) {
+          this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
+          this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
 
-        this.tooltip
-            .style("visibility", "visible")
-            .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
-            .style("width", this.ancho_tooltip + "px")
-            .style("top", evento.layerY + "px")
-            .style("height", "30px")
+          this.tooltip
+              .style("visibility", "visible")
+              .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
+              .style("width", this.ancho_tooltip + "px")
+              .style("top", evento.layerY + "px")
+              .style("height", "30px")
 
-        let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
-            .style("background", "rgba(0, 0, 0,.8)")
-            .style("min-width", this.ancho_tooltip + "px")
-            .style("border-radius", "8px")
-            .style("width", this.ancho_tooltip + "px")
-            .attr("height", 70)
-            .style("padding", "0 3px 0 10px")
+          let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+              .style("background", "rgba(0, 0, 0,.8)")
+              .style("min-width", this.ancho_tooltip + "px")
+              .style("border-radius", "8px")
+              .style("width", this.ancho_tooltip + "px")
+              .attr("height", 70)
+              .style("padding", "0 3px 0 10px")
 
-        contenido_tooltip.select("div.tooltip-cifras")
-            .html(this.textoTooltip())
+          contenido_tooltip.select("div.tooltip-cifras")
+              .html(this.textoTooltip())
 
-        this.barras_individuales
-            .style("fill-opacity", ".2")
+          this.barras_individuales
+              .style("fill-opacity", ".2")
 
-        this.barras_individuales
-            .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
-            .style("fill-opacity", "1")
+          this.barras_individuales
+              .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
+              .style("fill-opacity", "1")
+        }
+      }
+      else {
+        this.tooltip_bandas = this.escalaY.step();
+        this.tooltip_indice = parseInt((evento.layerY - this.margen.arriba + this.espaciado_barras) / this.tooltip_bandas)
+
+        if (this.tooltip_indice < this.datos.length) {
+          this.tooltip_categoria = this.escalaY.domain()[this.tooltip_indice]
+          this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
+
+          this.tooltip
+              .style("visibility", "visible")
+              .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
+              .style("width", this.ancho_tooltip + "px")
+              .style("top", evento.layerY + "px")
+              .style("height", "30px")
+
+          let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+              .style("background", "rgba(0, 0, 0,.8)")
+              .style("min-width", this.ancho_tooltip + "px")
+              .style("border-radius", "8px")
+              .style("width", this.ancho_tooltip + "px")
+              .attr("height", 70)
+              .style("padding", "0 3px 0 10px")
+
+          contenido_tooltip.select("div.tooltip-cifras")
+              .html(this.textoTooltip())
+
+          this.barras_individuales
+              .style("fill-opacity", ".2")
+
+          this.barras_individuales
+              .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
+              .style("fill-opacity", "1")
+        }
       }
     },
     cerrarTooltip() {
