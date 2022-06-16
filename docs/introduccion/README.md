@@ -30,7 +30,7 @@ como realizarlo.
 Una vez clonado el repositorio, se puede instalar en la terminal con `npm` ejecutando la siguiente línea de comando,
 
 ```shell
-npm install ruta_al_repositorio/Dadsig-graficas
+npm install ruta_al_repositorio/dadsig-graficas
 ```
 
 #### Opción B 

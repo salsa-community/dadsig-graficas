@@ -1,6 +1,6 @@
 # Barras horizontales apiladas
 
-A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de
+A continuación se describe la utilización del componente de visualización `<DadsigBarras/>` para construir un gráfico de
 barras horizontales apiladas.
 
 ## Parámetros

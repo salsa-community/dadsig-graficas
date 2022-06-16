@@ -1,6 +1,6 @@
 # Barras verticales apiladas
 
-A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de 
+A continuación se describe la utilización del componente de visualización `<DadsigBarras/>` para construir un gráfico de 
 barras verticales apiladas.
 
 ## Parámetros
@@ -90,7 +90,7 @@ el nombre de la barra y las cantidades de cada una de las categorías y colores.
 En este ejemplo, el componente se escribe de la siguiente manera
 
 ```HTML 
-<DaiBarras
+<DadsigBarras
       :barras_id="'barras_apiladas_estaticas'"
       :datos="[
         {
@@ -133,7 +133,7 @@ _Visualizaciones_ de esa documentación) para insertar encabezados y pies de gr�
 notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
 
 ```HTML
-<DaiBarras
+<DadsigBarras
     :barras_id="'verticales_apiladas_slots_tooltip'"
     :datos="[
         {
@@ -203,7 +203,7 @@ notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el sigui
         </p>
     </div>
     </template>
-</DaiBarras>
+</DadsigBarras>
 ```
 
 El gráfico resultante es el siguiente, en el cual se empleo una tipografía distinta en los `slots` para 
@@ -226,7 +226,7 @@ El `<template>` es el siguiente:
 ```HTML
 <template>
   <div>
-    <DaiBarras
+    <DadsigBarras
             :barras_id="'verticales_apiladas_cambiando_base'"
             :datos="datos"
             :margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
@@ -250,7 +250,7 @@ El `<template>` es el siguiente:
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-    </DaiBarras>
+    </DadsigBarras>
   </div>
 </template>
 ```
