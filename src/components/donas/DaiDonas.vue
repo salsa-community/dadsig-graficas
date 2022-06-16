@@ -109,6 +109,7 @@ export default {
 
     this.tooltip = d3.select("div#" + this.dona_id)
         .select("div.tooltip");
+
     window.addEventListener("resize", this.reescalandoPantalla)
   },
 
@@ -199,6 +200,28 @@ export default {
       this.tooltip.style('visibility', 'hidden')
     },
     mostrarTooltip(evento) {
+
+      this.tooltip.style('visibility', 'visible');
+
+      let posicion = this.arc_texto.centroid(this.datos_donas[indice]);
+      let angulo_medio = this.datos_donas[indice].startAngle + (this.datos_donas[indice].endAngle - this.datos_donas[indice].startAngle) / 2;
+
+      this.tooltip
+      .attr("x", angulo_medio > Math.PI ? posicion[0] : posicion[0] - this.ancho_tooltip)
+      .attr("y", posicion[1])
+      .attr("width", this.ancho_tooltip)
+      .attr("height", 30);
+
+      let contenido_tooltip = this.tooltip.select("div.tooltip-contenido")
+      .style("background", "rgba(0, 0, 0, 0.8)")
+      .style("min-width", this.ancho_tooltip)
+      .style("border-radius", "8px")
+      .style("width", this.ancho_tooltip + "px")
+      .attr("height", 70)
+      .style("padding", "0 3px 0 10px");
+
+
+
 
 
     }
