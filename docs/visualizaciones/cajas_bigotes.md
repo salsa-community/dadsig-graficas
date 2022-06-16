@@ -48,8 +48,8 @@ será el número de acciones vendidas, `acciones_vendidas`:
 * `variables`: (_Object_) Objeto que contiene el nombre de la variable categórica, el nombre de la métrica y el color
   asignado al conjunto de cajas. Por ejemplo:
 
-  ```
-  {'grupos':'nombre_empresa','variable_dist':'acciones_vendidas','color':'#000'}
+  ```json
+  {"grupos": "nombre_empresa", "variable_dist": "acciones_vendidas", "color": "#000"}
   ``` 
 
 * `titulo_eje_x`: (_String_) Título para el eje horizontal, en esta visualización será para la variable categórica.
@@ -73,7 +73,7 @@ libertad de customizar el componente al modificarlos.
 En esta sección se detallan tres distintos casos de uso de este componente. Dado que el diagrama de cajas y bigotes
 requiere que los datos se encuentren completamente desagregados, se recomienda agregar los mismos por medio de un
 archivo `.json` externo. Lo anterior se hace por medio de un `import` en el apartado `<script/>`. En el siguiente
-extracto de código se agrega el archivo `diagramacajas_ejemplo_1.json` que grafica el número de acciones vendidas por
+extracto de código se agrega el archivo `cajas_bigotes_ejemplo_1.json` que grafica el número de acciones vendidas por
 diversas empresas.
 
 ```vue

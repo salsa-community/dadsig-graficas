@@ -59,7 +59,7 @@ module.exports = {
             'barras_horizontales_apiladas',
             'barras_verticales',
             'barras_verticales_apiladas',
-            'cajas-bigotes',
+            'cajas_bigotes',
             'donas',
             'lineas',
           ]

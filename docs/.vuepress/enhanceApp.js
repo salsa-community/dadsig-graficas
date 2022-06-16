@@ -33,8 +33,8 @@ export default ({
   siteData // site metadata
 }) => {
   Vue.use(DadsigBarras)
+  Vue.use(DadsigCajasBigotes)
   Vue.use(DadsigDonas)
   Vue.use(DadsigLineas)
-  Vue.use(DadsigCajasBigotes)
   // ...apply enhancements for the site.
 }
