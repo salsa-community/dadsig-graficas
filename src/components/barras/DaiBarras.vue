@@ -50,6 +50,10 @@ export default {
         return []
       }
     },
+    orientacion: {
+      type: String,
+      default: 'h'
+    },
     nombre_barra: String,
     nombre_color: String,
     titulo_eje_y: String,
@@ -97,9 +101,6 @@ export default {
 						${txt.reverse().join(" ")}`
       }
     },
-    dominio_y: {
-      type: Array,
-    }
   },
   watch: {
     variables() {
@@ -179,26 +180,50 @@ export default {
           d.data = Object.assign({}, d.data, {"key": this.data_apilada[i].key})
         })
       }
-      this.escalaY = d3.scaleLinear()
-          .domain(this.dominio_y ? this.dominio_y : [0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+
+      if (this.orientacion === 'vertical') {
+        this.escalaY = d3.scaleLinear()
+          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
           .range([this.alto, 0]);
-      this.escalaX = d3.scaleBand()
+        this.escalaX = d3.scaleBand()
           .domain(this.datos.map(d => d[this.nombre_barra]))
           .range([0, this.ancho])
           .padding(this.espaciado_barras)
+        
+        this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
+        this.eje_y.select("path.domain")
+            .remove()
+        this.eje_y.selectAll("line")
+            .attr("x1", this.ancho)
+            .style("stroke-dasharray", "3 2")
+            .style("stroke", "#707070")
 
-      this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
-      this.eje_y.select("path.domain")
-          .remove()
-      this.eje_y.selectAll("line")
-          .attr("x1", this.ancho)
-          .style("stroke-dasharray", "3 2")
-          .style("stroke", "#707070")
+        this.eje_x.call(d3.axisBottom(this.escalaX))
+            .attr("transform", `translate(${0}, ${this.alto})`)
+        this.eje_x.select("path").remove()
+        this.eje_x.selectAll("line").remove()
+      }
+      else {
+        this.escalaX = d3.scaleLinear()
+          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+          .range([0, this.ancho]);
+        this.escalaY = d3.scaleBand()
+          .domain(this.datos.map(d => d[this.nombre_barra]))
+          .range([0, this.alto])
+          .padding(this.espaciado_barras)
 
-      this.eje_x.call(d3.axisBottom(this.escalaX))
-          .attr("transform", `translate(${0},${this.alto})`)
-      this.eje_x.select("path").remove()
-      this.eje_x.selectAll("line").remove()
+        this.eje_y.call(d3.axisLeft(this.escalaY))
+        this.eje_y.select("path.domain").remove()
+        this.eje_y.selectAll("line").remove()
+
+        this.eje_x.call(d3.axisBottom(this.escalaX))
+            .attr("transform", `translate(${0}, ${this.alto})`)
+        this.eje_x.select("path.domain").remove()
+        this.eje_x.selectAll("line")
+            .attr("y1", -this.alto)
+            .style("stroke-dasharray", "3 2")
+            .style("stroke", "#707070")
+      }
     },
     creandoBarras() {
       this.grupo_contenedor.selectAll(".g-rects").remove();
@@ -227,13 +252,20 @@ export default {
 
     },
     actualizandoBarras() {
-
-      this.barras_individuales
-          .attr("width", this.escalaX.bandwidth)
-          .attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
-          .attr("x", d => this.escalaX(d.data[this.nombre_barra]))
-          .attr("y", d => this.escalaY(d[1]))
-
+      if(this.orientacion === 'vertical') {
+        this.barras_individuales
+            .attr("width", this.escalaX.bandwidth)
+            .attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
+            .attr("x", d => this.escalaX(d.data[this.nombre_barra]))
+            .attr("y", d => this.escalaY(d[1]))
+      } 
+      else {
+        this.barras_individuales
+            .attr("width", d => this.escalaX(d[1])) // TODO: aqui no se como va esto
+            .attr("height", this.escalaY.bandwidth)
+            .attr("x", d => this.escalaX(d[0])) // TODO: aqui no se como va esto
+            .attr("y", d => this.escalaY(d.data[this.nombre_barra]))
+      }
     },
 
     reescalandoPantalla() {
@@ -243,6 +275,7 @@ export default {
 
     },
     mostrarTooltip(evento) {
+      // TODO: volter esto layerX y this.escalaX.step();
       this.tooltip_bandas = this.escalaX.step();
       this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
       if (this.tooltip_indice < this.datos.length) {
