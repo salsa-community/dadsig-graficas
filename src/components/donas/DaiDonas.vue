@@ -203,8 +203,8 @@ export default {
 
       this.tooltip.style('visibility', 'visible');
 
-      let posicion = this.arc_texto.centroid(this.datos_donas[indice]);
-      let angulo_medio = this.datos_donas[indice].startAngle + (this.datos_donas[indice].endAngle - this.datos_donas[indice].startAngle) / 2;
+      let posicion = this.arc_texto.centroid(this.datos_donas[evento]);
+      let angulo_medio = this.datos_donas[evento].startAngle + (this.datos_donas[evento].endAngle - this.datos_donas[evento].startAngle) / 2;
 
       this.tooltip
       .attr("x", angulo_medio > Math.PI ? posicion[0] : posicion[0] - this.ancho_tooltip)
@@ -212,17 +212,22 @@ export default {
       .attr("width", this.ancho_tooltip)
       .attr("height", 30);
 
-      let contenido_tooltip = this.tooltip.select("div.tooltip-contenido")
-      .style("background", "rgba(0, 0, 0, 0.8)")
-      .style("min-width", this.ancho_tooltip)
-      .style("border-radius", "8px")
-      .style("width", this.ancho_tooltip + "px")
-      .attr("height", 70)
-      .style("padding", "0 3px 0 10px");
+      let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+          .style("background", "rgba(0, 0, 0,.8)")
+          .style("min-width", this.ancho_tooltip + "px")
+          .style("border-radius", "8px")
+          .style("width", this.ancho_tooltip + "px")
+          .attr("height", 70)
+          .style("padding", "0 3px 0 10px")
 
+      contenido_tooltip.select("div.tooltip-cifras")
+          .html(this.textoTooltip())
 
-
-
+      this.tooltip
+          .attr("height", contenido_tooltip.style("height"))
+          .style("height", contenido_tooltip.style("height"))
+          .attr("width", parseInt(contenido_tooltip.style("width")) + 13)
+          .attr("y", angulo_medio < .5 * Math.PI || angulo_medio > 1.5 * Math.PI ? posicion[1] : posicion[1]-parseInt(contenido_tooltip.style("height")));
 
     }
   }
@@ -234,6 +239,29 @@ export default {
 
 .contenedor-dona {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+  svg.svg-dona ::v-deep foreignObject {
+    color: #fff;
+    font-size: 12px;
+  }
+  svg.svg-dona ::v-deep div.contenedor-boton-cerrar {
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 5px;
+  }
+  svg.svg-dona ::v-deep button.boton-cerrar-tooltip {
+    background: none;
+    border: none;
+    padding: 0 0 0 5px;
+    cursor: pointer;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 div.contenedor-tooltip-svg {

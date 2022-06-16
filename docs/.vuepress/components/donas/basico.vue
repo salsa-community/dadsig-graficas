@@ -11,7 +11,7 @@
 
 <script>
 
-import donas1 from "./donas_1.json"
+import donas1 from "./donas_1_old.json"
 
 export default {
   name: "donas-basico",
