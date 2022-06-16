@@ -12,7 +12,7 @@
 //import  DaiMaps from "../../src/index.js"
 
 
-import { DaiBarras, DaiDonas, DaiSeriesTiempo, DaiDiagramaCajas } from "../../src/index.js"
+import { DadsigBarras, DadsigDonas, DadsigLineas, DadsigCajasBigotes } from "../../src/index.js"
 import "./styles/index.scss"
 
 /*export default ({
@@ -32,9 +32,9 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  Vue.use(DaiBarras)
-  Vue.use(DaiDonas)
-  Vue.use(DaiSeriesTiempo)
-  Vue.use(DaiDiagramaCajas)
+  Vue.use(DadsigBarras)
+  Vue.use(DadsigCajasBigotes)
+  Vue.use(DadsigDonas)
+  Vue.use(DadsigLineas)
   // ...apply enhancements for the site.
 }

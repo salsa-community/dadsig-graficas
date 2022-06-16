@@ -1,10 +1,10 @@
-import DaiBarras from './DaiBarras.vue'
+import DadsigBarras from './DadsigBarras.vue'
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiBarras.name,DaiBarras)
+    Vue.component(DadsigBarras.name,DadsigBarras)
 }
 
 export default plugin;
@@ -12,5 +12,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiBarras
+    DadsigBarras
 }

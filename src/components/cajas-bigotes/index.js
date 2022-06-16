@@ -1,11 +1,11 @@
-import DaiSeriesTiempo from './DaiSeriesTiempo.vue'
+import DadsigCajasBigotes from './DadsigCajasBigotes.vue'
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiSeriesTiempo.name,DaiSeriesTiempo);
+    Vue.component(DadsigCajasBigotes.name,DadsigCajasBigotes);
 }
 
 export default plugin;
@@ -13,5 +13,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiSeriesTiempo
+    DadsigCajasBigotes
 };

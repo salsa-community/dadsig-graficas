@@ -1,11 +1,11 @@
-import DaiDiagramaCajas from './DaiDiagramaCajas.vue'
+import DadsigLineas from './DadsigLineas.vue'
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DaiDiagramaCajas.name,DaiDiagramaCajas);
+    Vue.component(DadsigLineas.name,DadsigLineas);
 }
 
 export default plugin;
@@ -13,5 +13,5 @@ export default plugin;
 
 export { 
     plugin as install,
-    DaiDiagramaCajas
+    DadsigLineas
 };

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <DaiDiagramaCajas
-        ref="cajas_cambio_base"
-        :caja_id="'diagrama_cajas_cambio_base'"
+    <DadsigCajasBigotes
+        ref="cajas_bigotes_cambio_base"
+        :caja_id="'cajas_bigotes_cambio_base'"
         :datos="datos"
         :titulo_eje_x="titulos_eje_x"
         :titulo_eje_y="titulos_eje_y"
@@ -22,20 +22,20 @@
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-    </DaiDiagramaCajas>
+    </DadsigCajasBigotes>
   </div>
 </template>
 
 <script>
-import diagramacajasejemplo1 from "./diagramacajas_ejemplo_1.json"
-import diagramacajasejemplo2 from "./diagramacajas_ejemplo_2.json"
+import cajasbigotesejemplo1 from "./cajas_bigotes_ejemplo_1.json"
+import cajasbigotesejemplo2 from "./cajas_bigotes_ejemplo_2.json"
 
 export default {
-  name: 'diagrama-cajas-cambiando-base',
+  name: 'cajas-bigotes-cambiando-base',
 
   data: function () {
     return {
-      datos: diagramacajasejemplo1,
+      datos: cajasbigotesejemplo1,
       variables: {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#2c7fb8'},
       titulos_eje_x: 'Empresas',
       titulos_eje_y: 'Acciones vendidas',
@@ -46,13 +46,13 @@ export default {
     alternandoBase() {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
-        this.datos = diagramacajasejemplo2;
+        this.datos = cajasbigotesejemplo2;
         this.variables = {'grupos': 'nombre_categoria', 'variable_dist': 'metrica', 'color': '#253494'};
         this.titulos_eje_x = 'Categorías';
         this.titulos_eje_y = 'Métrica';
       } else {
         this.base_seleccionada = 1;
-        this.datos = diagramacajasejemplo1;
+        this.datos = cajasbigotesejemplo1;
         this.variables = {'grupos': 'nombre_empresa', 'variable_dist': 'acciones_vendidas', 'color': '#2c7fb8'};
         this.titulos_eje_x = 'Empresas';
         this.titulos_eje_y = 'Acciones vendidas';
@@ -65,7 +65,7 @@ export default {
 <style lang="scss">
 $border-radius-tarjeta: 8px;
 
-div#diagrama_cajas_cambio_base {
+div#cajas_bigotes_cambio_base {
   border: solid 1px #000;
   border-radius: $border-radius-tarjeta;
 

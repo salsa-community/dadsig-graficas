@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DaiBarras
+    <DadsigBarras
       :barras_id="'verticales_apiladas_basico'"
       :datos="[
         {
