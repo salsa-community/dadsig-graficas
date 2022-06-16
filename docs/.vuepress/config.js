@@ -45,8 +45,8 @@ module.exports = {
         link: '/visualizaciones/',
       },
       {
-        text: 'Contribuciones',
-        link: '/contribuciones/'
+        text: 'Contribuir',
+        link: '/contribuir/'
       },
     ],
     sidebar: {
@@ -59,9 +59,9 @@ module.exports = {
             'barras_horizontales_apiladas',
             'barras_verticales',
             'barras_verticales_apiladas',
-            'diagrama_cajas',
+            'cajas-bigotes',
             'donas',
-            'series_tiempo',
+            'lineas',
           ]
         }
       ],
