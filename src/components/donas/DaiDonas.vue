@@ -77,10 +77,42 @@ export default {
       this.configurandoDimensionesParaDona();
       this.actualizandoDona();
     },
-    datos() {
+    datos(new_val, old_val) {
       this.configurandoDimensionesParaSVG();
       this.configurandoDimensionesParaDona();
       this.actualizandoDona();
+
+      if (new_val.length > old_val.length) {
+        this.segmentos = this.grupo_contenedor
+        .selectAll("path")
+        .data(this.datos_donas);
+
+        this.segmentos = this.segmentos.enter()
+        .append("path").style("cursor", "pointer")
+        .merge(this.segmentos);
+
+        this.segmentos.exit().remove();
+
+        this.textos_porcentajes = this.grupo_contenedor
+        .selectAll("text")
+        .data(this.datos_donas);
+
+        this.textos_porcentajes = this.textos_porcentajes.enter()
+        .append("text")
+        .merge(this.textos_porcentajes);
+
+        this.textos_porcentajes.exit().remove();
+      }
+      else {
+        this.segmentos.data(this.datos_donas)
+        .exit()
+        .remove();
+
+        this.textos_porcentajes.data(this.datos_donas)
+        .exit()
+        .remove();
+      }
+      this.textos_porcentajes.style("fill-opacity", "1");
     },
     margen() {
       setTimeout(() => this.reescalandoPantalla(), 200)
@@ -93,7 +125,7 @@ export default {
   //   }
   // },
 
-  mounted: function () {
+  mounted() {
     this.svg = d3.select("#" + this.dona_id + "svg.svg-dona");
     this.grupo_contenedor = this.svg.select("g.grupo-contenedor-dona");
 
@@ -155,7 +187,7 @@ export default {
             .on("mousemove", (evento) => {
               this.mostrarTooltip(evento)
             })
-            .on("mouseout", this.cerrarTooltip())
+            .on("mouseout", this.cerrarTooltip)
       }
     },
 
@@ -173,19 +205,19 @@ export default {
           .style("fill", d => d.colores)
           .style("font-weight", "700")
           .attr('transform', (d) => {
-            var pos = this.arc_texto.centroid(d);
-            return 'translate(' + pos + ')';
+            let posicion = this.arc_texto.centroid(d);
+            return 'translate(' + posicion + ')';
           })
           .style("fill-opacity", 1)
 
           // Alinear el texto según el ángulo en el que se encuentre
 
           .style('text-anchor', (d) => {
-            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
             return (midangle < Math.PI ? 'start' : 'end');
           })
           .style('dominant-baseline', (d) => {
-            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
             return (midangle < .5 * Math.PI || midangle > 1.5 * Math.PI ? 'auto' : 'hanging');
           });
     },
@@ -240,7 +272,7 @@ export default {
 .contenedor-dona {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 
-  svg.svg-dona ::v-deep foreignObject {
+  svg.svg-dona ::v-deep {
     color: #fff;
     font-size: 12px;
   }
@@ -292,7 +324,7 @@ div.contenedor-tooltip-svg {
     visibility: hidden;
   }
 
-  div.tooltip::v-deep
+  div.tooltip::v-deep,
   div.tooltip-cifras {
     padding-bottom: 5px;
 
