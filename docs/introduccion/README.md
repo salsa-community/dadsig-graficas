@@ -4,7 +4,7 @@ sidebar: auto
 
 # Introducción
 
-**DAI-GRAFICAS** es una biblioteca de componentes de [Vue.js](https://Vuejs.org/) para la visualización de datos. Es 
+**DADSIG-GRAFICAS** es una biblioteca de componentes de [Vue.js](https://Vuejs.org/) para la visualización de datos. Es 
 creada con la versión 2.6.11 [Vue.js](https://Vuejs.org/) y con la versión 7.0.0 de [D3.js](https://D3js.org/).
 
 ## Cómo empezar
@@ -23,14 +23,14 @@ Es necesario tener instalado el manejador de paquetes
 
 #### Opción A
 
-Ir al [repositorio de github](https://github.com/conacyt-dai/dai-graficas) y clonarlo. Si no se sabe como
+Ir al [repositorio de github](https://github.com/conacyt-dai/dadsig-graficas) y clonarlo. Si no se sabe como
 [aquí](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) hay una guía de 
 como realizarlo. 
 
 Una vez clonado el repositorio, se puede instalar en la terminal con `npm` ejecutando la siguiente línea de comando,
 
 ```shell
-npm install ruta_al_repositorio/dai-graficas
+npm install ruta_al_repositorio/dadsig-graficas
 ```
 
 #### Opción B 
@@ -49,7 +49,7 @@ en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se manti
 Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando,
 
 ```shell
-npm install dai-graficas
+npm install dadsig-graficas
 ```
 
 ## Uso de componentes de visualización
@@ -64,18 +64,18 @@ Se listan a continuación las visualizaciones de datos que se pueden construir u
 
 | Componente | Visualización |
 |--|:-------------|
-| `<DaiBarras/>` |Barras verticales simples|
-| `<DaiBarras/>` |Barras verticales apiladas|
-| `<DaiBarras/>` |Barras horizontales simples|
-| `<DaiBarras/>` |Barras horizontales apiladas|
-| `<DaiDonas/>` |Donas  |
-| `<DaiDiagramaCajas/>` |Diagrama de cajas o Boxplot|
-| `<DaiSeriesTiempo/>` |Líneas con eje temporal (Serie de tiempo)|
+| `<DadsigBarras/>` |Barras verticales simples|
+| `<DadsigBarras/>` |Barras verticales apiladas|
+| `<DadsigBarras/>` |Barras horizontales simples|
+| `<DadsigBarras/>` |Barras horizontales apiladas|
+| `<DadsigDonas/>` |Donas|
+| `<DadsigCajasBigotes/>` |Diagrama de cajas y bigotes; Boxplot|
+| `<DadsigLineas/>` |Líneas|
 
 Se puede notar que distintos tipos de barras (sencillas, horizontales, verticales, etc.) se construyen usando el 
 mismo componente de visualización. Esto es porque por medio de parámetros se puede customizar un mismo gráfico de barras.
 Lo anterior y ejemplos de uso de todos los componentes de visualización se puede encontrar en el apartado 
-[Visualizaciones](http://localhost:8080/dai-graficas/visualizaciones/) de esta documentación.
+[Visualizaciones](http://localhost:8080/dadsig-graficas/visualizaciones/) de esta documentación.
 
 Los componentes disponibles en esta biblioteca se encuentran en la carpeta `src/components/`.
 
@@ -83,15 +83,15 @@ Los componentes disponibles en esta biblioteca se encuentran en la carpeta `src/
 
 Para poder utilizar un componente de visualización de esta biblioteca, es necesario importar y registrarlo en el 
 archivo `src/main.js` del proyecto a trabajar, por ejemplo en el siguiente script se está registrando e importando el 
-componente de `DaiBarrasApiladas` de esta biblioteca.
+componente de `DadsigBarras` de esta biblioteca.
 
 ```javascript
 import Vue from 'Vue'
 import App from './App.Vue'
-import {DaiBarrasApiladas} from "dai-graficas";
-import 'dai-graficas/dist/dai-graficas.css';
+import {DadsigBarras} from "dadsig-graficas";
+import 'dadsig-graficas/dist/dadsig-graficas.css';
 
-Vue.use(DaiBarrasApiladas)
+Vue.use(DadsigBarras)
 
 new Vue({
     render: h => h(App),
@@ -104,8 +104,8 @@ Una vez instalado y registrado el componente, ya se puede usar dentro de un `<te
 de Vue como se muestra a continuación.
 
 ```vue
-<DaiBarrasApiladas 
-  :barras_apiladas_id="'barras_basicas_1'"
+<DadsigBarras
+  :barras_id="'barras_basicas_1'"
   :datos="
     [
       {nombre_rectangulos:'Nombre de variable 1', cantidad_1:120, cantidad_2:40, cantidad_3:40 },
@@ -124,7 +124,7 @@ de Vue como se muestra a continuación.
 />
 ```
 
-En el script anterior se especifican los parámetros del componente `DaiBarrasApiladas` como pueden ser el `id`, los 
+En el script anterior se especifican los parámetros del componente `DadsigBarras` como pueden ser el `id`, los 
 datos que se usarán para construir las barras, las variables para construir la gráfica, etc.
 
 ## Construyendo visualizaciones con Vue y D3

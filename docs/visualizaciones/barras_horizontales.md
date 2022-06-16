@@ -1,6 +1,6 @@
 # Barras horizontales
 
-A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de
+A continuación se describe la utilización del componente de visualización `<DadsigBarras/>` para construir un gráfico de
 barras horizontales.
 
 ## Parámetros
@@ -8,12 +8,12 @@ barras horizontales.
 ## Ejemplo de uso
 
 Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),
-el componente de visualizacion `<DaiBarras/>` construirá una gráfica de barras horizontales simples.
+el componente de visualizacion `<DadsigBarras/>` construirá una gráfica de barras horizontales simples.
 
-```HTML
+```html
 <template>
   <div>
-    <DaiBarras/>
+    <DadsigBarras/>
   </div>
 </template>
 ```

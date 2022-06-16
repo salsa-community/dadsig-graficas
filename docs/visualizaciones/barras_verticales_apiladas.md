@@ -1,6 +1,6 @@
 # Barras verticales apiladas
 
-A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de 
+A continuación se describe la utilización del componente de visualización `<DadsigBarras/>` para construir un gráfico de 
 barras verticales apiladas.
 
 ## Parámetros
@@ -15,10 +15,10 @@ La siguiente es una lista de propiedades que admite el componente y que se tiene
   valores numéricos (métricas) para una variable categórica que representa los nombres de los estados de la República
   Mexicana.
 
-  ```
+  ```json
   [
-    {nombre_entidad: 'Yucatán', cantidad_1: 120, cantidad_2: 30}, 
-    {nombre_entidad: 'Puebla ', cantidad_1: 100, cantidad_2: 50}
+    {"nombre_entidad": "Yucatán", "cantidad_1": 120, "cantidad_2": 30}, 
+    {"nombre_entidad": "Puebla", "cantidad_1": 100, "cantidad_2": 50}
   ]
   ```
 
@@ -28,10 +28,10 @@ sólo incluye una métrica, entonces la visualización será una de [barras vert
 * `variables`:  (_Array_) Arreglo de objetos, en donde cada uno contiene información de las subcategorías/colores
   incluidos en la base de datos. Por ejemplo:
 
-  ```
+  ```json
   [
-    {id: 'cantidad_1', nombre_colores: 'cantidad 1', color: '#ffffcc'},
-    {id: 'cantidad_2', nombre_colores: 'cantidad 2', color: '#c7e9b4'}
+    {"id": "cantidad_1", "nombre_colores": "cantidad 1", "color": "#ffffcc"},
+    {"id": "cantidad_2", "nombre_colores": "cantidad 2", "color": "#c7e9b4"}
   ] 
   ``` 
 
@@ -47,10 +47,10 @@ sólo incluye una métrica, entonces la visualización será una de [barras vert
   al texto que se quiere que aparezca para el cliente. Es decir, si `variables`
   fuera 
 
-  ```
+  ```json
     [
-      {id: 'cantidad_1', nombre_subcategoria: 'cantidad 1', color: '#ffffcc'}, 
-      {id: 'cantidad_2', nombre_subcategoria: 'cantidad 2', color: '#c7e9b4'}]
+      {"id": "cantidad_1", "nombre_subcategoria": "cantidad 1", "color": "#ffffcc"}, 
+      {"id": "cantidad_2", "nombre_subcategoria": "cantidad 2", "color": "#c7e9b4"}
     ]
   ```
   entonces `nombre_color` debe ser igual a `"nombre_subcategoria"`.
@@ -89,8 +89,8 @@ el nombre de la barra y las cantidades de cada una de las categorías y colores.
 
 En este ejemplo, el componente se escribe de la siguiente manera
 
-```HTML 
-<DaiBarras
+```html 
+<DadsigBarras
       :barras_id="'barras_apiladas_estaticas'"
       :datos="[
         {
@@ -132,8 +132,8 @@ El siguiente ejemplo muestra la manera en la cual se utilizan los
 _Visualizaciones_ de esa documentación) para insertar encabezados y pies de gráficas para poner títulos, 
 notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
 
-```HTML
-<DaiBarras
+```html
+<DadsigBarras
     :barras_id="'verticales_apiladas_slots_tooltip'"
     :datos="[
         {
@@ -203,7 +203,7 @@ notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el sigui
         </p>
     </div>
     </template>
-</DaiBarras>
+</DadsigBarras>
 ```
 
 El gráfico resultante es el siguiente, en el cual se empleo una tipografía distinta en los `slots` para 
@@ -223,10 +223,10 @@ desde archivos `.json`.
 
 El `<template>` es el siguiente:
 
-```HTML
+```html
 <template>
   <div>
-    <DaiBarras
+    <DadsigBarras
             :barras_id="'verticales_apiladas_cambiando_base'"
             :datos="datos"
             :margen="{arriba: 10, abajo: 20, derecha:10, izquierda:30}"
@@ -250,15 +250,14 @@ El `<template>` es el siguiente:
           <button @click="alternandoBase">Cambia la data</button>
         </div>
       </template>
-    </DaiBarras>
+    </DadsigBarras>
   </div>
 </template>
 ```
 
 En el script se incluyó lo siguiente:
 
-``` Javascript
-
+```javascript
 import base_dummy_1 from "./base_dummy_1.json";
 import base_dummy_2 from "./base_dummy_2.json";
 

@@ -45,17 +45,17 @@ thead {
     <tbody>
         <tr>
             <td>Cambios temporales</td>
-            <td>Series de tiempo (líneas)</td>
-            <td class="componente">&ltDaiSeries/&gt</td>
+            <td>Gráfica de líneas</td>
+            <td class="componente">&ltDadsigLineas/&gt</td>
         </tr>
         <tr>
             <td rowspan=2>Distribución</td>
             <td>Diagrama de cajas y bigotes</td>
-            <td class="componente">&ltDaiDiagramaCajas/&gt</td>
+            <td class="componente">&ltDadsigCajasBigotes/&gt</td>
         </tr>
         <tr>
             <td>Barras (horizontales o verticales)</td>
-            <td class="componente" rowspan=2>&ltDaiBarras/&gt</td>
+            <td class="componente" rowspan=2>&ltDadsigBarras/&gt</td>
         </tr>
         <tr>
             <td>Comparación</td>
@@ -63,12 +63,12 @@ thead {
         </tr>
             <td>Composición (parte de un todo)</td>
             <td>Donas</td>
-            <td class="componente">&ltDaiDonas/&gt</td>
+            <td class="componente">&ltDadsigDonas/&gt</td>
         </tr>
         <tr>
             <td>Datos geográficos</td>
             <td>Mapas coropléticos</td>
-            <td class="componente">&ltDaiMapas/&gt</td>
+            <td class="componente">&ltDadsigMapas/&gt</td>
         </tr>
     </tbody>
 </table>

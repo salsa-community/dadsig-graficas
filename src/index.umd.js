@@ -1,6 +1,6 @@
-import * as DaiGraficas from "./index"  
+import * as DadsigGraficas from "./index"  
 
 
 export default{
-    ...DaiGraficas,
+    ...DadsigGraficas,
 }

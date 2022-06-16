@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DaiLineas
+    <DadsigLineas
         ref="lineas1"
         :conversionTemporal="conversionTemporal"
         :datos="datos"

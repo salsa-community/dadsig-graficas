@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'DAI-GRAFICAS',
+  title: 'DADSIG-GRAFICAS',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -21,7 +21,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
 
-  base: "/dai-graficas/",
+  base: "/dadsig-graficas/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -45,8 +45,8 @@ module.exports = {
         link: '/visualizaciones/',
       },
       {
-        text: 'Contribuciones',
-        link: '/contribuciones/'
+        text: 'Contribuir',
+        link: '/contribuir/'
       },
     ],
     sidebar: {
@@ -59,9 +59,9 @@ module.exports = {
             'barras_horizontales_apiladas',
             'barras_verticales',
             'barras_verticales_apiladas',
-            'diagrama_cajas',
+            'cajas_bigotes',
             'donas',
-            'series_tiempo',
+            'lineas',
           ]
         }
       ],

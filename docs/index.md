@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: conacyt2.png
-tagline: Biblioteca de vue para construir gráficas interactivas
+tagline: Biblioteca para construir gráficas interactivas
 actionText: Introducción →
 actionLink: /introduccion/
 #features:

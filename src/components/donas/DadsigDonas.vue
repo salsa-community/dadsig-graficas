@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "DaiDonas"
+  name: "DadsigDonas"
 }
 </script>
 
