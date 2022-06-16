@@ -109,7 +109,7 @@ El `<template>` queda entonces estructurado de la siguiente manera:
 
 Siendo este el resultado,
 
-<series-tiempo-basico/>
+<lineas-basico/>
 
 ### Uso de slots y tooltip
 Los [slots](https://vuejs.org/guide/components/slots.html) son de mucha utilidad para poder insertar encabezados y pies 
@@ -163,7 +163,7 @@ Entonces el HTML estará estructurado de la siguiente manera:
 El gráfico resultante es el siguiente, en el cual se empleo una tipografía distinta en los `slots` para
 hacer énfasis en su adición a la visualización.
 
-<series-tiempo-slots-tooltip/>
+<lineas-slots-tooltip/>
 
 ### Modificando datos
 
@@ -207,4 +207,4 @@ Se tiene entonces como resultado el siguiente `HTML`:
   </DaiLineas>
 </template>
 ```
-<series-tiempo-cambiando-base/>
+<lineas-cambiando-base/>

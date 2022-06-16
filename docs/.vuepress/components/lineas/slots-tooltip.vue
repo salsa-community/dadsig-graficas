@@ -1,5 +1,5 @@
 <template>
-  <DaiLineas
+  <DadsigLineas
       ref="lineas2"
       :conversionTemporal="conversionTemporal"
       :datos="datos"
@@ -31,7 +31,7 @@
         </p>
       </div>
     </template>
-  </DaiLineas>
+  </DadsigLineas>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <DaiLineas
+  <DadsigLineas
       ref="lineas3"
       :conversionTemporal="conversionTemporal"
       :datos="datos"
@@ -27,7 +27,7 @@
         <button @click="alternandoBase">Cambia la data</button>
       </div>
     </template>
-  </DaiLineas>
+  </DadsigLineas>
 </template>
 
 <script>
