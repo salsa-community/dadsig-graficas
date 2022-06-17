@@ -37,8 +37,8 @@ En este ejemplo, el componente se escribe de la siguiente manera:
       ]"
       :nombre_barra="'nombre_rectangulos'"
       :nombre_color="'nombre_colores'"
-      titulo_eje_y="Eje vertical (numérico)"
-      titulo_eje_x="Eje horizontal (categórico)"
+      titulo_eje_y="Eje vertical (categórico)"
+      titulo_eje_x="Eje horizontal (numérico)"
       orientacion="horizontal"
       :tooltip_activo="false"
     />
@@ -57,7 +57,7 @@ _Visualizaciones_ de esa documentación) para insertar encabezados y pies de gr�
 notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente
 ```html
 <DadsigBarras
-      :barras_id="'verticales_apiladas_slots_tooltip'"
+      :barras_id="'horizontales_apiladas_slots_tooltip'"
       :datos="[
         {
           nombre_rectangulos: 'A',
@@ -103,8 +103,8 @@ notas, controles, nomenclaturas, etc. dentro del componente. El HTML es el sigui
       ]"
       :nombre_barra="'nombre_rectangulos'"
       :nombre_color="'nombre_colores'"
-      titulo_eje_y="Eje vertical (numérico)"
-      titulo_eje_x="Eje horizontal (categórico)"
+      titulo_eje_y="Eje vertical (categórico)"
+      titulo_eje_x="Eje horizontal (numérico)"
       orientacion="horizontal"
     >
       <template slot="encabezado">
@@ -149,8 +149,8 @@ Se tiene entonces como resultado el siguiente `HTML`:
         :nombre_barra="'nombre_rectangulos'"
         :nombre_color="'nombre_colores'"
         :variables="variables"
-        titulo_eje_x="Eje horizontal (categórico)"
-        titulo_eje_y="Eje vertical (numérico)"
+        titulo_eje_x="Eje horizontal (numérico)"
+        titulo_eje_y="Eje vertical (categórico)"
     >
       <template slot="encabezado">
         <div class="encabezado">

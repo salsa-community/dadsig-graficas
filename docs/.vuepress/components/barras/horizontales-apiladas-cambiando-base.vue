@@ -7,8 +7,8 @@
         :nombre_barra="'nombre_rectangulos'"
         :nombre_color="'nombre_colores'"
         :variables="variables"
-        titulo_eje_x="Eje horizontal (categórico)"
-        titulo_eje_y="Eje vertical (numérico)"
+        titulo_eje_x="Eje horizontal (numérico)"
+        titulo_eje_y="Eje vertical (categórico)"
         orientacion="horizontal"
     >
       <template slot="encabezado">

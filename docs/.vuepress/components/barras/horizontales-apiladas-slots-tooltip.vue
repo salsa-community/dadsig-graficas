@@ -47,8 +47,8 @@
       ]"
       :nombre_barra="'nombre_rectangulos'"
       :nombre_color="'nombre_colores'"
-      titulo_eje_y="Eje vertical (numérico)"
-      titulo_eje_x="Eje horizontal (categórico)"
+      titulo_eje_y="Eje vertical (categórico)"
+      titulo_eje_x="Eje horizontal (numérico)"
       orientacion="horizontal"
     >
       <template slot="encabezado">
