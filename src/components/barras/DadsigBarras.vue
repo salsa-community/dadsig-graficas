@@ -40,7 +40,7 @@
 import * as d3 from "d3";
 
 export default {
-  name: 'DaiBarras',
+  name: 'DadsigBarras',
   props: {
     barras_id: String,
     datos: Array,
@@ -49,6 +49,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    orientacion: {
+      type: String,
+      default: 'vertical'
     },
     nombre_barra: String,
     nombre_color: String,
@@ -97,9 +101,6 @@ export default {
 						${txt.reverse().join(" ")}`
       }
     },
-    // dominio_y: {
-    //   type: Array,
-    // }
   },
   watch: {
     variables() {
@@ -179,27 +180,50 @@ export default {
           d.data = Object.assign({}, d.data, {"key": this.data_apilada[i].key})
         })
       }
-      this.escalaY = d3.scaleLinear()
-          // .domain(this.dominio_y ? this.dominio_y : [0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
-          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
-          .range([this.alto, 0]);
-      this.escalaX = d3.scaleBand()
-          .domain(this.datos.map(d => d[this.nombre_barra]))
-          .range([0, this.ancho])
-          .padding(this.espaciado_barras)
 
-      this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
-      this.eje_y.select("path.domain")
-          .remove()
-      this.eje_y.selectAll("line")
-          .attr("x1", this.ancho)
-          .style("stroke-dasharray", "3 2")
-          .style("stroke", "#707070")
+      if (this.orientacion === 'vertical') {
+        this.escalaY = d3.scaleLinear()
+            .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+            .range([this.alto, 0]);
+        this.escalaX = d3.scaleBand()
+            .domain(this.datos.map(d => d[this.nombre_barra]))
+            .range([0, this.ancho])
+            .padding(this.espaciado_barras)
 
-      this.eje_x.call(d3.axisBottom(this.escalaX))
-          .attr("transform", `translate(${0},${this.alto})`)
-      this.eje_x.select("path").remove()
-      this.eje_x.selectAll("line").remove()
+        this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
+        this.eje_y.select("path.domain")
+            .remove()
+        this.eje_y.selectAll("line")
+            .attr("x1", this.ancho)
+            .style("stroke-dasharray", "3 2")
+            .style("stroke", "#707070")
+
+        this.eje_x.call(d3.axisBottom(this.escalaX))
+            .attr("transform", `translate(${0}, ${this.alto})`)
+        this.eje_x.select("path").remove()
+        this.eje_x.selectAll("line").remove()
+      }
+      else {
+        this.escalaX = d3.scaleLinear()
+            .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+            .range([0, this.ancho]);
+        this.escalaY = d3.scaleBand()
+            .domain(this.datos.map(d => d[this.nombre_barra]))
+            .range([0, this.alto])
+            .padding(this.espaciado_barras)
+
+        this.eje_y.call(d3.axisLeft(this.escalaY))
+        this.eje_y.select("path.domain").remove()
+        this.eje_y.selectAll("line").remove()
+
+        this.eje_x.call(d3.axisBottom(this.escalaX))
+            .attr("transform", `translate(${0}, ${this.alto})`)
+        this.eje_x.select("path.domain").remove()
+        this.eje_x.selectAll("line")
+            .attr("y1", -this.alto)
+            .style("stroke-dasharray", "3 2")
+            .style("stroke", "#707070")
+      }
     },
     creandoBarras() {
       this.grupo_contenedor.selectAll(".g-rects").remove();
@@ -228,13 +252,20 @@ export default {
 
     },
     actualizandoBarras() {
-
-      this.barras_individuales
-          .attr("width", this.escalaX.bandwidth)
-          .attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
-          .attr("x", d => this.escalaX(d.data[this.nombre_barra]))
-          .attr("y", d => this.escalaY(d[1]))
-
+      if(this.orientacion === 'vertical') {
+        this.barras_individuales
+            .attr("width", this.escalaX.bandwidth)
+            .attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
+            .attr("x", d => this.escalaX(d.data[this.nombre_barra]))
+            .attr("y", d => this.escalaY(d[1]))
+      }
+      else {
+        this.barras_individuales
+            .attr("width", d => this.escalaX(d[1]) - this.escalaX(d[0]))
+            .attr("height", this.escalaY.bandwidth)
+            .attr("x", d => this.escalaX(d[0]))
+            .attr("y", d => this.escalaY(d.data[this.nombre_barra]))
+      }
     },
 
     reescalandoPantalla() {
@@ -244,36 +275,74 @@ export default {
 
     },
     mostrarTooltip(evento) {
-      this.tooltip_bandas = this.escalaX.step();
-      this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
-      if (this.tooltip_indice < this.datos.length) {
-        this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
-        this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
+      // TODO: volter esto layerX y this.escalaX.step();
+      if(this.orientacion === 'vertical') {
+        this.tooltip_bandas = this.escalaX.step();
+        this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
 
-        this.tooltip
-            .style("visibility", "visible")
-            .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
-            .style("width", this.ancho_tooltip + "px")
-            .style("top", evento.layerY + "px")
-            .style("height", "30px")
+        if (this.tooltip_indice < this.datos.length) {
+          this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
+          this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
 
-        let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
-            .style("background", "rgba(0, 0, 0,.8)")
-            .style("min-width", this.ancho_tooltip + "px")
-            .style("border-radius", "8px")
-            .style("width", this.ancho_tooltip + "px")
-            .attr("height", 70)
-            .style("padding", "0 3px 0 10px")
+          this.tooltip
+              .style("visibility", "visible")
+              .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
+              .style("width", this.ancho_tooltip + "px")
+              .style("top", evento.layerY + "px")
+              .style("height", "30px")
 
-        contenido_tooltip.select("div.tooltip-cifras")
-            .html(this.textoTooltip())
+          let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+              .style("background", "rgba(0, 0, 0,.8)")
+              .style("min-width", this.ancho_tooltip + "px")
+              .style("border-radius", "8px")
+              .style("width", this.ancho_tooltip + "px")
+              .attr("height", 70)
+              .style("padding", "0 3px 0 10px")
 
-        this.barras_individuales
-            .style("fill-opacity", ".2")
+          contenido_tooltip.select("div.tooltip-cifras")
+              .html(this.textoTooltip())
 
-        this.barras_individuales
-            .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
-            .style("fill-opacity", "1")
+          this.barras_individuales
+              .style("fill-opacity", ".2")
+
+          this.barras_individuales
+              .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
+              .style("fill-opacity", "1")
+        }
+      }
+      else {
+        this.tooltip_bandas = this.escalaY.step();
+        this.tooltip_indice = parseInt((evento.layerY - this.margen.arriba + this.espaciado_barras) / this.tooltip_bandas)
+
+        if (this.tooltip_indice < this.datos.length) {
+          this.tooltip_categoria = this.escalaY.domain()[this.tooltip_indice]
+          this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;
+
+          this.tooltip
+              .style("visibility", "visible")
+              .style("left", evento.layerX > .5 * (this.ancho + this.margen.izquierda + this.margen.derecha) ? `${evento.layerX - this.ancho_tooltip + this.ancho_leyenda_y - 20}px` : `${evento.layerX + this.ancho_leyenda_y + 20}px`)
+              .style("width", this.ancho_tooltip + "px")
+              .style("top", evento.layerY + "px")
+              .style("height", "30px")
+
+          let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
+              .style("background", "rgba(0, 0, 0,.8)")
+              .style("min-width", this.ancho_tooltip + "px")
+              .style("border-radius", "8px")
+              .style("width", this.ancho_tooltip + "px")
+              .attr("height", 70)
+              .style("padding", "0 3px 0 10px")
+
+          contenido_tooltip.select("div.tooltip-cifras")
+              .html(this.textoTooltip())
+
+          this.barras_individuales
+              .style("fill-opacity", ".2")
+
+          this.barras_individuales
+              .filter(d => d.data[this.nombre_barra] == this.tooltip_categoria)
+              .style("fill-opacity", "1")
+        }
       }
     },
     cerrarTooltip() {

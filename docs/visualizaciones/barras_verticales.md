@@ -1,6 +1,6 @@
 # Barras verticales
 
-A continuación se describe la utilización del componente de visualización `<DaiBarras/>` para construir un gráfico de
+A continuación se describe la utilización del componente de visualización `<DadsigBarras/>` para construir un gráfico de
 barras verticales.
 
 ## Parámetros
@@ -12,32 +12,32 @@ que se deben de especificar para esta visualización y por lo tanto ya no se rep
 ## Ejemplo de uso
 
 Cuando los datos introducidos sólo describen una variable categorica y una variable numérica (métrica),
-el componente de visualizacion `<DaiBarras/>` construirá una gráfica de barras verticales simples.
+el componente de visualizacion `<DadsigBarras/>` construirá una gráfica de barras verticales simples.
 
 Por ejemplo, teniendo el siguientee arreglo para `datos`,
 
-```
+```json
 [
-{categoria: 'Variable A', cantidad: 120},
-{categoria: 'Variable B ', cantidad: 150}
-{categoria: 'Variable C ', cantidad: 72}
+{"categoria": "Variable A", "cantidad": 120},
+{"categoria": "Variable B ", "cantidad": 150},
+{"categoria": "Variable C ", "cantidad": 72}
 ]
 ```
 
 y el arreglo `variables` como sigue,
 
-```
+```json
 [
-  {id: 'cantidad', nombre_colores: 'cantidad', color: '#7fcdbb'},
+  {"id": "cantidad", "nombre_colores": "cantidad", "color": "#7fcdbb"}
 ]
 ``` 
 
-Entonces se usa el componente `<DaiBarras/>` de la siguiente manera.
+Entonces se usa el componente `<DadsigBarras/>` de la siguiente manera.
 
-```HTML
+```html
 <template>
   <div>
-    <DaiBarras
+    <DadsigBarras
         :barras_id="'verticales_simples'"
         :datos="[{categoria: 'Variable A', cantidad: 120},
                  {categoria: 'Variable B', cantidad: 150},

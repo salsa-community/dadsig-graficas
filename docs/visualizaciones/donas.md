@@ -1,6 +1,6 @@
 # Donas
 
-A continuación se describe la utilización del componente de visualización `<DaiDonas/>` para construir un gráfico de 
+A continuación se describe la utilización del componente de visualización `<DadsigDonas/>` para construir un gráfico de 
 donas.
 
 ## Parámetros

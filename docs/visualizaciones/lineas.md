@@ -1,6 +1,6 @@
-# Series de tiempo
+# Líneas
 
-A continuación se describe la utilización del componente de visualización `<DaiSeriesTiempo/>` para construir un
+A continuación se describe la utilización del componente de visualización `<DadsigLineas/>` para construir un
 gráfico de líneas cuyo eje horizontal es temporal, es decir una serie de tiempo.
 
 ## Parámetros
@@ -14,7 +14,7 @@ La siguiente es una lista de propiedades que admite el componente y que se tiene
 numéricas (métricas) de cada línea a graficar y su correspondiente valor temporal. En el siguiente conjunto de datos 
 de ejemplo se dan métricas como claves numéricas y la fecha correspondiente a cada una.
 
-    ```
+    ```json
       [
         {
          "01":30,
@@ -35,7 +35,7 @@ de ejemplo se dan métricas como claves numéricas y la fecha correspondiente a 
   obligatorias son `cve` y `nombre`, y se refieren al nombre de la línea en la base de datos y al nombre que se quiere 
   mostrar el tooltip de cada línea graficada.
 
-  ```
+  ```json
   [
    {
     "cve": "01",
@@ -48,7 +48,7 @@ de ejemplo se dan métricas como claves numéricas y la fecha correspondiente a 
     "cve": "02",
     "nombre": "Baja California",
     "abr": "BC",
-    "color": "rgb(10,25,45)"
+    "color": "rgb(10,25,45)",
     "resaltado": false
     }
   ]
@@ -77,21 +77,21 @@ muestra todos los datos.
 
 ## Ejemplos de uso
 
-En esta secciónse detallan tres diferentes tipos casos de uso de este componente. El componente `<DaiSeriesTiempo/>`
+En esta sección se detallan tres diferentes tipos casos de uso de este componente. El componente `<DadsigLineas/>`
 requiere que los datos se encuentren en un archivo `.json` externo, que se importa por medio de un `import`en el 
 apartado `<script/>`. Para los diferentes ejemplos de esta sección, ya se tienen los datos importados.
 
-### Series de tiempo sin interacción
+### Líneas sin interacción
 
 En esta ejemplo, la gráfica es estática, y se puede observar que se tienen incluídos los parámetros obligatorias que ya
 se mencionaron en la sección anterior. Ya que el tooltip es una propiedad por default, para lograr esta gráfica estática
 lo que se debe de hacer es agregar la propiedad de `:tooltip_activo= "false"` para lograr ocultaro en la visualización. 
 El `<template>` queda entonces estructurado de la siguiente manera:
 
-```HTML
+```html
 <template>
   <div>
-    <DaiLineas
+    <DadsigLineas
             ref="lineas1"
             :conversionTemporal="conversionTemporal"
             :datos="datos"
@@ -109,7 +109,7 @@ El `<template>` queda entonces estructurado de la siguiente manera:
 
 Siendo este el resultado,
 
-<series-tiempo-basico/>
+<lineas-basico/>
 
 ### Uso de slots y tooltip
 Los [slots](https://vuejs.org/guide/components/slots.html) son de mucha utilidad para poder insertar encabezados y pies 
@@ -123,9 +123,9 @@ las gráficas. Para poder agregar el uso de los slots y el tooltip, se hará de 
 
 Entonces el HTML estará estructurado de la siguiente manera:
 
-```HTML
+```html
 <template>
-  <DaiLineas
+  <DadsigLineas
           ref="lineas2"
           :conversionTemporal="conversionTemporal"
           :datos="datos"
@@ -157,13 +157,13 @@ Entonces el HTML estará estructurado de la siguiente manera:
         </p>
       </div>
     </template>
-  </DaiLineas>
+  </DadsigLineas>
 </template>
 ```
-El gráfico resultante es el siguiente, en el cual se empleo una tipografía distinta en los `slots` para
+El gráfico resultante es el siguiente, en el cual se empleó una tipografía distinta en los `slots` para
 hacer énfasis en su adición a la visualización.
 
-<series-tiempo-slots-tooltip/>
+<lineas-slots-tooltip/>
 
 ### Modificando datos
 
@@ -174,9 +174,9 @@ cambio de base de datos. También para darle estilos al botón, dependerá del S
 sistema de diseño.
 
 Se tiene entonces como resultado el siguiente `HTML`:
- ```HTML
+ ```html
 <template>
-  <DaiLineas
+  <DadsigLineas
           ref="lineas3"
           :conversionTemporal="conversionTemporal"
           :datos="datos"
@@ -204,7 +204,7 @@ Se tiene entonces como resultado el siguiente `HTML`:
         <button @click="alternandoBase">Cambia la data</button>
       </div>
     </template>
-  </DaiLineas>
+  </DadsigLineas>
 </template>
 ```
-<series-tiempo-cambiando-base/>
+<lineas-cambiando-base/>

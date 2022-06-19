@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <DaiDonas
+    <DadsigDonas
         ref="donas_basica"
         :dona_id="'donas_basica'"
         :datos="datos"

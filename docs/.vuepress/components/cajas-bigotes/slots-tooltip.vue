@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <DaiDiagramaCajas
+    <DadsigCajasBigotes
         ref="cajas_slots"
-        :caja_id="'diagramacajas_slots'"
+        :caja_id="'cajas_bigotes_slots'"
         :datos="datos"
         :titulo_eje_x="'Empresa'"
         :titulo_eje_y="'Acciones vendidas'"
@@ -28,19 +28,19 @@
           </p>
         </div>
       </template>
-    </DaiDiagramaCajas>
+    </DadsigCajasBigotes>
   </div>
 </template>
 
 <script>
-import diagramacajasejemplo from "./diagramacajas_ejemplo_1.json"
+import cajasbigotesejemplo from "./cajas_bigotes_ejemplo_1.json"
 
 export default {
-  name: 'diagrama-cajas-slots-tooltip',
+  name: 'cajas-bigotes-slots-tooltip',
 
   data: function () {
     return {
-      datos: diagramacajasejemplo,
+      datos: cajasbigotesejemplo,
     }
   },
 }

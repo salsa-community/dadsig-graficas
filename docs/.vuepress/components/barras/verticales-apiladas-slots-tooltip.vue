@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DaiBarras
+    <DadsigBarras
       :barras_id="'verticales_apiladas_slots_tooltip'"
       :datos="[
         {
@@ -70,7 +70,7 @@
           </p>
         </div>
       </template>
-    </DaiBarras>
+    </DadsigBarras>
   </div>
 </template>
 <script>
@@ -294,7 +294,7 @@ export default {
 <style lang="scss" scoped>
 
 .slot-encabezado, .slot-pie {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Montserrat;
 }
 
 .slot-parrafo {
