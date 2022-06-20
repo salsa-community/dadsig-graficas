@@ -1,0 +1,7 @@
+[
+  {"nombre": "Variable A", "cantidad":100, "color":"#253494"},
+  {"nombre": "Variable B", "cantidad":120, "color":"#2c7fb8"},
+  {"nombre": "Variable C", "cantidad":60, "color":"#41b6c4"},
+  {"nombre": "Variable D", "cantidad":50, "color":"#7fcdbb"},
+  {"nombre": "Variable E", "cantidad":40, "color":"#c7e9b4"}
+]

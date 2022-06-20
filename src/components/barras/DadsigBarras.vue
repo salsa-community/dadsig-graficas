@@ -183,13 +183,13 @@ export default {
 
       if (this.orientacion === 'vertical') {
         this.escalaY = d3.scaleLinear()
-          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
-          .range([this.alto, 0]);
+            .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+            .range([this.alto, 0]);
         this.escalaX = d3.scaleBand()
-          .domain(this.datos.map(d => d[this.nombre_barra]))
-          .range([0, this.ancho])
-          .padding(this.espaciado_barras)
-        
+            .domain(this.datos.map(d => d[this.nombre_barra]))
+            .range([0, this.ancho])
+            .padding(this.espaciado_barras)
+
         this.eje_y.call(d3.axisLeft(this.escalaY).ticks(4))
         this.eje_y.select("path.domain")
             .remove()
@@ -205,12 +205,12 @@ export default {
       }
       else {
         this.escalaX = d3.scaleLinear()
-          .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
-          .range([0, this.ancho]);
+            .domain([0, d3.max(this.datos.map(d => d3.sum(this.variables.map(dd => d[dd.id]))))])
+            .range([0, this.ancho]);
         this.escalaY = d3.scaleBand()
-          .domain(this.datos.map(d => d[this.nombre_barra]))
-          .range([0, this.alto])
-          .padding(this.espaciado_barras)
+            .domain(this.datos.map(d => d[this.nombre_barra]))
+            .range([0, this.alto])
+            .padding(this.espaciado_barras)
 
         this.eje_y.call(d3.axisLeft(this.escalaY))
         this.eje_y.select("path.domain").remove()
@@ -258,7 +258,7 @@ export default {
             .attr("height", d => this.escalaY(d[0]) - this.escalaY(d[1]))
             .attr("x", d => this.escalaX(d.data[this.nombre_barra]))
             .attr("y", d => this.escalaY(d[1]))
-      } 
+      }
       else {
         this.barras_individuales
             .attr("width", d => this.escalaX(d[1]) - this.escalaX(d[0]))
@@ -279,7 +279,7 @@ export default {
       if(this.orientacion === 'vertical') {
         this.tooltip_bandas = this.escalaX.step();
         this.tooltip_indice = parseInt((evento.layerX - this.margen.izquierda - this.margen.derecha) / this.tooltip_bandas)
-        
+
         if (this.tooltip_indice < this.datos.length) {
           this.tooltip_categoria = this.escalaX.domain()[this.tooltip_indice]
           this.tooltip_data_seleccionada = this.data_apilada[0].filter(dd => (dd.data[this.nombre_barra] == this.tooltip_categoria))[0].data;

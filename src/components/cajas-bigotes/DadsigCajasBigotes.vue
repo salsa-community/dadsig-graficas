@@ -338,7 +338,7 @@ export default {
     reescalandoPantalla() {
       this.configurandoDimensionesParaSVG();
       this.configurandoDimensionesParaCaja();
-      this.creandoCajas()
+      this.creandoCajas();
       this.actualizandoCajas();
     },
 
