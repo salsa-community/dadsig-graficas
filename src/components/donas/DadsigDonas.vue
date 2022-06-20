@@ -1,136 +1,117 @@
 <template>
-  <div v-bind:id="dona_id" class="contenedor-dona">
-    <slot name="encabezado"></slot>
-    <div class="contenedor-tooltip-svg">
-      <div class="tooltip">
-        <div class="tooltip-contenido">
-          <div class="contenedor-boton-cerrar">
-            <button class="boton-cerrar-tooltip" @click="cerrarTooltip">
-              &times;
-            </button>
+  <div v-bind:id=dona_id class="contenedor-dona">
+    <svg class="svg-dona">
+      <g class="grupo-contenedor-de-dona"></g>
+      <g class="grupo-contenedor-tooltip">
+        <foreignObject>
+          <div class="tooltip-contenido">
+            <div class="contenedor-boton-cerrar">
+              <button class="boton-cerrar-tooltip" @click="cerrarTooltip">
+                &times;
+              </button>
+            </div>
+            <p class="tooltip-variable"></p>
+            <p class="tooltip-cifra"></p>
           </div>
-          <div class="tooltip-cifras"></div>
-        </div>
-      </div>
-      <svg class="svg-dona">
-        <g class="grupo-contenedor-dona"></g>
-      </svg>
-    </div>
-    <slot name="pie"></slot>
+        </foreignObject>
+      </g>
+    </svg>
   </div>
 </template>
 
 <script>
-
 import * as d3 from "d3";
 
 export default {
-  name: "DadsigDonas",
+  name: 'DadsigDonas',
   props: {
     dona_id: String,
     datos: Array,
-    variables: Object,
-    colores: {
-      type: Array,
-      default: function () {
-        return ["#253494", "#2c7fb8", "#41b6c4", "#7fcdbb", "#c7e9b4", "#ffffcc"]
-      }
-    },
-    ancho_tooltip: {
-      type: Number,
-      default: 195
-    },
-    margen: {
-      type: Object,
-      default: function () {
-        return {arriba: 20, abajo: 50, izquierda: 60, derecha: 20}
-      }
-    },
-    alto_vis: {
-      type: Number,
-      default: function () {
-        return 250
-      }
-    },
     tooltip_activo: {
       type: Boolean,
       default: function () {
         return true
       }
     },
-    radio_interno: {
+    ancho_tooltip: {
       type: Number,
-      default: 0.18
+      default: 165
+    },
+    radio_interno: {
+      type:Number,
+      default: .18
     },
     radio_externo: {
       type: Number,
-      default: 0.32,
+      default: .32
     },
     radio_texto: {
       type: Number,
-      default: 0.33
-    }
-  },
-
-  watch: {
-    variables() {
-      this.configurandoDimensionesParaDona();
-      this.actualizandoDona();
+      default: .33
     },
-    datos(new_val, old_val) {
-      this.configurandoDimensionesParaSVG();
+  },
+  watch: {
+    datos: function(new_val,old_val) {
       this.configurandoDimensionesParaDona();
-      this.actualizandoDona();
-
       if (new_val.length > old_val.length) {
+        //Actualizamos paths
         this.segmentos = this.grupo_contenedor
-        .selectAll("path")
-        .data(this.datos_donas);
+            .selectAll("path")
+            .data(this.data_para_pay);
 
         this.segmentos = this.segmentos.enter()
-        .append("path").style("cursor", "pointer")
-        .merge(this.segmentos);
+            .append("path").style("cursor","pointer")
+            .merge(this.segmentos);
 
         this.segmentos.exit().remove();
 
+        //Actualizamos textos
         this.textos_porcentajes = this.grupo_contenedor
-        .selectAll("text")
-        .data(this.datos_donas);
+            .selectAll("text")
+            .data(this.data_para_pay);
 
         this.textos_porcentajes = this.textos_porcentajes.enter()
-        .append("text")
-        .merge(this.textos_porcentajes);
+            .append("text")
+            .merge(this.textos_porcentajes);
 
         this.textos_porcentajes.exit().remove();
       }
       else {
-        this.segmentos.data(this.datos_donas)
-        .exit()
-        .remove();
+        this.segmentos.data(this.data_para_pay)
+            .exit()
+            .remove();
 
-        this.textos_porcentajes.data(this.datos_donas)
-        .exit()
-        .remove();
+        this.textos_porcentajes.data(this.data_para_pay)
+            .exit()
+            .remove();
       }
-      this.textos_porcentajes.style("fill-opacity", "1");
-    },
-    margen() {
-      setTimeout(() => this.reescalandoPantalla(), 200)
-    }
 
+      //Ajustes
+      this.textos_porcentajes.style("fill-opacity", "1");
+      // this.reestablecerVista();
+
+      this.actualizandoDona();
+    }
   },
-  // data() {
+
+  // data: function () {
   //   return {
-  //
+  //     es_notas_abiertas:false,
   //   }
   // },
-
-  mounted() {
-    this.svg = d3.select("#" + this.dona_id + "svg.svg-dona");
-    this.grupo_contenedor = this.svg.select("g.grupo-contenedor-dona");
+  mounted: function () {
+    this.svg = d3.select("#"+this.dona_id+" svg.svg-dona");
+    this.grupo_contenedor = this.svg.select("g.grupo-contenedor-de-dona");
+    this.grupo_contenedor_tooltip = this.svg.select("g.grupo-contenedor-tooltip");
 
     this.configurandoDimensionesParaSVG();
 
+    /*
+     Creando la funcion y dimensiones para el pie:
+     Es importante que el pie no tenga ninguna funcion sort y que las
+     rebanadas hereden el orden de la base de datos para que los indices
+     de las rebanadas coincidan con los indices de la nomenclatura
+    */
     this.pie = d3.pie().sort(null);
     this.arc = d3.arc();
     this.arc_texto = d3.arc();
@@ -138,47 +119,41 @@ export default {
     this.configurandoDimensionesParaDona();
     this.creandoDona();
     this.actualizandoDona();
+    this.contenedor_leyenda = d3.select("#"+this.dona_id+"-leyenda");
+    this.tooltip = this.grupo_contenedor_tooltip.select("foreignObject");
 
-    this.tooltip = d3.select("div#" + this.dona_id)
-        .select("div.tooltip");
-
-    window.addEventListener("resize", this.reescalandoPantalla)
+    window.addEventListener("resize", this.reescalandoPantalla);
   },
-
   destroyed() {
     window.removeEventListener("resize", this.reescalandoPantalla)
   },
-
   methods: {
-    configurandoDimensionesParaSVG() {
-      this.ancho = document.querySelector("#" + this.dona_id + " .contenedor-tooltip-svg").clientWidth - this.margen.izquierda - this.margen.derecha;
-      this.alto = this.alto_vis - this.margen.arriba - this.margen.abajo;
-      this.svg.attr("width", this.ancho + this.margen.izquierda + this.margen.derecha)
-          .attr("height", this.alto + this.margen.arriba + this.margen.abajo)
-          .style("left")
-
-      this.grupo_contenedor.attr("transform", `translate(${this.margen.izquierda}, ${this.margen.arriba}`);
+    configurandoDimensionesParaDona: function () {
+      this.pie.value((d) => d.cantidad);
+      this.data_para_pay = this.pie(this.datos);
+      this.arc.innerRadius(this.ancho * this.radio_interno)
+          .outerRadius(this.ancho * this.radio_externo);
+      this.arc_texto.innerRadius(this.ancho * this.radio_texto)
+          .outerRadius(this.ancho * this.radio_texto);
     },
-
-    configurandoDimensionesParaDona() {
-      this.pie.value((d) => d.variables.variable_numerica);
-      this.datos_donas = this.pie(this.datos);
-      this.arc.innerRadius(this.ancho * this.radio_interno).outerRadius(this.ancho * this.radio_externo);
-      this.arc_texto.innerRadius(this.ancho * this.radio_texto).outerRadius(this.ancho * this.radio_texto);
-
+    configurandoDimensionesParaSVG: function () {
+      this.ancho = document.getElementById(this.dona_id).clientWidth;
+      this.alto = this.ancho;
+      this.svg.attr("width", this.ancho).attr("height", this.ancho);
+      this.grupo_contenedor.attr("transform", `translate(${this.ancho * .5}, ${this.alto * .5})`);
+      this.grupo_contenedor_tooltip.attr("transform", `translate(${this.ancho * .5}, ${this.alto * .5})`);
     },
-
-    creandoDona() {
+    creandoDona: function () {
       this.segmentos = this.grupo_contenedor
           .selectAll("paths")
-          .data(this.datos_donas)
+          .data(this.data_para_pay)
           .enter()
           .append('path')
           .style("cursor", "pointer");
 
       this.textos_porcentajes = this.grupo_contenedor
           .selectAll('allLabels')
-          .data(this.datos_donas)
+          .data(this.data_para_pay)
           .enter()
           .append("text");
 
@@ -188,173 +163,340 @@ export default {
               this.mostrarTooltip(evento)
             })
             .on("mouseout", this.cerrarTooltip)
-      }
-    },
+            .on("mouseout", this.reestablecerVista)
 
-    actualizandoDona() {
+      }
+
+    },
+    actualizandoDona: function () {
       this.segmentos
           .attr('d', this.arc)
-          .attr('fill', (d) => d.colores)
-          .attr("class", (d, i) => "rebanada-" + i)
+          .attr('fill', (d) => d.data.color)
+          .attr("class", (d,i) => "rebanada-"+i)
           .attr("stroke-opacity", 0)
+          .on("mouseover", (event,d) => this.clickButtonCategoria(d.index));
 
       this.textos_porcentajes
-          .text((d) => (Math.round(1000 * d.data.variable_numerica / d3.sum(this.datos.map(d => d.data.variable_numerica))) / 10) + "%")
-          .attr("class", (d, i) => "texto-" + i)
+          .text((d) => (Math.round(1000 * d.data.cantidad / d3.sum(this.datos.map(d => d.cantidad))) / 10 ) +"%")
+          .attr("class", (d,i) => "texto-"+i)
           .style("font-size", "20px")
-          .style("fill", d => d.colores)
+          .style("fill", d => d.data.color)
           .style("font-weight", "700")
           .attr('transform', (d) => {
-            let posicion = this.arc_texto.centroid(d);
-            return 'translate(' + posicion + ')';
+            var pos = this.arc_texto.centroid(d);
+            return 'translate(' + pos + ')';
           })
           .style("fill-opacity", 1)
-
-          // Alinear el texto según el ángulo en el que se encuentre
-
+          //
+          // Los siguientes dos estilos alinean el texto segun el angulo en el que se encuentre
           .style('text-anchor', (d) => {
-            let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
             return (midangle < Math.PI ? 'start' : 'end');
           })
           .style('dominant-baseline', (d) => {
-            let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
             return (midangle < .5 * Math.PI || midangle > 1.5 * Math.PI ? 'auto' : 'hanging');
           });
-    },
+      if (this.tooltip_activo) {
+        this.svg
+            .on("mousemove", (evento) => {
+              this.mostrarTooltip(evento)
+            })
+            .on("mouseout", this.cerrarTooltip)
+            .on("mouseout", this.reestablecerVista)
 
-    reescalandoPantalla() {
+      }
+    },
+    reescalandoPantalla: function () {
       this.configurandoDimensionesParaSVG();
       this.configurandoDimensionesParaDona();
-      this.creandoDona();
       this.actualizandoDona();
     },
-    cerrarTooltip() {
-      this.tooltip.style('visibility', 'hidden')
+    clickButtonCategoria: function(indice) {
+      this.segmentos.interrupt()
+          .transition()
+          .duration(500)
+          .style("fill-opacity", .25);
+      this.textos_porcentajes.interrupt()
+          .transition()
+          .duration(500)
+          .style("fill-opacity", 0);
+      //
+      // Si el click ocurrio en un elemento que no esta seleccionado, este se resalta
+      if (!this.svg.select("path.rebanada-"+indice).classed("activo")) {
+        this.svg.select("path.rebanada-"+indice)
+            .interrupt()
+            .transition()
+            .duration(500)
+            .style("fill-opacity", 1);
+
+        this.svg.select("text.texto-"+indice).interrupt()
+            .transition()
+            .duration(500)
+            .style("fill-opacity", 1);
+        this.svg.selectAll("path")
+            .classed("activo", false);
+
+        this.contenedor_leyenda
+            .selectAll(".boton-categoria")
+            .classed("inactivo", true);
+        this.contenedor_leyenda
+            .select(".boton-categoria.label-"+indice)
+            .classed("activo", true)
+            .classed("inactivo", false);
+        this.mostrarTooltip(indice);
+      }
+          //
+      // Si el click ocurrio en un elemento que ya estaba seleccionado, este se regresa a su estado original
+      else {
+        this.cerrarTooltip();
+        this.reestablecerVista();
+      }
+      this.svg.select("path.rebanada-"+indice)
+          .classed("activo", !this.svg.select("path.rebanada-"+indice).classed("activo"));
     },
-    mostrarTooltip(evento) {
+    mostrarTooltip: function(indice) {
+      this.tooltip.style("visibility", "visible");
 
-      this.tooltip.style('visibility', 'visible');
+      let pos = this.arc_texto.centroid(this.data_para_pay[indice]);
+      console.log(this.arc_texto.centroid(this.data_para_pay[indice]))
 
-      let posicion = this.arc_texto.centroid(this.datos_donas[evento]);
-      let angulo_medio = this.datos_donas[evento].startAngle + (this.datos_donas[evento].endAngle - this.datos_donas[evento].startAngle) / 2;
+      let angulo_medio = this.data_para_pay[indice].startAngle + (this.data_para_pay[indice].endAngle - this.data_para_pay[indice].startAngle) / 2;
+
 
       this.tooltip
-      .attr("x", angulo_medio > Math.PI ? posicion[0] : posicion[0] - this.ancho_tooltip)
-      .attr("y", posicion[1])
-      .attr("width", this.ancho_tooltip)
-      .attr("height", 30);
+          .attr("x", angulo_medio > Math.PI ? pos[0] : pos[0] - this.ancho_tooltip)
+          .attr("y", pos[1])
+          .attr("width", this.ancho_tooltip)
+          .attr("height", 30);
 
-      let contenido_tooltip = this.tooltip.select(".tooltip-contenido")
-          .style("background", "rgba(0, 0, 0,.8)")
-          .style("min-width", this.ancho_tooltip + "px")
+      let contenido_tooltip = this.tooltip.select("div.tooltip-contenido")
+          .style("background", "rgba(0, 0, 0, .8)")
+          .style("min-width", this.ancho_tooltip)
           .style("border-radius", "8px")
-          .style("width", this.ancho_tooltip + "px")
-          .attr("height", 70)
-          .style("padding", "0 3px 0 10px")
+          .style("width", this.ancho_tooltip+"px")
+          .attr("height", 70 )
+          .style("padding", "0 3px 0 10px");
 
-      contenido_tooltip.select("div.tooltip-cifras")
-          .html(this.textoTooltip())
+      // this.svg.select("button.boton-cerrar-tooltip")
+      //     .on("click", this.reestablecerVista);
+
+      contenido_tooltip
+          .select("p.tooltip-variable")
+          .text(this.datos[indice]["nombre"])
+          .style("margin", "0")
+          .style("padding", "0");
+
+      contenido_tooltip
+          .select("p.tooltip-cifra")
+          .html(`${this.datos[indice]["cantidad"].toLocaleString("en")} | <b>${(Math.round(1000 * this.datos[indice]["cantidad"] / d3.sum(this.datos.map(d=>d.cantidad))) / 10 ) +"%"}<b>`)
+          .style("margin", "0")
+          .style("padding", "0 0 5px 0");
 
       this.tooltip
           .attr("height", contenido_tooltip.style("height"))
           .style("height", contenido_tooltip.style("height"))
           .attr("width", parseInt(contenido_tooltip.style("width")) + 13)
-          .attr("y", angulo_medio < .5 * Math.PI || angulo_medio > 1.5 * Math.PI ? posicion[1] : posicion[1]-parseInt(contenido_tooltip.style("height")));
+          .attr("y", angulo_medio < .5 * Math.PI || angulo_medio > 1.5 * Math.PI ? pos[1] : pos[1]-parseInt(contenido_tooltip.style("height")));
+    },
 
-    }
+    cerrarTooltip() {
+      this.tooltip
+          .style("visibility", "hidden");
+      this.segmentos
+          .style("fill-opacity", "1")
+
+    },
+
+    reestablecerVista: function () {
+      this.tooltip.style("visibility", "hidden");
+      this.segmentos.interrupt()
+          .transition()
+          .duration(500)
+          .style("fill", d => d.color)
+          .style("fill-opacity", 1);
+      this.textos_porcentajes.interrupt()
+          .transition()
+          .duration(500)
+          .style("fill-opacity", 1);
+
+      this.contenedor_leyenda
+          .selectAll(".boton-categoria")
+          .classed("activo", false)
+          .classed("inactivo", false);
+    },
   }
 }
-
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped lang="scss">
+$margen: 10px;
+$radio: 10px;
 .contenedor-dona {
+  background: var(--color-fondo);
+  border: solid var(--color-bordes) 1px;
+  border-radius: $radio;
+  color: var(--color-texto);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-
-  svg.svg-dona ::v-deep {
-    color: #fff;
-    font-size: 12px;
+  max-width: 450px;
+  width: calc(100% - 20px);
+}
+.titulo-proyecto {
+  font-size: 14px;
+  margin: 20px $margen;
+  text-align: right;
+}
+.titulo {
+  font-size: 16px;
+  font-weight: 700;
+  margin: $margen;
+}
+.actualizacion {
+  font-size: 12px;
+  margin: $margen;
+}
+.instruccional {
+  font-size: 14px;
+  margin: $margen;
+  opacity: .7;
+}
+.leyenda-dona {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: $radio;
+  box-shadow: 0px -5px 5px -1px rgba(var(--color-sombra),.2);
+  margin-bottom: $margen;
+  .titulo-leyenda {
+    flex: 1 0 100%;
+    font-size: 14px;
+    font-weight: 700;
+    margin: $margen * 2 $margen $margen;
+    text-align: center;
   }
-  svg.svg-dona ::v-deep div.contenedor-boton-cerrar {
-    height: auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 5px;
-  }
-  svg.svg-dona ::v-deep button.boton-cerrar-tooltip {
+  .boton-categoria {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
     background: none;
     border: none;
-    padding: 0 0 0 5px;
+    color: var(--color-texto);
     cursor: pointer;
-    img {
-      width: 30px;
-      height: 30px;
+    margin: $margen;
+    flex: 1 0 50%;
+    align-items: center;
+    max-width: calc(50% - 20px);
+    display: flex;
+    transition: opacity .3s ease-in-out;
+    .categoria-color {
+      width: 25px;
+      height: 25px;
+      border-radius: 25px;
+    }
+    .categoria-texto {
+      font-size: 12px;
+      padding-left: 5px;
+    }
+    &.activo {
+      opacity: 1;
+    }
+    &.inactivo {
+      opacity: .3;
     }
   }
 }
-
-div.contenedor-tooltip-svg {
-  position: relative;
-
-  //.rotation-wrapper-outer {
-  //  display:table;
-  //
-  //  .rotation-wrapper-inner {
-  //    padding: 50% 0;
-  //    height: 0;
-  //
-  //    .element-to-rotate {
-  //      display: block;
-  //      transform-origin: top left;
-  //      margin-top: -50%;
-  //      font-size: 12px;
-  //      text-align: center;
-  //      font-weight: 600;
-  //    }
-  //  }
-  //}
-
-  div.tooltip {
-    font-size: 12px;
-    position: absolute;
-    z-index: 2;
-    visibility: hidden;
-  }
-
-  div.tooltip::v-deep,
-  div.tooltip-cifras {
-    padding-bottom: 5px;
-
-    p {
-      margin: 3px;
-
-      span.nomenclatura-tooltip {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        border: solid 1px rgba(255, 255, 255, .7);
-        display: inline-block;
-      }
+.notas-dona {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: var(--color-texto);
+  .contenedor {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .33s ease-in-out;
+    &.abierto {
+      max-height: 100vh;
     }
   }
-
-  div.tooltip button.boton-cerrar-tooltip {
-    background: #fff;
+  .separador {
+    background: rgba(var(--color-sombra),.5);
     border: none;
-    font-size: 30px;
-    line-height: .9;
-    font-weight: 300;
-    padding: 0 5px;
+    border-radius: 1px;
+    height: 2px;
+    margin: $margen;
+  }
+  .notas {
+    font-size: 14px;
+    margin: $margen * 2 $margen;
+  }
+  .fuente {
+    border-top: 1px solid rgba(var(--color-sombra),.5);
+    font-size: 14px;
+    margin: $margen * 2 $margen;
+    padding-top: $margen * 2;
+  }
+  .descargar-datos {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    background: var(--color-acento-fondo);
+    border: none;
     border-radius: 5px;
-    margin: 0 0 0 auto;
-    @media (min-width: 768px) {
-      display: none;
-    }
+    color: var(--color-acento-texto);
     cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    padding: $margen*.5 $margen;
+    margin: $margen*2 auto;
+    transition: background-color .33s ease-in-out, color .3s ease-in-out;
+    &:hover,
+    &:focus {
+      background-color: var(--color-acento-fondo-hover);
+      color: var(--color-acento-texto-hover);
+    }
+  }
+  .boton-notas {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    background: var(--color-acento-fondo);
+    border: solid var(--color-bordes) 1px;
+    border-radius: 0 0 $radio $radio;
+    color: var(--color-acento-texto);
+    cursor: pointer;
+    display: block;
+    position: relative;
+    bottom: -2px;
+    left: -1px;
+    width: calc(100% + 2px);
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    padding: $margen;
+    margin: 0;
+    transition: background-color .33s ease-in-out, color .3s ease-in-out;
+    &:hover,
+    &:focus {
+      background-color: var(--color-acento-fondo-hover);
+      color: var(--color-acento-texto-hover);
+    }
   }
 }
-
+// svg
+svg.svg-dona ::v-deep foreignObject {
+  color: #fff;
+  font-size: 12px;
+}
+svg.svg-dona ::v-deep div.contenedor-boton-cerrar {
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 5px;
+}
+svg.svg-dona ::v-deep button.boton-cerrar-tooltip {
+  background: none;
+  border: none;
+  padding: 0 0 0 5px;
+  cursor: pointer;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
 </style>
