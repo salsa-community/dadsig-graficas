@@ -4,7 +4,6 @@
         ref="donas-slots-tooltip"
         :dona_id="'dona'"
         :datos="datos"
-        :tooltip_activo="false"
     >
       <template slot="encabezado">
         <div class="slot-encabezado">

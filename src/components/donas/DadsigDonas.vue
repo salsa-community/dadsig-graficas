@@ -95,12 +95,6 @@ export default {
       this.actualizandoDona();
     }
   },
-
-  // data: function () {
-  //   return {
-  //     es_notas_abiertas:false,
-  //   }
-  // },
   mounted: function () {
     this.svg = d3.select("#"+this.dona_id+" svg.svg-dona");
     this.grupo_contenedor = this.svg.select("g.grupo-contenedor-de-dona");

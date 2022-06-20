@@ -38,6 +38,39 @@ El siguiente ejemplo muestra la manera en la cual se utilizan los
 _Visualizaciones_ de esa documentación) para insertar encabezados y pies de gráficas para poner títulos, notas,
 controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente,
 
+```html
+    <DadsigDonas
+        ref="donas-slots-tooltip"
+        :dona_id="'dona'"
+        :datos="datos"
+>
+    <template slot="encabezado">
+        <div class="slot-encabezado">
+            <h4>Título slots</h4>
+            <p class="slot-parrafo">
+                Tanto el título que aparece arriba, como este texto, se integran
+                como slot. Se puede estilizar segun las necesidades con un poco de
+                CSS o, en su momento, importando el sistema de diseño
+            </p>
+        </div>
+    </template>
+    <template slot="pie">
+        <div class="slot-pie">
+            <h4>Pie de gráfica</h4>
+            <p class="slot-parrafo">
+                Este otro bloque corresponde al slot de pie de gráfica, en donde
+                usualmente se ponen nomenclaturas, notas o controles, y también
+                puede modificarse con CSS según las necesidades.
+            </p>
+        </div>
+    </template>
+</DadsigDonas>
+```
+
+El gráfico resultante es el siguiente, en el cual se empleo una tipografía distinta en los `slots` para hacer énfasis en
+su adición a la visualización. Observe también que si no se especifica la propiedad de
+`:tooltip_activo="false"`, por defecto ya se puede ver un tooltip,
+
 <donas-slots-tooltip/>
 
 
@@ -46,5 +79,69 @@ controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente,
 El siguiente ejemplo incluye lo que se ha visto en los anteriores, se agrega estilo en el scss para customizar la
 gráfica y ciertos métodos para modificar los datos que se grafican por medio de un botón. Las bases se cargan desde
 archivos `.json`.
+
+```html
+<template>
+    <div id="app">
+        <DadsigDonas
+                ref="donas_cambio_base"
+                :datos="datos"
+                :dona_id="'donas_cambio_base'">
+            <template slot="encabezado">
+                <div class="encabezado">
+                    <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
+                    <p class="fecha-actualizacion">Fecha: dd/mm/aaaa</p>
+                </div>
+            </template>
+            <template slot="pie">
+                <div class="pie">
+                    <h3 class="titulo-visualizacion">Pie de gráfica</h3>
+                    <p>Aliquam erat volutpat. In cursus ipsum purus. Quisque a pellentesque justo. Donec nec justo sodales,
+                        dignissim leo consectetur, pulvinar leo. Aenean sodales a lacus eget porta.</p>
+                    <button @click="alternandoBase">Cambia la data</button>
+                </div>
+            </template>
+        </DadsigDonas>
+    </div>
+</template>
+```
+En el `</script>` se agregan las bases y las funciones necesarias para alternar entre una y otra, mientras que en el
+apartado de `</sytyle>` se customizan propiedades como el marco de la gráfica, radio del contenedor, etc.
+
+```vue
+<script>
+import donasejemplo1 from "./donas_1.json"
+import donasejemplo2 from "./donas_2.json"
+import donasejemplo3 from "./donas_3.json"
+
+export default {
+  name: "donas-cambiando-base",
+
+  data: function () {
+    return {
+      datos: donasejemplo1,
+      base_seleccionada: 1,
+    }
+  },
+  methods: {
+    alternandoBase() {
+      if (this.base_seleccionada == 1) {
+        this.base_seleccionada = 2;
+        this.datos = donasejemplo2;
+      } else if (this.base_seleccionada == 2) {
+        this.base_seleccionada = 3;
+        this.datos = donasejemplo3;
+      } else {
+        this.base_seleccionada = 1;
+        this.datos = donasejemplo1
+      }
+    },
+  },
+
+}
+</script>
+```
+
+El resultado es el siguiente:
 
 <donas-cambiando-base/>

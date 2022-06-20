@@ -2,8 +2,8 @@
   <div id="app">
     <DadsigDonas
         ref="donas_cambio_base"
-        :dona_id="'donas_cambio_base'"
-    :datos="datos">
+        :datos="datos"
+        :dona_id="'donas_cambio_base'">
       <template slot="encabezado">
         <div class="encabezado">
           <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
@@ -20,7 +20,6 @@
       </template>
     </DadsigDonas>
   </div>
-
 </template>
 
 <script>
@@ -42,11 +41,10 @@ export default {
       if (this.base_seleccionada == 1) {
         this.base_seleccionada = 2;
         this.datos = donasejemplo2;
-      } else if (this.base_seleccionada == 2){
+      } else if (this.base_seleccionada == 2) {
         this.base_seleccionada = 3;
         this.datos = donasejemplo3;
-      }
-      else {
+      } else {
         this.base_seleccionada = 1;
         this.datos = donasejemplo1
       }
