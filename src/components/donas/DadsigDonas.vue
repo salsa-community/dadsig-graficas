@@ -1,5 +1,6 @@
 <template>
   <div v-bind:id=dona_id class="contenedor-dona">
+    <slot name="encabezado"></slot>
     <svg class="svg-dona">
       <g class="grupo-contenedor-de-dona"></g>
       <g class="grupo-contenedor-tooltip">
@@ -16,6 +17,7 @@
         </foreignObject>
       </g>
     </svg>
+    <slot name="pie"></slot>
   </div>
 </template>
 
@@ -27,15 +29,15 @@ export default {
   props: {
     dona_id: String,
     datos: Array,
-    tooltip_activo: {
-      type: Boolean,
-      default: function () {
-        return true
-      }
-    },
+    // tooltip_activo: {
+    //   type: Boolean,
+    //   default: function () {
+    //     return true
+    //   }
+    // },
     ancho_tooltip: {
       type: Number,
-      default: 165
+      default: 100
     },
     radio_interno: {
       type:Number,
@@ -338,8 +340,9 @@ $radio: 10px;
   border-radius: $radio;
   color: var(--color-texto);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  max-width: 450px;
+  max-width: 500px;
   width: calc(100% - 20px);
+  margin: auto;
 }
 .titulo-proyecto {
   font-size: 14px;
