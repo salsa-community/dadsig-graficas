@@ -10,9 +10,6 @@ está desarrollada usando software libre. Así mismo sigue los lineamientos de l
 > El presente es un proyecto en construcción, por tanto Conacyt no es responsable del uso y contenido del presente 
 > recurso, toda vez que se trata de una versión en su modalidad prueba, y no de una versión pública, por lo que una vez 
 > que sea lanzada la versión final, se invita a la persona usuaria a consultarla y validar sus requisitos. 
-> Para que la persona usuaria agregue algún componente de visualización de esta biblioteca a sus proyectos, se sugiere 
-> dar acceso por medio de un token con usuario y contraseña copiando los archivos necesarios de este proyecto a los repositorios, según 
-> sea el caso.
 
 ## Documentación
 
@@ -46,6 +43,7 @@ Una vez clonado el repositorio, se puede instalar en la terminal con `npm` ejecu
 ```shell
 npm install ruta_al_repositorio/dadsig-graficas
 ```
+
 
 ## Inicio rápido
 
