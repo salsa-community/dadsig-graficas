@@ -1,9 +1,10 @@
 {
   "name": "dadsig-graficas",
-  "version": "0.8.1",
+  "version": "0.8.0",
   "private": true,
+  "licence": "MIT",
   "files": [
-    "dist/*"
+    "src/*"
   ],
   "main": "./dist/dadsig-graficas.umd.js",
   "scripts": {
