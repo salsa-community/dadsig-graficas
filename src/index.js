@@ -5,6 +5,7 @@ import {
     DadsigCajasBigotes
 } from "./components"
 
+import "./scss/estilogeneral.scss"
 
 export default function plugin(Vue) {
     if (plugin.installed) {
