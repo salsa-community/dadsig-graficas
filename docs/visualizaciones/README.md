@@ -85,4 +85,41 @@ siguientes fuentes:
 * [Essential Chart Types for Data Visualization](https://chartio.com/learn/charts/essential-chart-types-for-data-visualization/)
 * [The Data Visualization Catalogue](https://datavizcatalogue.com/index.html)
 
+## Parámetro opcional con logo
 
+El botón que redirecciona a la página web de [Conacyt](https://conacyt.mx/) que se encuentra al pie de todas los 
+componentes de visualización es un parámetro que por defecto es verdadero, por lo tanto se puede desactivar para 
+ocultar dicho botón. 
+
+**Botón activado**
+
+En este caso no es necesario modificar el parámetro y se mostrará como sigue,
+
+<lineas-basico/>
+
+**Botón desactivado**
+
+Para desactivar el botón en el template del componente de visualización se agrega el parámetro y 
+se especifica su valor como `false`,
+
+```vue
+<template>
+  <div>
+    <DadsigLineas
+        ref="lineas_sin_boton"
+        :conversionTemporal="conversionTemporal"
+        :datos="datos"
+        :linea_id="'lineas_sin_boton'"
+        :margen="{arriba: 10, abajo: 20, izquierda: 30, derecha: 30}"
+        :nombre_columna_horizontal="'fecha'"
+        :titulo_eje_x="'Eje horizontal (temporal)'"
+        :titulo_eje_y="'Eje vertical (numérico)'"
+        :tooltip_activo="false"
+        :variables="edos_seleccionados"
+        :logo_conacyt="false"
+    />
+  </div>
+</template>
+```
+
+<lineas-sin-boton/>
