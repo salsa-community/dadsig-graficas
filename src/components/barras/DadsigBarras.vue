@@ -33,6 +33,11 @@
       </div>
     </div>
     <slot name="pie"></slot>
+    <div v-show="logo_conacyt" class="grid-column-4 grid-column-6-esc">
+      <a class="boton boton-conacyt" href="https://conacyt.mx/" target="_blank">
+        <img src="https://conacyt.mx/wp-content/uploads/2021/10/logo_conacyt_con_sintagma_azul_completo.svg" alt="Conacyt" height="28px">
+      </a>
+    </div>
   </div>
 </template>
 
@@ -80,13 +85,18 @@ export default {
         return .3
       }
     },
+    logo_conacyt: {
+      type: Boolean,
+      default: function () {
+        return true
+      }
+    },
     tooltip_activo: {
       type: Boolean,
       default: function () {
         return true
       }
     },
-
     textoTooltip: {
       type: Function,
       default: function () {
@@ -118,7 +128,7 @@ export default {
   data() {
     return {
       width: 200,
-      ancho_leyenda_y: 0
+      ancho_leyenda_y: 0,
     }
   },
   mounted() {
