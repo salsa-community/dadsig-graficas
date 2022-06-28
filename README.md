@@ -9,18 +9,13 @@ está desarrollada usando software libre. Así mismo sigue los lineamientos de l
 > 
 > El presente es un proyecto en construcción, por tanto Conacyt no es responsable del uso y contenido del presente 
 > recurso, toda vez que se trata de una versión en su modalidad prueba, y no de una versión pública, por lo que una vez 
-> que sea lanzada la versión final, se invita a la persona usuaria a consultarla y validar sus requisitos. 
-
-## Documentación
-
-En este documento se da una vista general del uso de este proyecto. Para consultar el uso extensivo y ejemplos de los 
-componentes de visualización de la biblioteca favor de ir a la [documentación en línea]().
+> que sea lanzada la versión final, se invita a la persona usuaria a consultarla y validar sus requisitos.
 
 ## Dependencias e instalación
 
 Las gráficas de esta biblioteca están desarrolladas como [componentes](https://es.vuejs.org/v2/guide/components.html) de
 [Vue.js](https://es.vuejs.org/) usando [d3](https://d3js.org/), por lo tanto se recomienda a la persona usuaria tener 
-conocimientos básicos de lo anterior así como del desarrollo en [javascript](https://www.javascript.com/).
+conocimientos básicos de lo anterior así como de desarrollo en [javascript](https://www.javascript.com/).
 
 Para instalar la biblioteca se puede hacer:
 
@@ -29,7 +24,7 @@ Para instalar la biblioteca se puede hacer:
 Por medio de [npm](https://www.npmjs.com/) ejecutar la siguiente línea de comando en la terminal de la computadora,
 
 ```shell
-npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}
+npm install https://github.com/salsa-community/dadsig-graficas.git
 ```
 
 **Opción B**
