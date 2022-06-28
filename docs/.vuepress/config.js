@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'DAI-VIS',
+  title: 'DADSIG-GRAFICAS',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -21,7 +21,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
 
-  base: "/dai-vis/",
+  base: "/dadsig-graficas/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -37,58 +37,34 @@ module.exports = {
     lastUpdated: true,
     nav: [
       {
-        text: 'Guía de inicio',
-        link: '/guia/',
+        text: 'Introducción',
+        link: '/introduccion/',
       },
       {
-        text: 'Barras apiladas',
-        link: '/barras_apiladas/',
+        text: 'Visualizaciones',
+        link: '/visualizaciones/',
       },
       {
-        text: 'Diagrama de cajas',
-        link: '/boxplots/'
+        text: 'Contribuir',
+        link: '/contribuir/'
       },
-      {
-        text: 'Series de tiempo',
-        link: '/series_tiempo/'
-      },
-      {
-        text: 'Stream graph',
-        link: '/stream_graph/',
-      }
     ],
     sidebar: {
-      '/barras_apiladas/': [
+      '/visualizaciones/': [
         {
-          title: 'Barras apiladas',
+          title: 'Visualizaciones',
           collapsable: false,
           children: [
-            '',
-            'componente',
-            'ejemplos',
+            'barras_horizontales',
+            'barras_horizontales_apiladas',
+            'barras_verticales',
+            'barras_verticales_apiladas',
+            'cajas_bigotes',
+            'donas',
+            'lineas',
           ]
         }
       ],
-      '/series_tiempo/': [
-        {
-          title: 'Series de tiempo',
-          collapsable: false,
-          children: [
-            '',
-            'ejemplos',
-          ]
-        }
-      ],
-      '/boxplots/': [
-        {
-          title: 'Boxplots',
-          collapsable: false,
-          children: [
-            '',
-            'ejemplos',
-          ]
-        }
-      ]
     }
   },
 

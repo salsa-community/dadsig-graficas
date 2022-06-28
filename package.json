@@ -1,7 +1,12 @@
 {
-  "name": "dai-graficas",
-  "version": "0.1.0",
+  "name": "dadsig-graficas",
+  "version": "0.10.0",
   "private": true,
+  "licence": "MIT",
+  "files": [
+    "src/*"
+  ],
+  "main": "./dist/dadsig-graficas.umd.js",
   "scripts": {
     "docs:serve": "vuepress dev docs",
     "docs:build": "vuepress build docs",
@@ -48,6 +53,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/conacyt-dai/dai-maps"
+    "url": "https://github.com/conacyt-dai/dadsig-graficas"
   }
 }

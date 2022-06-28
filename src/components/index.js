@@ -1,10 +1,11 @@
-
-import * as DaiBarrasApiladas from "./barras-apiladas"
-import * as DaiLineas from "./lineas"
-import * as DaiBoxPlot from "./cajas"
+import * as DadsigBarras from "./barras"
+import * as DadsigDonas from "./donas"
+import * as DadsigLineas from "./lineas"
+import * as DadsigCajasBigotes from "./cajas-bigotes"
 
 export {
-  DaiBarrasApiladas,
-  DaiLineas,
-  DaiBoxPlot
+  DadsigBarras,
+  DadsigDonas,
+  DadsigLineas,
+  DadsigCajasBigotes
 }

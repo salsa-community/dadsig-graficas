@@ -1,17 +1,17 @@
-import DadsigLineas from './DadsigLineas.vue'
+import DadsigDonas from './DadsigDonas.vue'
 
 function plugin(Vue){
     if(plugin.installed){
         return
     }
     plugin.installed = true;
-    Vue.component(DadsigLineas.name,DadsigLineas);
+    Vue.component(DadsigDonas.name,DadsigDonas);
 }
 
 export default plugin;
 
 
-export { 
+export {
     plugin as install,
-    DadsigLineas
+    DadsigDonas
 };

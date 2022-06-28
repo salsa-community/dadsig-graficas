@@ -1,9 +1,9 @@
 ---
 home: true
 heroImage: conacyt2.png
-tagline: Libreria de vue para construir gráficas interactivas
-actionText: Guía de inicio →
-actionLink: /guia/
+tagline: Biblioteca para construir gráficas interactivas
+actionText: Introducción →
+actionLink: /introduccion/
 #features:
 #- title: Feature 1 Title
 #  details: Feature 1 Description
@@ -11,7 +11,7 @@ actionLink: /guia/
 #  details: Feature 2 Description
 #- title: Feature 3 Title
 #  details: Feature 3 Description
-footer: Made by DAI - CONACYT with ❤️
+footer: Made by DADSIG - CONACYT with ❤️
 ---
 
 v{{ $themeConfig.version }}

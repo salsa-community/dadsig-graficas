@@ -1,28 +1,29 @@
 import {
-    DaiBarrasApiladas,
-    DaiLineas,
-    DaiBoxPlot
+    DadsigBarras,
+    DadsigDonas,
+    DadsigLineas,
+    DadsigCajasBigotes
 } from "./components"
 
+import "./scss/estilogeneral.scss"
 
-export default function plugin(Vue){
+export default function plugin(Vue) {
     if (plugin.installed) {
         return
     }
     plugin.installed = true
-    Vue.use(DaiBarrasApiladas)
-    Vue.use(DaiLineas)
-    Vue.use(DaiBoxPlot)
+    Vue.use(DadsigBarras)
+    Vue.use(DadsigDonas)
+    Vue.use(DadsigLineas)
+    Vue.use(DadsigCajasBigotes)
 
 
 }
 
 export {
     plugin as install,
-    //componentes
-    DaiBarrasApiladas,
-    DaiLineas,
-    DaiBoxPlot
-
-
+    DadsigBarras,
+    DadsigDonas,
+    DadsigLineas,
+    DadsigCajasBigotes
 }
