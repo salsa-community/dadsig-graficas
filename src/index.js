@@ -2,7 +2,8 @@ import {
     DadsigBarras,
     DadsigDonas,
     DadsigLineas,
-    DadsigCajasBigotes
+    DadsigCajasBigotes,
+    DadsigDiagramaProcesos
 } from "./components"
 
 import "./scss/estilogeneral.scss"
@@ -16,6 +17,7 @@ export default function plugin(Vue) {
     Vue.use(DadsigDonas)
     Vue.use(DadsigLineas)
     Vue.use(DadsigCajasBigotes)
+    Vue.use(DadsigDiagramaProcesos)
 
 
 }
@@ -25,5 +27,6 @@ export {
     DadsigBarras,
     DadsigDonas,
     DadsigLineas,
-    DadsigCajasBigotes
+    DadsigCajasBigotes,
+    DadsigDiagramaProcesos
 }
