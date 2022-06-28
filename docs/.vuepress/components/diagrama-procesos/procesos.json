@@ -1,0 +1,312 @@
+[
+    {
+      "id": "1",
+      "nombre": "Planeación",
+      "secciones": [
+        {
+          "id": "s1",
+          "nombre": "1",
+          "subsecciones": [
+            {
+              "id": "s1ss1",
+              "nombre": "Planeación de Convocatoria",
+              "estatus": "Finalizada",
+              "descripcion": "1 Convocatoria",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                },
+                {
+                  "id": "CRIP",
+                  "nombre": "CRIP"
+                }
+              ],
+              "info": "aqui va lo que nadie sabe que puede haber"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Selección de Propuestas",
+      "secciones": [
+        {
+          "id": "s2",
+          "nombre": "2",
+          "subsecciones": [
+            {
+              "id": "s2ss1",
+              "nombre": "Convocatoria",
+              "estatus": "Finalizada",
+              "descripcion": "1 Convocatoria",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                },
+                {
+                  "id": "JU",
+                  "nombre": "Jurídico"
+                },
+                {
+                  "id": "CTA",
+                  "nombre": "CTA"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "nombre": "3",
+          "subsecciones": [
+            {
+              "id": "s3ss1",
+              "nombre": "Solicitudes",
+              "estatus": "Finalizada",
+              "descripcion": "40,000 Solicitudes",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "INV",
+                  "nombre": "Investigación"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "nombre": "4",
+          "subsecciones": [
+            {
+              "id": "s4ss1",
+              "nombre": "Revisión",
+              "estatus": "Finalizada",
+              "descripcion": "40,000 Solicitudes",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s5",
+          "nombre": "5",
+          "subsecciones": [
+            {
+              "id": "s5ss1",
+              "nombre": "Evaluación",
+              "estatus": "Finalizada",
+              "descripcion": "40,000 Solicitudes evaluadas",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "RCA",
+                  "nombre": "RCEA"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "nombre": "6",
+          "subsecciones": [
+            {
+              "id": "s6ss1",
+              "nombre": "Aprobación",
+              "estatus": "Finalizada",
+              "descripcion": "39,876 Solicitudes aprobadas",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                },
+                {
+                  "id": "CRIP",
+                  "nombre": "CRIP"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "nombre": "7",
+          "subsecciones": [
+            {
+              "id": "s7ss1",
+              "nombre": "Formalización",
+              "estatus": "En proceso",
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nombre": "Seguimiento Técnico y Administrativo",
+      "secciones": [
+        {
+          "id": "s8",
+          "nombre": "8",
+          "subsecciones": [
+            {
+              "id": "s8ss1",
+              "nombre": "Ministración",
+              "estatus": "Inactiva",
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s9",
+          "nombre": "9",
+          "subsecciones": [
+            {
+              "id": "s9ss1",
+              "nombre": "Seguimiento Técnico",
+              "estatus": "Inactiva",
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                }
+              ],
+              "info": ""
+            },
+            {
+              "id": "s9ss2",
+              "nombre": "Seguimiento Financiero",
+              "estatus": "Inactiva",
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "nombre": "10",
+          "subsecciones": [
+            {
+              "id": "s10ss1",
+              "nombre": "Evaluación de informe técnico final",
+              "estatus": "Inactiva",  
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                },
+                {
+                  "id": "RCA",
+                  "nombre": "RCEA"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Conclusión",
+      "secciones": [
+        {
+          "id": "s11",
+          "nombre": "11",
+          "subsecciones": [
+            {
+              "id": "s11ss1",
+              "nombre": "Conclusión de los proyectos",
+              "estatus": "Inactiva",
+              "descripcion": "",
+              "responsables": [
+                {
+                  "id": "ST",
+                  "nombre": "Secretaría Técnica"
+                },
+                {
+                  "id": "SA",
+                  "nombre": "Secretaría Administrativa"
+                },
+                {
+                  "id": "CTA",
+                  "nombre": "CTA"
+                }
+              ],
+              "info": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
