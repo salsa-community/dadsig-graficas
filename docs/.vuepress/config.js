@@ -62,6 +62,7 @@ module.exports = {
             'cajas_bigotes',
             'donas',
             'lineas',
+            "diagramas_procesos"
           ]
         }
       ],
