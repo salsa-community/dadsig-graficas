@@ -4,7 +4,7 @@
   "private": true,
   "licence": "MIT",
   "files": [
-    "src/*"
+    "dist/*"
   ],
   "main": "./dist/dadsig-graficas.umd.js",
   "scripts": {
