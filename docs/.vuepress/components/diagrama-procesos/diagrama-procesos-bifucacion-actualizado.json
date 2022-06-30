@@ -1,0 +1,572 @@
+[{
+  "orden": 1,
+  "nombre-proceso": "Planeación",
+  "color": "#262699",
+  "etapas": [{
+    "orden": 1,
+    "nombre-etapa": "",
+    "pasos": [{
+      "orden": 1,
+      "nombre-paso": "1",
+      "estado": "finalizado",
+      "detalles": [{
+          "orden": 1,
+          "tipo": "html",
+          "clase": "titulo-principal",
+          "contenido": "Planeación de convocatoria"
+        },
+        {
+          "orden": 2,
+          "tipo": "html",
+          "clase": "texto-nota",
+          "contenido": "<span class='icono'></span> Finalizada"
+        },
+        {
+          "orden": 3,
+          "tipo": "html",
+          "clase": "",
+          "contenido": "<b>123</b> Convocatorias"
+        },
+        {
+          "orden": 4,
+          "tipo": "etiquetas",
+          "clase": "",
+          "titulo": "Responsables",
+          "etiquetas": [{
+              "clase": "etiqueta-st",
+              "nombre-corto": "ST",
+              "nombre-largo": "Secretaría Técnica"
+            },
+            {
+              "clase": "etiqueta-sa",
+              "nombre-corto": "SA",
+              "nombre-largo": "Secretaría Administrativa"
+            },
+            {
+              "clase": "etiqueta-crip",
+              "nombre-corto": "CRIP",
+              "nombre-largo": "Coordinación de Repositorios, Información y Prospectiva"
+            }
+          ]
+        },
+        {
+          "orden": 5,
+          "tipo": "modal",
+          "contenido": "<div><h3>Hola</h3><p>Pues aquí se podría en teoria meter lo que sea y se insertará en un modalsito en html</p></div>"
+        }
+      ]
+    }]
+  }]
+},
+{
+  "orden": 2,
+  "nombre-proceso": "Selección de Propuestas",
+  "color": "#054649",
+  "etapas": [{
+      "orden": 1,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "2",
+        "estado": "finalizado",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Convocatoria"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Finalizada"
+          },
+          {
+            "orden": 3,
+            "tipo": "html",
+            "clase": "",
+            "contenido": "<b>12</b> Convocatorias"
+          },
+          {
+            "orden": 4,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              },
+              {
+                "clase": "etiqueta-ju",
+                "nombre-corto": "JU",
+                "nombre-largo": "Jurídico"
+              },
+              {
+                "clase": "etiqueta-cta",
+                "nombre-corto": "CTA",
+                "nombre-largo": "CTA"
+              }
+            ]
+          },
+          {
+            "orden": 5,
+            "tipo": "modal",
+            "contenido": "<div><h3>Hola</h3><p>Pues aquí se podría en teoria meter lo que sea y se insertará en un modalsito en html</p></div>"
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 2,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "3",
+        "estado": "finalizado",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Solicitudes"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Finalizada"
+          },
+          {
+            "orden": 3,
+            "tipo": "html",
+            "clase": "",
+            "contenido": "<b>40,000</b> Solicitudes"
+          },
+          {
+            "orden": 4,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-in",
+                "nombre-corto": "IN",
+                "nombre-largo": "Investigación"
+              }
+            ]
+          },
+          {
+            "orden": 5,
+            "tipo": "modal",
+            "contenido": "<div>algo aqui mas leve</div>"
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 3,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "4",
+        "estado": "finalizado",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Revisión"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Finalizada"
+          },
+          {
+            "orden": 3,
+            "tipo": "html",
+            "clase": "",
+            "contenido": "<b>40,000</b> Solicitudes"
+          },
+          {
+            "orden": 4,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              }
+            ]
+          },
+          {
+            "orden": 5,
+            "tipo": "modal",
+            "contenido": "<div>algo aqui mas leve</div>"
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 4,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "5",
+        "estado": "finalizado",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Evaluación"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Finalizada"
+          },
+          {
+            "orden": 3,
+            "tipo": "html",
+            "clase": "",
+            "contenido": "<b>40,000</b> Solicitudes evaluadas"
+          },
+          {
+            "orden": 4,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-rcea",
+                "nombre-corto": "RCEA",
+                "nombre-largo": "RCEA"
+              }
+            ]
+          },
+          {
+            "orden": 5,
+            "tipo": "modal",
+            "contenido": "<div>hola</div>"
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 5,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "6",
+        "estado": "finalizado",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Aprobación"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Finalizada"
+          },
+          {
+            "orden": 3,
+            "tipo": "html",
+            "clase": "",
+            "contenido": "<b>4,000</b> Solicitudes aprobadas"
+          },
+          {
+            "orden": 4,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              },
+              {
+                "clase": "etiqueta-crip",
+                "nombre-corto": "CRIP",
+                "nombre-largo": "Coordinación de Repositorios, Información y Prospectiva"
+              }
+            ]
+          },
+          {
+            "orden": 5,
+            "tipo": "modal",
+            "contenido": "<div>hola</div>"
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 6,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "7",
+        "estado": "enproceso",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Formalización"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> En proceso"
+          },
+          {
+            "orden": 3,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              }
+            ]
+          }
+        ]
+      }]
+    }
+  ]
+},
+{
+  "orden": 3,
+  "nombre-proceso": "Seguimiento técnico y administrativo",
+  "color": "#8E110B",
+  "etapas": [{
+      "orden": 1,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "8",
+        "estado": "inactiva",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Ministración"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Inactiva"
+          },
+          {
+            "orden": 3,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              }
+            ]
+          }
+        ]
+      }]
+    },
+    {
+      "orden": 2,
+      "nombre-etapa": "",
+      "pasos": [{
+          "orden": 1,
+          "nombre-paso": "9",
+          "estado": "inactiva",
+          "detalles": [{
+              "orden": 1,
+              "tipo": "html",
+              "clase": "titulo-principal",
+              "contenido": "Seguimiento Técnico"
+            },
+            {
+              "orden": 2,
+              "tipo": "html",
+              "clase": "texto-nota",
+              "contenido": "<span class='icono'></span> Inactiva"
+            },
+            {
+              "orden": 3,
+              "tipo": "etiquetas",
+              "clase": "",
+              "titulo": "Responsables",
+              "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              }]
+            }
+          ]
+        },
+        {
+          "orden": 2,
+          "nombre-paso": "9",
+          "estado": "inactiva",
+          "detalles": [{
+              "orden": 1,
+              "tipo": "html",
+              "clase": "titulo-principal",
+              "contenido": "Seguimiento Finacniero"
+            },
+            {
+              "orden": 2,
+              "tipo": "html",
+              "clase": "texto-nota",
+              "contenido": "<span class='icono'></span> Inactiva"
+            },
+            {
+              "orden": 3,
+              "tipo": "etiquetas",
+              "clase": "",
+              "titulo": "Responsables",
+              "etiquetas": [{
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orden": 1,
+      "nombre-etapa": "",
+      "pasos": [{
+        "orden": 1,
+        "nombre-paso": "10",
+        "estado": "inactiva",
+        "detalles": [{
+            "orden": 1,
+            "tipo": "html",
+            "clase": "titulo-principal",
+            "contenido": "Evaluación de informe ténico final"
+          },
+          {
+            "orden": 2,
+            "tipo": "html",
+            "clase": "texto-nota",
+            "contenido": "<span class='icono'></span> Inactiva"
+          },
+          {
+            "orden": 3,
+            "tipo": "etiquetas",
+            "clase": "",
+            "titulo": "Responsables",
+            "etiquetas": [{
+                "clase": "etiqueta-st",
+                "nombre-corto": "ST",
+                "nombre-largo": "Secretaría Técnica"
+              },
+              {
+                "clase": "etiqueta-sa",
+                "nombre-corto": "SA",
+                "nombre-largo": "Secretaría Administrativa"
+              },
+              {
+                "clase": "etiqueta-rcea",
+                "nombre-corto": "RCEA",
+                "nombre-largo": "RCEA"
+              }
+            ]
+          }
+        ]
+      }]
+    }
+  ]
+},
+{
+  "orden": 1,
+  "nombre-proceso": "Conclusión",
+  "color": "#054C07",
+  "etapas": [{
+    "orden": 1,
+    "nombre-etapa": "",
+    "pasos": [{
+      "orden": 1,
+      "nombre-paso": "11",
+      "estado": "inactiva",
+      "detalles": [{
+          "orden": 1,
+          "tipo": "html",
+          "clase": "titulo-principal",
+          "contenido": "Conclusión de los proyectos"
+        },
+        {
+          "orden": 2,
+          "tipo": "html",
+          "clase": "texto-nota",
+          "contenido": "<span class='icono'></span> Inactiva"
+        },
+        {
+          "orden": 3,
+          "tipo": "etiquetas",
+          "clase": "",
+          "titulo": "Responsables",
+          "etiquetas": [{
+              "clase": "etiqueta-st",
+              "nombre-corto": "ST",
+              "nombre-largo": "Secretaría Técnica"
+            },
+            {
+              "clase": "etiqueta-sa",
+              "nombre-corto": "SA",
+              "nombre-largo": "Secretaría Administrativa"
+            },
+            {
+              "clase": "etiqueta-cta",
+              "nombre-corto": "CTA",
+              "nombre-largo": "CTA"
+            }
+          ]
+        }
+      ]
+    }]
+  }]
+}
+]

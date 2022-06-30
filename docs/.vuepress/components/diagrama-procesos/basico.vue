@@ -9,7 +9,7 @@
 
 </script>
 <script>
-import procesos from "./procesos.json"
+import procesos from "./diagrama-procesos-actualizado.json"
 
 export default {
     name:"ejemplo-basico-diagrama-procesos",
