@@ -21,35 +21,24 @@ Es necesario tener instalado el manejador de paquetes
 
 ### Instalación
 
-#### Opción A
+**Opción A**
 
-Ir al [repositorio de github](https://github.com/conacyt-dai/dadsig-graficas) y clonarlo. Si no se sabe como
-[aquí](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) hay una guía de 
-como realizarlo. 
+Por medio de [npm](https://www.npmjs.com/) ejecutar la siguiente línea de comando en la terminal de la computadora,
+
+```shell
+npm install https://github.com/salsa-community/dadsig-graficas.git
+```
+
+**Opción B**
+
+Clonar este repositorio en local. Si no se sabe como
+[aquí](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) hay una guía de
+como realizarlo.
 
 Una vez clonado el repositorio, se puede instalar en la terminal con `npm` ejecutando la siguiente línea de comando,
 
 ```shell
 npm install ruta_al_repositorio/dadsig-graficas
-```
-
-#### Opción B 
-
-Cuando se consigan accesos o se haga público el repositorio, podrá instalarse sin necesidad de tenerlo clonado y se hará
-también por medio de `npm` y ejecutando lo siguiente en la línea de comando,
-
-```shell
-npm install git+https://usuario:clave@github.com/conacyt-dai/dai-vis.git#v{{$themeConfig.version}}
-```
-
-en dónde `usuario` y `clave` serán necesarios sólo si el repositorio se mantiene privado.
-
-#### Opción C
-
-Cuando se publique en `npm`, la instalación hará por medio de la terminal con la siguiente línea de comando,
-
-```shell
-npm install dadsig-graficas
 ```
 
 ## Uso de componentes de visualización
