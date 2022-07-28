@@ -26,6 +26,8 @@ libertad de customizar el componente al modificarlos.
 * `radio_texto`: (_Number_) Cantidad que se multiplica por el ancho del svg para dar un valor a la funciones
   `innerRadius` y `outerRadius` de d3 y que determinan la posición de los textos de porcentaje afuera de la dona. El 
   valor por defecto esde 0.33.
+* `ancho_dona`: (_Number_) El ancho de la dona se podrá personalizar, por defecto usa el ancho del tamaño del contenedor;
+  cada valor equivale a un pixel `(1 = 1px)`.
 
 ## Ejemplos de uso
 
@@ -43,7 +45,7 @@ controles, nomenclaturas, etc. dentro del componente. El HTML es el siguiente,
         ref="donas-slots-tooltip"
         :dona_id="'dona'"
         :datos="datos"
->
+    >
     <template slot="encabezado">
         <div class="slot-encabezado">
             <h4>Título slots</h4>
@@ -84,9 +86,11 @@ archivos `.json`.
 <template>
     <div id="app">
         <DadsigDonas
-                ref="donas_cambio_base"
-                :datos="datos"
-                :dona_id="'donas_cambio_base'">
+            ref="donas_cambio_base"
+            :datos="datos"
+            :dona_id="'donas_cambio_base'"
+            :ancho_dona="400"
+        >
             <template slot="encabezado">
                 <div class="encabezado">
                     <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>

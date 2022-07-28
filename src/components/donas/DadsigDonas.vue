@@ -1,22 +1,24 @@
 <template>
   <div v-bind:id=dona_id class="contenedor-dona">
     <slot name="encabezado"></slot>
-    <svg class="svg-dona">
-      <g class="grupo-contenedor-de-dona"></g>
-      <g class="grupo-contenedor-tooltip">
-        <foreignObject>
-          <div class="tooltip-contenido">
-            <div class="contenedor-boton-cerrar">
-              <button class="boton-cerrar-tooltip" @click="cerrarTooltip">
-                &times;
-              </button>
+    <div id="svg-adjuster">
+      <svg class="svg-dona">
+        <g class="grupo-contenedor-de-dona"></g>
+        <g class="grupo-contenedor-tooltip">
+          <foreignObject>
+            <div class="tooltip-contenido">
+              <div class="contenedor-boton-cerrar">
+                <button class="boton-cerrar-tooltip" @click="cerrarTooltip">
+                  &times;
+                </button>
+              </div>
+              <p class="tooltip-variable"></p>
+              <p class="tooltip-cifra"></p>
             </div>
-            <p class="tooltip-variable"></p>
-            <p class="tooltip-cifra"></p>
-          </div>
-        </foreignObject>
-      </g>
-    </svg>
+          </foreignObject>
+        </g>
+      </svg>
+    </div>
     <slot name="pie"></slot>
     <div v-show="logo_conacyt" class="grid-column-4 grid-column-6-esc">
       <a class="boton boton-conacyt" href="https://conacyt.mx/" target="_blank">
@@ -62,6 +64,10 @@ export default {
       type: Number,
       default: .33
     },
+    ancho_dona: {
+      type: Number,
+      default: undefined
+    }
   },
   watch: {
     datos: function(new_val,old_val) {
@@ -144,7 +150,10 @@ export default {
           .outerRadius(this.ancho * this.radio_texto);
     },
     configurandoDimensionesParaSVG: function () {
-      this.ancho = document.getElementById(this.dona_id).clientWidth;
+      this.ancho = 
+        (this.ancho_dona !== undefined && this.ancho_dona <= document.getElementById(this.dona_id).clientWidth)
+          ? this.ancho_dona
+          : document.getElementById(this.dona_id).clientWidth;
       this.alto = this.ancho;
       this.svg.attr("width", this.ancho).attr("height", this.ancho);
       this.grupo_contenedor.attr("transform", `translate(${this.ancho * .5}, ${this.alto * .5})`);
@@ -485,6 +494,14 @@ $radio: 10px;
   }
 }
 // svg
+
+#svg-adjuster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 svg.svg-dona ::v-deep foreignObject {
   color: #fff;
   font-size: 12px;

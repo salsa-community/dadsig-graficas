@@ -3,7 +3,9 @@
     <DadsigDonas
         ref="donas_cambio_base"
         :datos="datos"
-        :dona_id="'donas_cambio_base'">
+        :dona_id="'donas_cambio_base'"
+        :ancho_dona="400"
+      >
       <template slot="encabezado">
         <div class="encabezado">
           <h3 class="titulo-visualizacion">Título de gráfica con cambio de datos</h3>
